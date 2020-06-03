@@ -9,7 +9,21 @@
 
 ## 装飾パーツ
 
-### 新規で装飾パーツを実装する時のバグ及び対処法
+### 新規追加時の実装手順
+自身の確認サーバー等でHTMLデザイン化後、WP用にCSS及びHTMLを調整します。  
+WPの管理画面・サイト側記事詳細ページ両方にCSSのを反映させる必要があります。  
+
+** 管理画面・サイト側記事詳細ページ両方に効くCSS **
+` \wp-content\plugins\visual-editor-extensions\css\xeory_contents_decorator.css `
+
+** 管理画面のみに効くCSS **
+` \wp-content\plugins\visual-editor-extensions\css\admin-style.css `
+
+#### 注意点
+パーツ自体にmin-height（パーツのデザインによってお好みで）/max-width（～640px）を指定し、ある程度のサイズ感に留めておきます。
+
+
+### 新規装飾パーツの実装時のバグ及び対処法
 
 #### バグ
 - ボタン・見出し・ブロックに'<img>'タグで画像を表示したパーツがエディタ内でバグる。
