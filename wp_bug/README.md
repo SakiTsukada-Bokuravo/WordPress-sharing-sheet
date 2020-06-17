@@ -15,4 +15,4 @@
    1. クラシック版の段落ブロックを追加
    2. クラシック版の段落もしくはクラシックブロックをデフォルトのブロックにする (ハイブリッドモード)
    
-![tinyMce Advanced setting](https://raw.githubusercontent.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/images/wp-tinymce-advance-setting.png?token=ACDS3RZBAWXBYO4G6W3IE4K65FSJS)
+![tinyMce Advanced setting](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/wp-tinymce-advance-setting.png?raw=true)
