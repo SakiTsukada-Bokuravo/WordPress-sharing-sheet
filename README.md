@@ -25,4 +25,4 @@ WP の管理画面・サイト側記事詳細ページ両方に CSS のを反映
 
 パーツ自体に min-height（パーツのデザインによってお好みで）/max-width（～ 640px）を指定し、ある程度のサイズ感に留めておきます。
 
-### [新規装飾パーツの実装時のバグ及び対処法](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/wp_bug/)
+### [新規装飾パーツの実装時のバグ及び対処法](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/tree/master/wp_bug)
