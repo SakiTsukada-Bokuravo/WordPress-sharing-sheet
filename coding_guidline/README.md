@@ -65,7 +65,10 @@ CSS,SCSSに関しFLOCSS（フロックス）のディレクトリ構造を参考
 ├ [js]
 │  ├ common.bundle.js // サイト全体で適応するJS
 │  ├ top.bundle.js // ページごとに適用するJS
-│  ├ 各JSライブラリ本体
+│  └ 各JSライブラリ本体
+│
+├ [html]
+   └ index.html
 ```
 
 #### _reset.scss
