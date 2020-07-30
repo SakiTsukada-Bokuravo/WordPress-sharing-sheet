@@ -14,8 +14,12 @@ WP制作事業におけるテーマ作成のコーディングガイドライン
 ## 目次
 
 ### 基本設計
-#### 【HTML/CSS】
 ディレクトリ構造
+#### 【HTML】
+HTMLフォーマット
+HTMLタグ
+
+#### 【CSS】
 マージン
 インデント
 命名規則
@@ -200,6 +204,20 @@ $main-color : #008000;
 $link-color : #00FF00;
 ```
 
+## 【HTML】
+
+- 可読性を上げるため1つの属性につき、1行ごとに改行してください。
+- JSイベントで動的に変化するスタイル以外`<style>`タグ内でのCSSの記述や、JSの`onClick`等のインラインスクリプトはHTMLに記述せず、外部ファイルにまとめてください。
+
+### HTMLタグ
+
+HTML5で廃止になったタグは使用せず、HTML5で新たに追加されたHTMLタグの使用をお願いします。
+
+#### HTML5で廃止されたタグ
+`<acronym>` `<applet>` `<basefont>` `<big>` `<blink>` `<center>` `<dir>` `<font>` `<frame>` `<frameset>` `<isindex>` `<marquee>` `<nobr>` `<noembed>` `<noframes>` `<s>` `<strike>` `<tt>` `<u>`
+
+#### HTML5で新しく追加されたタグ
+`<article>`　`<aside>`　`<audio>` `<canvas>` `<command>` `<detalist>` `<details>` `<embed>` `<figcaption>` `<figure>` `<footer>` `<header>` `<hgroup>` `<keygen>` `<mark>` `<menu>` `<meter>` `<nav>` `<output>` `<progress>` `<section>` `<source>` `<summary>` `<time>` `<video>` `<rb>` `<rt>` `<ruby>` `<wbr>`
 
 ## マージン
 
@@ -373,7 +391,7 @@ SCSSのメディアクエリは`_mixin.scss`にてメディアクエリとブレ
 
 そのため、コンパイル時にgulp側でバラバラに記述したメディアクエリを1つにまとめましょう。
 
-[gulp-combine-media-queries](https://www.npmjs.com/package/gulp-combine-media-queries)
+[gulp-group-css-media-queries](https://www.npmjs.com/package/gulp-group-css-media-queries)
 
 
 
