@@ -78,6 +78,8 @@ CSS,SCSSに関し、FLOCSS（フロックス）のディレクトリ構造を一
 │  ├ top.bundle.js // ページごとに適用するJS
 │  └ 各JSライブラリ本体
 │
+├ [image]
+│
 └ [html]
    ├ index.html
    ├ contact.html
