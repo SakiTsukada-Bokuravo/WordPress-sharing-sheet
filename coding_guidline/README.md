@@ -14,8 +14,12 @@ WP制作事業におけるテーマ作成のコーディングガイドライン
 ## 目次
 
 ### 基本設計
-#### 【HTML/CSS】
 ディレクトリ構造
+#### 【HTML】
+HTMLフォーマット
+HTMLタグ
+
+#### 【CSS】
 マージン
 インデント
 命名規則
@@ -41,55 +45,100 @@ CSS,SCSSに関し、FLOCSS（フロックス）のディレクトリ構造を一
 
 ```text
 
-[singleA]
+[singleA / StandardA]
+├ [src] // 作業フォルダ
+│   ├ [scss]
+│   │   ├ [foundation] // サイト全体のデフォルトスタイル管理 ※_が頭に付いているSCSSはreset.cssにまとめる。
+│   │   │    ├ reset.scss
+│   │   │    ├ _base.scss // サイト構成の基盤となるHTML直指定のスタイル（pタグのline-height等）
+│   │   │    ├ _variable.scss // 変数
+│   │   │    └ _mixin.scss
+│   │   │
+│   │   ├ [common] // サイトの共通部分管理
+│   │   │    ├ _header.scss
+│   │   │    ├ _footer.scss
+│   │   │    └ ( _main.scss ) // 不要なら作成しない※後述
+│   │   │
+│   │   ├ [page]
+│   │   │    ├ style.scss
+│   │   │    ├ privacy.scss // プラポリ
+│   │   │    ├ contact.scss // お問い合わせ（入力・確認・完了）
+│   │   │    │ ▼----- StandardA -----▼
+│   │   │    ├ about.scss // 私達について
+│   │   │    └ news.scss // ニュース（一覧・詳細）
+│   │   │
+│   │   │ ▼----- テーマカラー変更時必要 -----▼
+│   │   ├ [theme_color] // ページ全体のテーマカラー変更用のスタイル管理
+│   │   │    ├ tc_blue.scss
+│   │   │    └ tc_green.scss
+│   │   │
+│   │   └ [admin] // ※現段階で仮置き。管理画面カスタマイズ用CSS
+│   │        └ admin.scss
+│   │
+│   ├ [js]
+│   │  ├ common.js // サイト全体で適応するJS
+│   │  ├ top.js // ページごとに適用するJS(この場合はTOPページ)
+│   │  ├ contact.js
+│   │  └ 各JSライブラリ本体
+│   │
+│   ├ [image]
+│   │
+│   └ [pug]
+│       ├ index.pug
+│       ├ contact.pug
+│       ├ contact_confirm.pug
+│       ├ contact_complete.pug
+│       ├ privacy.pug
+│       │ ▼----- StandardA -----▼
+│       ├ about.pug
+│       ├ news.pug
+│       ├ news_detail.pug
+│       │
+│       ├ [_config] 
+│       │    └ _config.pug
+│       │
+│       ├ [_element]
+│       │    ├ _header.pug
+│       │    └ _footer.pug
+│       │
+│       └ [_layout]
+│            └ _default.pug
+│
+│
+│ ▼----- コンパイル後 -----▼
+├ [html]
+│   ├ index.html
+│   ├ contact.html
+│   ├ contact_confirm.html
+│   ├ contact_complete.html
+│   ├ privacy.html
+│   │ ▼----- StandardA -----▼
+│   ├ about.html
+│   ├ news.html
+│   └ news_detail.html
+│   
 ├ [css]
 │   ├ reset.css
-│   └ style.css
-│
-├ [scss]
-│   ├ [foundation] // サイト全体のデフォルトスタイル管理 ※_が頭に付いているSCSSはreset.cssにまとめる。
-│   │    ├ reset.scss
-│   │    ├ _base.scss // サイト構成の基盤となるHTML直指定のスタイル（pタグのline-height等）
-│   │    ├ _variable.scss // 変数
-│   │    └ _mixin.scss
+│   ├ style.css
+│   ├ privacy.css
+│   ├ contact.css
+│   │ ▼----- StandardA -----▼
+│   ├ about.css
+│   ├ news.css
 │   │
-│   ├ [common] // サイトの共通部分管理
-│   │    ├ _header.scss
-│   │    ├ _footer.scss
-│   │    └ ( _main.scss ) // 不要なら作成しない※後述
+│   ├ [theme_color] // ページ全体のテーマカラー変更用のスタイル管理
+│   │    ├ tc_blue.css
+│   │    └ tc_green.css
 │   │
-│   ├ [page]
-│   │    ├ style.scss
-│   │    ├ privacy.scss // プラポリ
-│   │    ├ contact.scss // お問い合わせ（入力・確認・完了）
-│   │    ▼----- SingleA -----▼
-│   │    ├ about.scss // 私達について
-│   │    └ news.scss // ニュース（一覧・詳細）
-│   │
-│   ├ [theme_color] // 1ページ単位でのテーマカラー変更用のスタイル管理
-│   │    ├ tc_blue.scss
-│   │    └ tc_green.scss
-│   │
-│   └ [admin] // ※現段階で仮置き。管理画面カスタマイズ用CSS
-│        └ admin.scss
-│
+│   └ [admin]
+│        └ admin.css
 ├ [js]
 │  ├ common.bundle.js // サイト全体で適応するJS
-│  ├ top.bundle.js // ページごとに適用するJS
-│  └ 各JSライブラリ本体
+│  ├ top.bundle.js // ページごとに適用するJS(この場合はTOPページ)
+│  └ contact.bundle.js
 │
-├ [image]
-│
-└ [html]
-   ├ index.html
-   ├ contact.html
-   ├ contact_confirm.html
-   ├ contact_complete.html
-   ├ privacy.html
-    ▼----- SingleA -----▼
-   ├ about.html
-   ├ news.html
-   └ news_detail.html
+└ [image]
+
 ```
 
 #### _reset.scss
@@ -132,6 +181,43 @@ SCSSを扱う場合は、コンパイル時reset.cssファイルにまとめて�
 
 シングルＡ作成時の場合不要。
 
+#### [theme_color]フォルダ内SCSS
+
+主にテーマカラー変更時に使用します。必要に応じてhtml側に読み込ませてください。
+
+このSCSSファイルはそれぞれ同じ変数名で、カラーのみ別々の値になります。
+
+サイト全体のデフォルトのカラーは`scss/foundation/_variable.scss`内に記述をします。
+
+例
+
+```scss
+同じ変数名でもscssファイル毎に違う値
+// tc_blue.scss
+
+$main-color : #0000FF;
+$link-color : #00FFFF;
+
+// tc_green.scss
+
+$main-color : #008000;
+$link-color : #00FF00;
+```
+
+## 【HTML】
+
+- 可読性を上げるため1つの属性につき、1行ごとに改行してください。
+- JSイベントで動的に変化するスタイル以外`<style>`タグ内でのCSSの記述や、JSの`onClick`等のインラインスクリプトはHTMLに記述せず、外部ファイルにまとめてください。
+
+### HTMLタグ
+
+HTML5で廃止になったタグは使用せず、HTML5で新たに追加されたHTMLタグの使用をお願いします。
+
+#### HTML5で廃止されたタグ
+`<acronym>` `<applet>` `<basefont>` `<big>` `<blink>` `<center>` `<dir>` `<font>` `<frame>` `<frameset>` `<isindex>` `<marquee>` `<nobr>` `<noembed>` `<noframes>` `<s>` `<strike>` `<tt>` `<u>`
+
+#### HTML5で新しく追加されたタグ
+`<article>`　`<aside>`　`<audio>` `<canvas>` `<command>` `<detalist>` `<details>` `<embed>` `<figcaption>` `<figure>` `<footer>` `<header>` `<hgroup>` `<keygen>` `<mark>` `<menu>` `<meter>` `<nav>` `<output>` `<progress>` `<section>` `<source>` `<summary>` `<time>` `<video>` `<rb>` `<rt>` `<ruby>` `<wbr>`
 
 ## マージン
 
@@ -161,7 +247,8 @@ BlockとElementの区切りにはアンダーバー2つ`__`で区切り、
 
 ```css
 
-.block__element--modifire {}
+// MindBEMding(BEM)に則ったクラス
+.block__element--modifire
 
 ```
 
@@ -177,6 +264,7 @@ BlockとElementの区切りにはアンダーバー2つ`__`で区切り、
 
 ```scss
 
+// CSS
 Bad
 p {} // リセット・全体の調整以外に使用しない。
 #parent {} // アンカーリンク・JS用以外にはなるべく使用しない。
@@ -188,6 +276,16 @@ p.parent {} // HTMLタグは使用しない。
 Good
 .parent {}
 .parent__child_text {}
+
+
+// SCSS
+
+Good
+.parent {
+  &__child { // 「__child」を１つ記述するだけで済む
+    &_text {}
+  }
+}
 ```
 
 #### セマンティックなクラス名とは
@@ -212,7 +310,9 @@ Good // どの配置のパーツか把握しやすい。
 
 子要素がある場合以下のGoodモデルのように付与します。
 
-```css
+```scss
+
+// CSS
 
 Bad
 .parent-card {} // ハイフンは使用しない
@@ -221,37 +321,78 @@ Bad
 Good
 .parent_card {} // 親要素
 .parent_card__text {} // 親要素「parent_card」の子要素
+
+
+// SCSS
+
+Good
+.parent {
+  &_card {
+    &__text {}
+  }
+}
 ```
 
 ## メディアクエリ(SCSS)
 
-`_mixin.scss`にてメディアクエリ、ブレイクポイントを一括管理し、使用するSCSSファイルで呼び出します。
+テーマデザイン自体がモバイルファーストの場合は、デフォルトをスマホ用の記述にし、メディアクエリはブレイクポイントが小さい順から記述をお願いします。
+
+反対にPCファーストの場合は、PCサイズをデフォルトのCSS値にし、メディアクエリはブレイクポイントが大きい順から記述をお願いします。
+
+
+SCSSのメディアクエリは`_mixin.scss`にてメディアクエリとブレイクポイントを一括管理し、使用するSCSSファイルで呼び出します。
+
 `()`内が未指定の場合はデフォルトの値が入ります。
-
-```scss:呼び出したいSCSS
-
-@include mediaquery() {
-  .parent {
-    // ここにCSSプロパティを記述
-  }
-}
-
-```
-
-`()`内のデフォルトの値を変更する場合
-
-`_mixin.scss`を確認し、必要なメディアクエリの値を確認します。
 
 
 ```scss
 
-@include mediaquery(max-480) { // ここに別のメディアクエリの指定値を記述
-  .parent {
-    // ここにCSSプロパティを記述
+.parent {
+  padding: 20px;
+
+  @include mediaquery() { // 「mediaquery()」は関数
+    padding: 30px;
   }
 }
-
 ```
+
+### `()`内のデフォルトの値を変更する場合
+
+`_mixin.scss`を確認し、デフォルト以外のブレイクポイント値を記述します。
+
+
+```scss
+
+.parent {
+  padding: 20px;
+
+  @include mediaquery(max-480) { // ここに別のメディアクエリの指定値を記述
+    padding: 40px;
+  }
+}
+```
+
+### 複数のメディアクエリを記述する場合
+
+```scss
+
+.parent {
+  padding: 20px;
+
+  @include mediaquery(max-480) { // ここに別のメディアクエリの指定値を記述
+    padding: 40px;
+  }
+}
+```
+
+### メディアクエリをまとめる
+
+上記の場合でメディアクエリを記述していくと、通常コンパイル時クラス毎にメディアクエリが記述されコード量がその分膨大になります。
+
+そのため、コンパイル時にgulp側でバラバラに記述したメディアクエリを1つにまとめましょう。
+
+[gulp-group-css-media-queries](https://www.npmjs.com/package/gulp-group-css-media-queries)
+
 
 
 ## 再利用可能コンポーネント
@@ -266,7 +407,7 @@ Good
 ## ファイルのコンパイル、モジュール(SCSS)
 
 SCSSはgulpでモジュール化します。
-CSSへコンパイルする時の改行位置はオプションを`extend:nested`に変更してください。
+CSSへコンパイルする時のカギカッコの位置はオプションを`'expanded'`に変更してください。
 
 ```css
 
@@ -318,7 +459,7 @@ Good
 ```html
 
 Bad
-<!-- ".parent_card"自体にJSイベントを紐付けない。（どれにJSのイベントが紐付いているか分からない） -->
+<!-- ".parent_card"自体にJSイベントを紐付けない。（どのクラスがJSのイベントと紐付いているか分からないため） -->
 <div class="parent_card">
   <p class="parent_card__text">TEXT</p>
 </div>
