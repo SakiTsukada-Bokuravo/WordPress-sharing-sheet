@@ -78,6 +78,8 @@ CSS,SCSSに関し、FLOCSS（フロックス）のディレクトリ構造を一
 │  ├ top.bundle.js // ページごとに適用するJS
 │  └ 各JSライブラリ本体
 │
+├ [image]
+│
 └ [html]
    ├ index.html
    ├ contact.html
@@ -313,7 +315,7 @@ Good
 `.is-●●`自体にCSSを定義せず、必ずそのパーツのクラスとJSイベント用クラスセットでCSSを付与するようお願いします。
 
 
-```html:HTML
+```html
 
 Bad
 <!-- ".parent_card"自体にJSイベントを紐付けない。（どれにJSのイベントが紐付いているか分からない） -->
