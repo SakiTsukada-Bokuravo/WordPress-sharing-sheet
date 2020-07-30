@@ -39,7 +39,7 @@ CSS,SCSSに関し、FLOCSS（フロックス）のディレクトリ構造を一
 管理画面のCSSに関して、まだWP組み込み時のガイドラインが作成できていないため、仮で置いています。
 
 
-```text:wp-content/themes/singleA
+```text
 
 [singleA]
 ├ [css]
@@ -157,7 +157,7 @@ BlockとElementの区切りにはアンダーバー2つ`__`で区切り、
 子要素の別パターンにはハイフン2つ`--`で区切ります。
 
 
-```css:CSS
+```css
 
 .block__element--modifire {}
 
@@ -173,7 +173,7 @@ BlockとElementの区切りにはアンダーバー2つ`__`で区切り、
 - セマンティックなクラス名にしてください。（後述）
 - 複数の英単語を繋げたクラス名にする時はスネークケース（アンダーバー1つ）で単語を繋いでください。（後述）
 
-```scss:CSS
+```scss
 
 Bad
 p {} // リセット・全体の調整以外に使用しない。
@@ -194,7 +194,7 @@ Good
 
 使用する英単語はなるべく省略せず、クラス名を見てどこのパーツか、他の開発者にも伝わるよう命名してください。
 
-```scss:CSS
+```scss
 
 Bad // 意味が分かりにくい。
 .col_xl_3 {}
@@ -210,7 +210,7 @@ Good // どの配置のパーツか把握しやすい。
 
 子要素がある場合以下のGoodモデルのように付与します。
 
-```css:CSS
+```css
 
 Bad
 .parent-card {} // ハイフンは使用しない
@@ -241,7 +241,7 @@ Good
 `_mixin.scss`を確認し、必要なメディアクエリの値を確認します。
 
 
-```scss:呼び出したいSCSS
+```scss
 
 @include mediaquery(max-480) { // ここに別のメディアクエリの指定値を記述
   .parent {
@@ -266,7 +266,7 @@ Good
 SCSSはgulpでモジュール化します。
 CSSへコンパイルする時の改行位置はオプションを`extend:nested`に変更してください。
 
-```css:コンパイル後のCSS
+```css
 
 Bad
 .parent {
@@ -292,7 +292,7 @@ CSS用のクラスと差別化を図り可読性向上のために英単語の�
 `.js-`が付くクラスには原則CSSを付けません。
 
 
-```html:HTML
+```html
 
 Bad
 <div class="parent_card js_animation">
@@ -328,7 +328,7 @@ Good
 </div>
 ```
 
-```scss:CSS
+```scss
 
 .parent_card {
   background: #000;
@@ -351,7 +351,7 @@ Good
 
 サイト全体で活用するファイルと個々のページごとに使用するファイルに分別してください。
 
-```html:HTML
+```html
 
 <script src="common.js"></script><!-- サイト全体用 -->
 <script src="top.js"></script><!-- 個々のページ用（この場合はトップページ） -->
