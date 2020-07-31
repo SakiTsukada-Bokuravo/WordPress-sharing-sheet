@@ -45,100 +45,100 @@ CSS,SCSSに関し、FLOCSS（フロックス）のディレクトリ構造を一
 
 ```text
 
-[singleA / StandardA]
-├ [src] // 作業フォルダ
-│   ├ [scss]
-│   │   ├ [foundation] // サイト全体のデフォルトスタイル管理 ※_が頭に付いているSCSSはreset.cssにまとめる。
-│   │   │    ├ reset.scss
-│   │   │    ├ _base.scss // サイト構成の基盤となるHTML直指定のスタイル（pタグのline-height等）
-│   │   │    ├ _variable.scss // 変数
-│   │   │    └ _mixin.scss
-│   │   │
-│   │   ├ [common] // サイトの共通部分管理
-│   │   │    ├ _header.scss
-│   │   │    ├ _footer.scss
-│   │   │    └ ( _main.scss ) // 不要なら作成しない※後述
-│   │   │
-│   │   ├ [page]
-│   │   │    ├ style.scss
-│   │   │    ├ privacy.scss // プラポリ
-│   │   │    ├ contact.scss // お問い合わせ（入力・確認・完了）
-│   │   │    │ ▼----- StandardA -----▼
-│   │   │    ├ about.scss // 私達について
-│   │   │    └ news.scss // ニュース（一覧・詳細）
-│   │   │
-│   │   │ ▼----- テーマカラー変更時必要 -----▼
-│   │   ├ [theme_color] // ページ全体のテーマカラー変更用のスタイル管理
-│   │   │    ├ tc_blue.scss
-│   │   │    └ tc_green.scss
-│   │   │
-│   │   └ [admin] // ※現段階で仮置き。管理画面カスタマイズ用CSS
-│   │        └ admin.scss
-│   │
-│   ├ [js]
-│   │  ├ common.js // サイト全体で適応するJS
-│   │  ├ top.js // ページごとに適用するJS(この場合はTOPページ)
-│   │  ├ contact.js
-│   │  └ 各JSライブラリ本体
-│   │
-│   ├ [image]
-│   │
-│   └ [pug]
-│       ├ index.pug
-│       ├ contact.pug
-│       ├ contact_confirm.pug
-│       ├ contact_complete.pug
-│       ├ privacy.pug
-│       │ ▼----- StandardA -----▼
-│       ├ about.pug
-│       ├ news.pug
-│       ├ news_detail.pug
-│       │
-│       ├ [_config] 
-│       │    └ _config.pug
-│       │
-│       ├ [_element]
-│       │    ├ _header.pug
-│       │    └ _footer.pug
-│       │
-│       └ [_layout]
-│            └ _default.pug
-│
-│
-│ ▼----- コンパイル後 -----▼
-├ [html]
-│   ├ index.html
-│   ├ contact.html
-│   ├ contact_confirm.html
-│   ├ contact_complete.html
-│   ├ privacy.html
-│   │ ▼----- StandardA -----▼
-│   ├ about.html
-│   ├ news.html
-│   └ news_detail.html
-│   
-├ [css]
-│   ├ reset.css
-│   ├ style.css
-│   ├ privacy.css
-│   ├ contact.css
-│   │ ▼----- StandardA -----▼
-│   ├ about.css
-│   ├ news.css
-│   │
-│   ├ [theme_color] // ページ全体のテーマカラー変更用のスタイル管理
-│   │    ├ tc_blue.css
-│   │    └ tc_green.css
-│   │
-│   └ [admin]
-│        └ admin.css
-├ [js]
-│  ├ common.bundle.js // サイト全体で適応するJS
-│  ├ top.bundle.js // ページごとに適用するJS(この場合はTOPページ)
-│  └ contact.bundle.js
-│
-└ [image]
-
+[singleA / StandardA] // プロジェクト大元
+  │
+  ├ [src] // 作業フォルダ
+  │   ├ [scss]
+  │   │   ├ [foundation] // サイト全体のデフォルトスタイル管理 ※_が頭に付いているSCSSはreset.cssにまとめる。
+  │   │   │    ├ reset.scss
+  │   │   │    ├ _base.scss // サイト構成の基盤となるHTML直指定のスタイル（pタグのline-height等）
+  │   │   │    ├ _variable.scss // 変数
+  │   │   │    └ _mixin.scss
+  │   │   │
+  │   │   ├ [common] // サイトの共通部分管理
+  │   │   │    ├ _header.scss
+  │   │   │    ├ _footer.scss
+  │   │   │    └ ( _main.scss ) // 不要なら作成しない※後述
+  │   │   │
+  │   │   ├ [page]
+  │   │   │    ├ style.scss
+  │   │   │    ├ privacy.scss // プラポリ
+  │   │   │    ├ contact.scss // お問い合わせ（入力・確認・完了）
+  │   │   │    │ ▼----- StandardA -----▼
+  │   │   │    ├ about.scss // 私達について
+  │   │   │    └ news.scss // ニュース（一覧・詳細）
+  │   │   │
+  │   │   │ ▼----- テーマカラー変更時必要 -----▼
+  │   │   ├ [theme_color] // ページ全体のテーマカラー変更用のスタイル管理
+  │   │   │    ├ tc_blue.scss
+  │   │   │    └ tc_green.scss
+  │   │   │
+  │   │   └ [admin] // ※現段階で仮置き。管理画面カスタマイズ用CSS
+  │   │        └ admin.scss
+  │   │
+  │   ├ [js]
+  │   │  ├ common.js // サイト全体で適応するJS
+  │   │  ├ top.js // ページごとに適用するJS(この場合はTOPページ)
+  │   │  ├ contact.js
+  │   │  └ 各JSライブラリ本体
+  │   │
+  │   ├ [image]
+  │   │
+  │   └ [pug]
+  │       ├ index.pug
+  │       ├ contact.pug
+  │       ├ contact_confirm.pug
+  │       ├ contact_complete.pug
+  │       ├ privacy.pug
+  │       │ ▼----- StandardA -----▼
+  │       ├ about.pug
+  │       ├ news.pug
+  │       ├ news_detail.pug
+  │       │
+  │       ├ [_config] 
+  │       │    └ _config.pug
+  │       │
+  │       ├ [_element]
+  │       │    ├ _header.pug
+  │       │    └ _footer.pug
+  │       │
+  │       └ [_layout]
+  │            └ _default.pug
+  │
+  │
+  └ [dist] // コンパイル後フォルダ
+      ├ [html]
+      │   ├ index.html
+      │   ├ contact.html
+      │   ├ contact_confirm.html
+      │   ├ contact_complete.html
+      │   ├ privacy.html
+      │   │ ▼----- StandardA -----▼
+      │   ├ about.html
+      │   ├ news.html
+      │   └ news_detail.html
+      │   
+      ├ [css]
+      │   ├ reset.css
+      │   ├ style.css
+      │   ├ privacy.css
+      │   ├ contact.css
+      │   │ ▼----- StandardA -----▼
+      │   ├ about.css
+      │   ├ news.css
+      │   │
+      │   ├ [theme_color] // ページ全体のテーマカラー変更用のスタイル管理
+      │   │    ├ tc_blue.css
+      │   │    └ tc_green.css
+      │   │
+      │   └ [admin]
+      │        └ admin.css
+      ├ [js]
+      │  ├ common.bundle.js // サイト全体で適応するJS
+      │  ├ top.bundle.js // ページごとに適用するJS(この場合はTOPページ)
+      │  └ contact.bundle.js
+      │
+      └ [image]
 ```
 
 #### _reset.scss
