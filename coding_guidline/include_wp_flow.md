@@ -266,6 +266,7 @@ License URI: テーマのライセンスのURI
 ```
 
 余談：
+
 descriptionや管理画面内に「●●（自社名・自社サービス名）専用のWordPressテーマです」と明記してあると喜んでくださるクライアント様が多いようです。
 
 このような細かくケアを行うと他社との差別化に繋がりますので、なるべく対応しましょう。
@@ -466,7 +467,7 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 
 その後出力される`<ul>`の子要素`<li>`に任意のクラスを付けるには、管理画面から個別にクラスを付けます。
 
-![管理画面から出力したグローバルメニューのliタグにクラスを付ける](https://gyazo.com/ceaf77a81b78442b3564d697f66cdf24)
+![管理画面から出力したグローバルメニューのliタグにクラスを付ける](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/li-add-class.png)
 
 
 #### 3. & 4. ナビゲーションメニューを登録、ウィジェット化
@@ -475,13 +476,15 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 
 HTMLタグもそのまま登録と出力することが可能です。
 
-![メニュー登録にはHTMLタグも使用可能](https://gyazo.com/245d67ca5739b00338a20404319644c0)
+![メニュー登録にはHTMLタグも使用可能](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/menu-settings.png)
 
 
 ### footer.php作成
 
 `header.php`の作成と同じ要領で、footer部分のHTMLのコピー＆ペースト、
+
 グローバルナビの設定を行います。
+
 `</main>`の閉じタグを忘れずに記述します。
 
 1. functions.phpにナビゲーションメニューの有効化設定を書く
@@ -633,6 +636,7 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 ```
 
 次に上の記述の下に`<?php get_header(); ?>`を
+
 一番最後に`<?php get_footer(); ?>`を記述します。
 
 ```php
@@ -732,13 +736,14 @@ get_header(); ?>
 ## 固定ページ作成
 
 `page.php`front-page.phpと同じ要領でヘッダー、フッターを用意。
+
 コンテンツの中身はこれらのファイルの<main>タグの中身を管理画面から直接書きます。
 
-privacy.html
-contact.html
-contact_confirm.html
-contact_complete.html
-about.html
+`privacy.html`
+`contact.html`
+`contact_confirm.html`
+`contact_complete.html`
+`about.html`
 
 ## 投稿ページ作成
 
