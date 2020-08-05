@@ -5,6 +5,7 @@
 コーディングガイドラインを確認する場合は、[こちら](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/tree/tsukada/coding_guidline)から確認できます。
 また、ファイル作成の紹介コードは[株式会社サラ様](https://thorough-sol.co.jp/)のコードを流用させて頂いています。
 
+
 ## このフローのゴール
 
 HTMLサイトをWPで組み込み、最終的にWEBブラウザで表示するまでがゴールです。
@@ -27,13 +28,13 @@ HTMLサイトをWPで組み込み、最終的にWEBブラウザで表示する�
 テーマ名と同じ名前のフォルダを作成し以下のディレクトリ構成にします。
 
 <details>
-<summary>▼ディレクトリ構造</summary>
+<summary>ディレクトリ構造</summary>
 
 ```text
 
-[SingleA / StandardA]
+[Order1]
   │
-  ├ [src]
+  ├ [src] // HTML,CSSコーディング時の作業フォルダ
   │   ├ [scss]
   │   │   ├ [foundation]
   │   │   │    ├ reset.scss
@@ -91,14 +92,13 @@ HTMLサイトをWPで組み込み、最終的にWEBブラウザで表示する�
   │            └ _default.pug
   │
   │
-  └ [dist]
+  └ [dist] // コンパイル後フォルダ
       ├ [html]
       │   ├ index.html
       │   ├ contact.html
       │   ├ contact_confirm.html
       │   ├ contact_complete.html
       │   ├ privacy.html
-      │   │ ▼----- StandardA -----▼
       │   ├ about.html
       │   ├ news.html
       │   └ news_detail.html
@@ -108,7 +108,6 @@ HTMLサイトをWPで組み込み、最終的にWEBブラウザで表示する�
       │   ├ style.css
       │   ├ privacy.css
       │   ├ contact.css
-      │   │ ▼----- StandardA -----▼
       │   ├ about.css
       │   ├ news.css
       │   │
@@ -134,22 +133,15 @@ HTMLサイトをWPで組み込み、最終的にWEBブラウザで表示する�
 それぞれPHPファイルを作成します。
 
 
-### 【singleA】【StandardA】
-
 トップ(index.html)：`front-page.php`
 プラポリ(privacy.html)：`page.php(固定ページ)`
 問い合わせTOP(contact.html)：`page.php(固定ページ)`
 問い合わせ確認(contact_confirm.html)：`page.php(固定ページ)`
 問い合わせ完了(contact_complete.html)：`page.php(固定ページ)`
 
-### 【StandardA】
-
-私達について(about.html)：`page.php(固定ページ)`
-ニュース一覧(news.html)：`home.php`
-ニュース詳細(news_detail.html)：`single.php`
 
 <details>
-<summary>▼なぜトップを`front-page.php`にするか</summary>
+<summary>なぜトップを`front-page.php`にするか</summary>
 
 管理画面にはどのページをトップページにするかこのような表示設定があります。
 
@@ -218,11 +210,11 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 
 
 <details>
-<summary>▼この時点のディレクトリ構成</summary>
+<summary>この時点のディレクトリ構成</summary>
 
 ```text
 
-[SingleA / StandardA]
+[Order1]
   │
   ├ front-page.php
   ├ functions.php
@@ -679,6 +671,54 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 ```
 
 
+### トップページ内ニュース一覧作成
+
+`front-page.php`内に以下を記述し、投稿画面のプラグイン「アドバンスドカスタムフィールド」の「画面非表示」設定から「コンテンツエディタ」をチェックする。
+
+![アドバンスドカスタムフィールド非表示設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/advanced-custom-field-hide-settings.png?raw=true)
+
+```php
+
+<div class="m__news_list">
+
+   <?php
+    $args = array(
+      'posts_per_page' => 5 // 表示件数の指定
+    );
+    $posts = get_posts( $args );
+    foreach ( $posts as $post ): // ループ開始
+    $postId = get_the_ID(); // 投稿ページIDを出力
+    $linkUrl = get_post_meta($postId, 'link_url', true); // 指定したIDの投稿のメタデータを取得する
+    setup_postdata( $post ); // グローバル投稿データの設定
+   ?>
+    <?php if(empty($linkUrl)) : ?> // 外部リンクが設定されている時の表示
+      <div class="m__news_item">
+        <time class="m__news_date"><?php the_date( 'Y.m.d' ); ?></time>// 投稿日
+        <span class="m__news_item_title">
+          <?php the_title();?>// 記事タイトル
+        </span>
+      </div>
+    <?php else : ?> // // 外部リンクデータが設定されていない時の表示
+      <a href="<?php echo $linkUrl; ?>" class="m__news_item" target="_blank">
+        <time class="m__news_date"><?php the_date( 'Y.m.d' ); ?></time>
+        <span class="m__news_item_title">
+          <?php the_title();?>
+        </span>
+      </a>
+    <?php endif; ?>
+   <?php
+    endforeach; // ループ修了
+    wp_reset_postdata();
+   ?>
+
+</div>
+
+```
+</details>
+
+
+
+
 ### index.php作成
 
 index.phpは必須ファイルなためニュース一覧が必要ない場合でも中身を作成します。
@@ -693,6 +733,8 @@ get_header(); ?>
 
 <?php get_footer(); ?>
 ```
+
+## ニュース一覧作成
 
 <details>
 <summary>ニュース一覧作成例</summary>
