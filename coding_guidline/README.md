@@ -15,6 +15,7 @@ WP制作事業におけるテーマ作成のコーディングガイドライン
 
 ### 基本設計
 ディレクトリ構造
+
 #### 【HTML】
 HTMLフォーマット
 HTMLタグ
@@ -37,108 +38,92 @@ Javascriptファイルのモジュール化
 作業時のフォルダについて
 
 以下をベースとしてディレクトリを作成してください。
-
 CSS,SCSSに関し、FLOCSS（フロックス）のディレクトリ構造を一部参考にしています。
-
 管理画面のCSSに関して、まだWP組み込み時のガイドラインが作成できていないため、仮で置いています。
 
 
 ```text
 
-[singleA / StandardA]
-├ [src] // 作業フォルダ
-│   ├ [scss]
-│   │   ├ [foundation] // サイト全体のデフォルトスタイル管理 ※_が頭に付いているSCSSはreset.cssにまとめる。
-│   │   │    ├ reset.scss
-│   │   │    ├ _base.scss // サイト構成の基盤となるHTML直指定のスタイル（pタグのline-height等）
-│   │   │    ├ _variable.scss // 変数
-│   │   │    └ _mixin.scss
-│   │   │
-│   │   ├ [common] // サイトの共通部分管理
-│   │   │    ├ _header.scss
-│   │   │    ├ _footer.scss
-│   │   │    └ ( _main.scss ) // 不要なら作成しない※後述
-│   │   │
-│   │   ├ [page]
-│   │   │    ├ style.scss
-│   │   │    ├ privacy.scss // プラポリ
-│   │   │    ├ contact.scss // お問い合わせ（入力・確認・完了）
-│   │   │    │ ▼----- StandardA -----▼
-│   │   │    ├ about.scss // 私達について
-│   │   │    └ news.scss // ニュース（一覧・詳細）
-│   │   │
-│   │   │ ▼----- テーマカラー変更時必要 -----▼
-│   │   ├ [theme_color] // ページ全体のテーマカラー変更用のスタイル管理
-│   │   │    ├ tc_blue.scss
-│   │   │    └ tc_green.scss
-│   │   │
-│   │   └ [admin] // ※現段階で仮置き。管理画面カスタマイズ用CSS
-│   │        └ admin.scss
-│   │
-│   ├ [js]
-│   │  ├ common.js // サイト全体で適応するJS
-│   │  ├ top.js // ページごとに適用するJS(この場合はTOPページ)
-│   │  ├ contact.js
-│   │  └ 各JSライブラリ本体
-│   │
-│   ├ [image]
-│   │
-│   └ [pug]
-│       ├ index.pug
-│       ├ contact.pug
-│       ├ contact_confirm.pug
-│       ├ contact_complete.pug
-│       ├ privacy.pug
-│       │ ▼----- StandardA -----▼
-│       ├ about.pug
-│       ├ news.pug
-│       ├ news_detail.pug
-│       │
-│       ├ [_config] 
-│       │    └ _config.pug
-│       │
-│       ├ [_element]
-│       │    ├ _header.pug
-│       │    └ _footer.pug
-│       │
-│       └ [_layout]
-│            └ _default.pug
-│
-│
-│ ▼----- コンパイル後 -----▼
-├ [html]
-│   ├ index.html
-│   ├ contact.html
-│   ├ contact_confirm.html
-│   ├ contact_complete.html
-│   ├ privacy.html
-│   │ ▼----- StandardA -----▼
-│   ├ about.html
-│   ├ news.html
-│   └ news_detail.html
-│   
-├ [css]
-│   ├ reset.css
-│   ├ style.css
-│   ├ privacy.css
-│   ├ contact.css
-│   │ ▼----- StandardA -----▼
-│   ├ about.css
-│   ├ news.css
-│   │
-│   ├ [theme_color] // ページ全体のテーマカラー変更用のスタイル管理
-│   │    ├ tc_blue.css
-│   │    └ tc_green.css
-│   │
-│   └ [admin]
-│        └ admin.css
-├ [js]
-│  ├ common.bundle.js // サイト全体で適応するJS
-│  ├ top.bundle.js // ページごとに適用するJS(この場合はTOPページ)
-│  └ contact.bundle.js
-│
-└ [image]
-
+[Order1] // プロジェクト大元
+  │
+  ├ [src] // 作業フォルダ
+  │   ├ [scss]
+  │   │   ├ [foundation] // サイト全体のデフォルトスタイル管理 ※_が頭に付いているSCSSはreset.cssにまとめる。
+  │   │   │    ├ reset.scss
+  │   │   │    ├ _base.scss // サイト構成の基盤となるHTML直指定のスタイル（pタグのline-height等）
+  │   │   │    ├ _variable.scss // 変数
+  │   │   │    └ _mixin.scss
+  │   │   │
+  │   │   ├ [common] // サイトの共通部分管理
+  │   │   │    ├ _header.scss
+  │   │   │    ├ _footer.scss
+  │   │   │    └ ( _main.scss ) // 不要なら作成しない※後述
+  │   │   │
+  │   │   ├ [page]
+  │   │   │    ├ style.scss
+  │   │   │    ├ privacy.scss // プラポリ
+  │   │   │    └ contact.scss // お問い合わせ（入力・確認・完了）
+  │   │   │
+  │   │   │ ▼----- テーマカラー変更時必要 -----▼
+  │   │   ├ [theme_color] // ページ全体のテーマカラー変更用のスタイル管理
+  │   │   │    ├ tc_blue.scss
+  │   │   │    └ tc_green.scss
+  │   │   │
+  │   │   └ [admin] // ※現段階で仮置き。管理画面カスタマイズ用CSS
+  │   │        └ admin.scss
+  │   │
+  │   ├ [js]
+  │   │  ├ common.js // サイト全体で適応するJS
+  │   │  ├ top.js // ページごとに適用するJS(この場合はTOPページ)
+  │   │  ├ contact.js
+  │   │  └ 各JSライブラリ本体
+  │   │
+  │   ├ [image]
+  │   │
+  │   └ [pug]
+  │       ├ index.pug
+  │       ├ contact.pug
+  │       ├ contact_confirm.pug
+  │       ├ contact_complete.pug
+  │       ├ privacy.pug
+  │       │
+  │       ├ [_config] 
+  │       │    └ _config.pug
+  │       │
+  │       ├ [_element]
+  │       │    ├ _header.pug
+  │       │    └ _footer.pug
+  │       │
+  │       └ [_layout]
+  │            └ _default.pug
+  │
+  │
+  └ [dist] // コンパイル後フォルダ
+      ├ [html]
+      │   ├ index.html
+      │   ├ contact.html
+      │   ├ contact_confirm.html
+      │   ├ contact_complete.html
+      │   └ privacy.html
+      │   
+      ├ [css]
+      │   ├ reset.css
+      │   ├ style.css
+      │   ├ privacy.css
+      │   ├ contact.css
+      │   │
+      │   ├ [theme_color] // ページ全体のテーマカラー変更用のスタイル管理
+      │   │    ├ tc_blue.css
+      │   │    └ tc_green.css
+      │   │
+      │   └ [admin]
+      │        └ admin.css
+      ├ [js]
+      │  ├ common.bundle.js // サイト全体で適応するJS
+      │  ├ top.bundle.js // ページごとに適用するJS(この場合はTOPページ)
+      │  └ contact.bundle.js
+      │
+      └ [image]
 ```
 
 #### _reset.scss
@@ -177,16 +162,10 @@ SCSSを扱う場合は、コンパイル時reset.cssファイルにまとめて�
 `privacy.scss`：プライバシーポリシー用スタイル。
 `contact.scss`：お問い合わせ（入力・確認・完了ページ）
 
-#### ※スタンダードＡ用スタイル
-
-シングルＡ作成時の場合不要。
-
 #### [theme_color]フォルダ内SCSS
 
 主にテーマカラー変更時に使用します。必要に応じてhtml側に読み込ませてください。
-
 このSCSSファイルはそれぞれ同じ変数名で、カラーのみ別々の値になります。
-
 サイト全体のデフォルトのカラーは`scss/foundation/_variable.scss`内に記述をします。
 
 例
@@ -291,7 +270,6 @@ Good
 #### セマンティックなクラス名とは
 
 クラス名は他の開発者が見て判断出来るよう役割に応じたクラス名にし、
-
 使用する英単語はなるべく省略せず、クラス名を見てどこのパーツか、他の開発者にも伝わるよう命名してください。
 
 ```scss
@@ -306,8 +284,8 @@ Good // どの配置のパーツか把握しやすい。
 ```
 
 #### 複数の英単語を繋げたクラス名にする時
-スネークケースにします。
 
+スネークケースにします。
 子要素がある場合以下のGoodモデルのように付与します。
 
 ```scss
@@ -336,12 +314,9 @@ Good
 ## メディアクエリ(SCSS)
 
 テーマデザイン自体がモバイルファーストの場合は、デフォルトをスマホ用の記述にし、メディアクエリはブレイクポイントが小さい順から記述をお願いします。
-
 反対にPCファーストの場合は、PCサイズをデフォルトのCSS値にし、メディアクエリはブレイクポイントが大きい順から記述をお願いします。
 
-
 SCSSのメディアクエリは`_mixin.scss`にてメディアクエリとブレイクポイントを一括管理し、使用するSCSSファイルで呼び出します。
-
 `()`内が未指定の場合はデフォルトの値が入ります。
 
 
@@ -388,7 +363,6 @@ SCSSのメディアクエリは`_mixin.scss`にてメディアクエリとブレ
 ### メディアクエリをまとめる
 
 上記の場合でメディアクエリを記述していくと、通常コンパイル時クラス毎にメディアクエリが記述されコード量がその分膨大になります。
-
 そのため、コンパイル時にgulp側でバラバラに記述したメディアクエリを1つにまとめましょう。
 
 [gulp-group-css-media-queries](https://www.npmjs.com/package/gulp-group-css-media-queries)
@@ -398,9 +372,7 @@ SCSSのメディアクエリは`_mixin.scss`にてメディアクエリとブレ
 ## 再利用可能コンポーネント
 
 リセットCSSやサイト全体のレイアウトを決めるための基本スタイル以外は、
-
 ページが増加するにつれCSS管理が複雑になるため、基本的に再利用可能なコンポーネント（小さいボタンやブロック）を作らないでください。
-
 ページ単位でCSSファイルを作成し、CSSの影響範囲を管理してください。
 
 
@@ -429,9 +401,7 @@ Good
 ### Javascript用クラスの付け方
 
 どのクラスがJSイベントと連携しているか明らかにするため、クラス名の頭に`.js`を付けます。
-
 CSS用のクラスと差別化を図り可読性向上のために英単語の繋ぎにハイフンを使用し、
-
 `.js-`が付くクラスには原則CSSを付けません。
 
 
@@ -452,7 +422,6 @@ Good
 ### 状態が変化するイベント用のクラス名
 
 スクロール連動等で状態が変化する場合のJSクラス名は`.is-active`のように`.is-●●`を付けてください。
-
 `.is-●●`自体にCSSを定義せず、必ずそのパーツのクラスとJSイベント用クラスセットでCSSを付与するようお願いします。
 
 
@@ -491,7 +460,6 @@ Good
 ### Javascriptファイルのモジュール化
 
 最終的にgulp,webpackでモジュール化をお願いします。
-
 サイト全体で活用するファイルと個々のページごとに使用するファイルに分別してください。
 
 ```html
