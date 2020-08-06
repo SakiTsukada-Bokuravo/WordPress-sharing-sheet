@@ -61,8 +61,8 @@ CSS,SCSSに関し、FLOCSS（フロックス）のディレクトリ構造を一
   │   │   │
   │   │   ├ [page]
   │   │   │    ├ style.scss
-  │   │   │    ├ privacy.scss // プラポリ
-  │   │   │    └ contact.scss // お問い合わせ（入力・確認・完了）
+  │   │   │    ├ _privacy.scss // プラポリ
+  │   │   │    └ _contact.scss // お問い合わせ（入力・確認・完了）
   │   │   │
   │   │   │ ▼----- テーマカラー変更時必要 -----▼
   │   │   ├ [theme_color] // ページ全体のテーマカラー変更用のスタイル管理
@@ -108,9 +108,7 @@ CSS,SCSSに関し、FLOCSS（フロックス）のディレクトリ構造を一
       │   
       ├ [css]
       │   ├ reset.css
-      │   ├ style.css
-      │   ├ privacy.css
-      │   ├ contact.css
+      │   ├ style.css // リセット以外の全CSSを管理
       │   │
       │   ├ [theme_color] // ページ全体のテーマカラー変更用のスタイル管理
       │   │    ├ tc_blue.css
@@ -126,7 +124,7 @@ CSS,SCSSに関し、FLOCSS（フロックス）のディレクトリ構造を一
       └ [image]
 ```
 
-#### _reset.scss
+#### reset.scss
 
 ブラウザのデフォルトのスタイルをリセットするcssを定義します。
 SCSSを扱う場合は、コンパイル時reset.cssファイルにまとめてください。
@@ -144,23 +142,23 @@ SCSSを扱う場合は、コンパイル時reset.cssファイルにまとめて�
 
 サイト全体で使うmixinを管理。
 
-#### header.scss
+#### _header.scss
 
 サイト全体で使うヘッダースタイル。
 
-#### footer.scss
+#### _footer.scss
 
 サイト全体で使うフッタースタイル。
 
-#### main.scss
+#### _main.scss
 
-ヘッダー・フッター以外にサイト全体で使うスタイルで、ヘッダー、フッター以外のサイト全体スタイルを定義する場合に作成してください。
+ヘッダー・フッター以外にサイト全体で使うスタイルで、ヘッダー・フッター以外のサイト全体スタイルを定義する場合に作成してください。
 
 #### [page]フォルダ内SCSS
 
 `style.scss`：サイトTOPページ、メインコンテンツのスタイル。
-`privacy.scss`：プライバシーポリシー用スタイル。
-`contact.scss`：お問い合わせ（入力・確認・完了ページ）
+`_privacy.scss`：プライバシーポリシー用スタイル。
+`_contact.scss`：お問い合わせ（入力・確認・完了ページ）
 
 #### [theme_color]フォルダ内SCSS
 
