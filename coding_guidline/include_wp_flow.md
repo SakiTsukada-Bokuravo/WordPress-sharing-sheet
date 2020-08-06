@@ -787,7 +787,7 @@ endif;
 ![エディターのモード](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/change-editor-mode.png?raw=true)
 
 
-コンテンツの中身はこれらのファイルの<main>タグの中身を管理画面から直接書きます。
+コンテンツの中身はこれらのファイルの`<main>`タグの中身を管理画面から直接書きます。
 
 `privacy.html`
 `contact.html`
@@ -796,7 +796,7 @@ endif;
 `about.html`
 
 
-入力した個別クラスを記述し、固定ページを公開すると<body>に入力したクラス名が反映されます。
+入力した個別クラスを記述し、固定ページを公開すると`<body>`に入力したクラス名が反映されます。
 
 ![カスタムフィールド設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/page-class-settings.png?raw=true)
 
