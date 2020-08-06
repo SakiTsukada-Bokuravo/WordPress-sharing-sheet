@@ -12,15 +12,39 @@ HTMLサイトをWPで組み込み、最終的にWEBブラウザで表示する�
 
 ## 目次
 
-[テーマフォルダ作成]()
+[テーマフォルダ作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E3%83%86%E3%83%BC%E3%83%9E%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E4%BD%9C%E6%88%90)
 
-[テンプレートファイル分割]()
+[テンプレートファイル分割](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%88%86%E5%89%B2)
 
-[各ファイルの中身を作成]()
+[各ファイルを作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E5%90%84%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90)
 
-[固定ページ作成]()
+  [style.css テーマ宣言](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#stylecss%E3%81%AB%E3%83%86%E3%83%BC%E3%83%9E%E5%AE%A3%E8%A8%80)
 
-[WordPress組み込み後チェック]()
+[各ファイルの中身を作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E5%90%84%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%B8%AD%E8%BA%AB%E3%82%92%E4%BD%9C%E6%88%90)
+
+  [functions.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#functionsphp%E4%BD%9C%E6%88%90)
+
+  [head.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#head%E6%83%85%E5%A0%B1%E4%BD%9C%E6%88%90)
+
+  [scripts.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#scriptsphp%E4%BD%9C%E6%88%90)
+
+  [header.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#headerphp%E4%BD%9C%E6%88%90%E3%83%98%E3%83%83%E3%83%80%E3%83%BC%E3%83%8A%E3%83%93%E8%A8%AD%E5%AE%9A)
+
+  [footer.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#footerphp%E4%BD%9C%E6%88%90)
+
+  [front-page.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#front-pagephp%E4%BD%9C%E6%88%90)
+
+  [front-page.php - お知らせ](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E3%83%88%E3%83%83%E3%83%97%E3%83%9A%E3%83%BC%E3%82%B8%E5%86%85%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E4%B8%80%E8%A6%A7%E4%BD%9C%E6%88%90)
+
+  [index.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#indexphp%E4%BD%9C%E6%88%90)
+
+  [固定ページ作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E5%9B%BA%E5%AE%9A%E3%83%9A%E3%83%BC%E3%82%B8%E4%BD%9C%E6%88%90)
+
+  [page.php作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#page.php%E4%BD%9C%E6%88%90)
+
+  [各page-●●.php作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E5%90%84page-%E2%97%8F%E2%97%8F.php%E4%BD%9C%E6%88%90)
+
+WordPress組み込み後チェック
 
 
 ## テーマフォルダ作成
@@ -134,10 +158,10 @@ HTMLサイトをWPで組み込み、最終的にWEBブラウザで表示する�
 
 
 トップ(index.html)：`front-page.php`
-プラポリ(privacy.html)：`page.php(固定ページ)`
-問い合わせTOP(contact.html)：`page.php(固定ページ)`
-問い合わせ確認(contact_confirm.html)：`page.php(固定ページ)`
-問い合わせ完了(contact_complete.html)：`page.php(固定ページ)`
+プラポリ(privacy.html)：`page-privacy.php(固定ページ)`
+問い合わせTOP(contact.html)：`page-contact.php(固定ページ)`
+問い合わせ確認(contact_confirm.html)：`page-contact-confirm.php(固定ページ)`
+問い合わせ完了(contact_complete.html)：`page-contact-complete.php(固定ページ)`
 
 
 <details>
@@ -190,7 +214,7 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 
 `functions.php`
 
-`index.php`
+`index.php`(※Order2以降ニュース一覧)
 
 `style.css`
 
@@ -202,7 +226,15 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 
 `page.php`(固定ページ表示)
 
-`single.php`(記事詳細)
+`page-privacy.php`(プラポリ表示)
+
+`page-contact.php`(問い合わせ入力表示)
+
+`page-contact-confirm.php`(問い合わせ確認表示)
+
+`page-contact-complete.php`(問い合わせ完了表示)
+
+`single.php`(記事詳細※Order2以降作成する)
 
 `[parts]フォルダ > head.php` (head情報)
 
@@ -222,7 +254,9 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
   ├ header.php
   ├ index.php
   ├ page.php
-  ├ single.php
+  ├ page-contact.php
+  ├ page-contact-confirm.php
+  ├ page-contact-complete.php
   ├ style.css
   │
   ├ [parts]
@@ -679,6 +713,8 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 
 ```php
 
+// front-page.php
+
 <div class="m__news_list">
 
    <?php
@@ -717,8 +753,6 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 </details>
 
 
-
-
 ### index.php作成
 
 index.phpは必須ファイルなためニュース一覧が必要ない場合でも中身を作成します。
@@ -734,15 +768,94 @@ get_header(); ?>
 <?php get_footer(); ?>
 ```
 
-## ニュース一覧作成
+### page.php作成
+
+`page.php`を`front-page.php`と同じ要領でヘッダー、フッターを用意します。
 
 <details>
-<summary>ニュース一覧作成例</summary>
+<summary>page.php 記述例</summary>
 
-ヘッダーを出力する`<?php get_header(); ?>`
-フッターを出力する`<?php get_footer(); ?>`
+<?php
+/*
+Template Name: お問い合わせ
+*/
+?>
+ 
+<?php get_header(); ?>
+  
+ 
+<?php if(have_posts()): while(have_posts()):the_post(); ?>
+  
+  <h1><?php the_title(); ?></h1>
+  
+  <p><?php the_content(); ?></p>
+  
+<?php endwhile; endif; ?>
+ 
+ 
+<?php get_footer(); ?>
+</details>
 
-▼記述例
+
+### 各page-●●.php作成
+
+
+`page-●●.php`の「●●」には固定ページで設定した「スラッグ名（パーマリンク）」か「ページID」が入りますが、
+今回は分かりやすく「スラッグ名」を入れることにします。
+
+作成手順
+
+1. page-●●.phpの中身を作成
+2. 固定ページ作成
+3. パーマリンクを指定
+4. エディタにコンテンツの中身をHTMLに入力
+
+#### 1. page-●●.phpの中身を作成
+
+`page.php`を作成した要領で、各page-●●.phpの中身も同じ様に作成します。
+
+#### 2. 固定ページ作成
+
+管理画面左メニュー > 固定ページ > 新規作成 ページタイトル入力
+
+[固定ページ作成例](https://gyazo.com/8ec0708e2f8baaaacf20542dfff4d282)
+
+
+#### 3. パーマリンクを設定
+
+すでに作成してある`page-●●.php`の`●●`と同じ名称をパーマリンクに入力します。
+
+[パーマリンクの設定例](https://gyazo.com/12b78db072a0278eaaebb7caba5659e2)
+
+すると作成した`page-●●.php`が有効になり、
+その固定ページのURLにアクセスすると`page-●●.php`の中身が表示されるようになります。
+
+
+#### 4. エディタにコンテンツの中身をHTMLに入力
+
+エディターのモードをテキストに変更し、作成したHTMLのメインコンテンツ部分をコピー＆ペーストします。
+
+[エディターのモード](https://gyazo.com/eac1266cb8e017c14117a79dd387bc82)
+
+
+コンテンツの中身はこれらのファイルの<main>タグの中身を管理画面から直接書きます。
+
+`privacy.html`
+`contact.html`
+`contact_confirm.html`
+`contact_complete.html`
+`about.html`
+
+## WordPress組み込み後チェック
+
+
+
+
+<details>
+<summary>(Order2以降の内容-未完)ニュース一覧ページ作成</summary>
+
+<details>
+<summary>記述例</summary>
 
 ```php
 
@@ -759,36 +872,20 @@ get_header(); ?>
  <div class="sentence"><?php the_content(); ?></div>
 </div>
 
-// 投稿記事がない場合の表示
-<?php endwhile; else: ?>
-  <div>お知らせがありませんでした。</div>
-<?php endif; ?>
-
 // ページャー
 <div class="pager">
  <div><?php previous_posts_link('前のページ'); ?></div>
  <div><?php next_posts_link('次のページ'); ?></div>
 </div>
 
+// 投稿記事がない場合の表示
+<?php endwhile; else: ?>
+  <div>お知らせがありませんでした。</div>
+<?php endif; ?>
+
 <?php wp_footer(); ?>
 
 ```
 </details>
 
-## 固定ページ作成
-
-`page.php`front-page.phpと同じ要領でヘッダー、フッターを用意。
-
-コンテンツの中身はこれらのファイルの<main>タグの中身を管理画面から直接書きます。
-
-`privacy.html`
-`contact.html`
-`contact_confirm.html`
-`contact_complete.html`
-`about.html`
-
-## 投稿ページ作成
-
-
-
-## WordPress組み込み後チェック
+</details>
