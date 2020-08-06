@@ -798,7 +798,7 @@ endif;
 
 入力した個別クラスを記述し、固定ページを公開すると<body>に入力したクラス名が反映されます。
 
-![カスタムフィールド設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-page-class.png?raw=true)
+![カスタムフィールド設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/page-class-settings.png?raw=true)
 
 
 ![個別ページを公開すると入力したクラスが反映された](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-body-class.png?raw=true)
