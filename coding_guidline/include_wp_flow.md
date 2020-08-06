@@ -833,7 +833,7 @@ Template Name: お問い合わせ
 
 エディターのモードをテキストに変更し、作成したHTMLのメインコンテンツ部分を流し込みます。
 
-[エディターのモード](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/change-editor-mode.png)
+![エディターのモード](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/change-editor-mode.png)
 
 
 コンテンツの中身はこれらのファイルの<main>タグの中身を管理画面から直接書きます。
