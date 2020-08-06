@@ -38,9 +38,7 @@ HTMLサイトをWPで組み込み、最終的にWEBブラウザで表示する�
 
   [index.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#indexphp%E4%BD%9C%E6%88%90)
 
-  [page.php作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#pagephp%E4%BD%9C%E6%88%90)
-
-  [各page-●●.php作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E5%90%84page-php%E4%BD%9C%E6%88%90)
+  [page.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#pagephp%E4%BD%9C%E6%88%90)
 
 WordPress組み込み後チェック
 
@@ -71,11 +69,8 @@ WordPress組み込み後チェック
   │   │   │
   │   │   ├ [page]
   │   │   │    ├ style.scss
-  │   │   │    ├ privacy.scss
-  │   │   │    ├ contact.scss
-  │   │   │    │ ▼----- StandardA -----▼
-  │   │   │    ├ about.scss
-  │   │   │    └ news.scss
+  │   │   │    ├ _privacy.scss
+  │   │   │    └ _contact.scss
   │   │   │
   │   │   ├ [theme_color]
   │   │   │    ├ tc_blue.scss
@@ -98,10 +93,6 @@ WordPress組み込み後チェック
   │       ├ contact_confirm.pug
   │       ├ contact_complete.pug
   │       ├ privacy.pug
-  │       │ ▼----- StandardA -----▼
-  │       ├ about.pug
-  │       ├ news.pug
-  │       ├ news_detail.pug
   │       │
   │       ├ [_config] 
   │       │    └ _config.pug
@@ -120,18 +111,11 @@ WordPress組み込み後チェック
       │   ├ contact.html
       │   ├ contact_confirm.html
       │   ├ contact_complete.html
-      │   ├ privacy.html
-      │   ├ about.html
-      │   ├ news.html
-      │   └ news_detail.html
+      │   └ privacy.html
       │   
       ├ [css]
       │   ├ reset.css
       │   ├ style.css
-      │   ├ privacy.css
-      │   ├ contact.css
-      │   ├ about.css
-      │   ├ news.css
       │   │
       │   ├ [theme_color]
       │   │    ├ tc_blue.css
@@ -156,10 +140,10 @@ WordPress組み込み後チェック
 
 
 トップ(index.html)：`front-page.php`
-プラポリ(privacy.html)：`page-privacy.php(固定ページ)`
-問い合わせTOP(contact.html)：`page-contact.php(固定ページ)`
-問い合わせ確認(contact_confirm.html)：`page-contact-confirm.php(固定ページ)`
-問い合わせ完了(contact_complete.html)：`page-contact-complete.php(固定ページ)`
+プラポリ(privacy.html)：`page-.php`
+問い合わせTOP(contact.html)：`page-.php`
+問い合わせ確認(contact_confirm.html)：`page-.php`
+問い合わせ完了(contact_complete.html)：`page.php`
 
 
 <details>
@@ -177,12 +161,13 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 2. home.php
 3. index.php
 
-それらの設定と、StandardAプランの様にニュース一覧ページも必要な場合それぞれファイルを分ける必要がありますので、
+それらの設定と、ニュース一覧ページも必要な場合それぞれファイルを分ける必要がありますので、
 
 どのプランのトップページも`front-page.php`で統一します。
 
 ニュース一覧：index.php
 トップページ：front-page.php
+
 
 ▼詳しい各ファイルの表示優先度
 
@@ -206,15 +191,16 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 </details>
 
 
+
 ## 各ファイルを作成
 
 以下のファイル・フォルダを空のまま作成します。
 
-`functions.php`
+`functions.php`(必須ファイル)
 
-`index.php`(※Order2以降ニュース一覧)
+`index.php`(必須ファイル ※Order2以降ニュース一覧になる)
 
-`style.css`
+`style.css`(必須ファイル)
 
 `front-page.php`(トップページ表示)
 
@@ -232,7 +218,7 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 
 `page-contact-complete.php`(問い合わせ完了表示)
 
-`single.php`(記事詳細※Order2以降作成する)
+`single.php`(記事詳細 ※Order2以降作成する)
 
 `[parts]フォルダ > head.php` (head情報)
 
@@ -268,7 +254,22 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 ```
 </details>
 
-## style.cssにテーマ宣言
+
+## 各ファイルの中身を作成
+
+- style.css
+- functions.php
+- scripts.php
+- header.php,ページごとの動的クラス作成
+- footer.php
+- front-page.php
+- front-page.php ニュース一覧作成
+- index.php
+- page.php,カスタムフィールド作成,個別ページ作成
+
+
+### style.cssにテーマ宣言
+
 
 テーマを有効にするため、追加した`style.css`にテーマ情報を記述します。
 
@@ -290,13 +291,8 @@ License URI: テーマのライセンスのURI
 ```
 
 余談：
-
 descriptionや管理画面内に「●●（自社名・自社サービス名）専用のWordPressテーマです」と明記してあると喜んでくださるクライアント様が多いようです。
-
 このような細かくケアを行うと他社との差別化に繋がりますので、なるべく対応しましょう。
-
-
-## 各ファイルの中身を作成
 
 
 ### functions.php作成
@@ -312,6 +308,8 @@ descriptionや管理画面内に「●●（自社名・自社サービス名）
 ### head情報作成
 
 `[parts] > head.php`を開き、head情報をhtmlからコピペ後パスを書き換えます。
+※コード内のテキストはテンプレに合わせて変更してください。
+
 
 記述例
 
@@ -366,6 +364,8 @@ descriptionや管理画面内に「●●（自社名・自社サービス名）
 
 `[parts] > scripts.php`を開き、JSファイルを読み込むコードを記述します。
 
+※読み込むファイルはテンプレに合わせて変更してください。
+
 ```php
 // [parts] > scripts.php
 
@@ -399,7 +399,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts' );
 作成手順
 
 1. functions.phpにナビゲーションメニューの有効化設定を書く
-2. header.phpにヘッダーナビのコード出力タグを記述
+2. header.phpにヘッダーナビのコード出力タグを記述、ページごとに動的クラスを付ける
 3. 管理画面左メニュー > 外観 > メニュー からナビゲーションメニューを登録
 4. 管理画面左メニュー > 外観 > ウィジェット から2をウィジェット化
 
@@ -427,7 +427,10 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 </details>
 
 
-#### 2. header.phpにヘッダーナビのコード出力タグを記述
+#### 2. header.phpにヘッダーナビのコード出力タグを記述、ページごとに動的クラスを付ける
+
+
+※コード内のクラス名はテンプレに合わせて変更してください。
 
 <details>
 <summary>header.phpの記述例</summary>
@@ -442,7 +445,7 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 <!DOCTYPE html>
 <html lang="ja">
 <?php get_template_part( 'parts/head' ); ?>// head情報読み込み
-<body class='<?php echo $pageClass; ?>'>
+<body class='<?php echo $pageClass; ?>'> // Advanced custom fieldで後ほど作成するクラスフィールドを設定しておく
   <div class="allwrap">
     <header class="header js-sticky">
       <div class="header__frame">
@@ -503,6 +506,7 @@ HTMLタグもそのまま登録と出力することが可能です。
 ![メニュー登録にはHTMLタグも使用可能](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/menu-settings.png)
 
 
+
 ### footer.php作成
 
 `header.php`の作成と同じ要領で、footer部分のHTMLのコピー＆ペースト、
@@ -542,6 +546,8 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 
 #### 2. footer.phpにヘッダーナビのコード出力タグを記述
 
+※コード内のクラス名はテンプレに合わせて変更してください。
+
 <details>
 <summary>footer.phpの記述例</summary>
 
@@ -576,54 +582,6 @@ add_action( 'after_setup_theme', 'register_my_menus' );
             )
           ); ?>
         </nav>
-        <nav class="footer__nav">
-          <ul class="footer__nav_list">
-            <li class="footer__nav_item">
-              <a href="<?php bloginfo('url');?>#news" class="footer__nav_link">
-                <span class="footer__nav_text--main">NEWS</span>
-                <span class="footer__nav_text--sub">お知らせ</span>
-              </a>
-            </li>
-            <li class="footer__nav_item">
-              <a href="<?php bloginfo('url');?>#message" class="footer__nav_link">
-                <span class="footer__nav_text--main">MESSAGE</span>
-                <span class="footer__nav_text--sub">代表挨拶</span>
-              </a>
-            </li>
-            <li class="footer__nav_item">
-              <a href="<?php bloginfo('url');?>#philosophy" class="footer__nav_link">
-                <span class="footer__nav_text--main">PHILOSOPHY</span>
-                <span class="footer__nav_text--sub">理念</span>
-              </a>
-            </li>
-            <li class="footer__nav_item">
-              <a href="<?php bloginfo('url');?>#service" class="footer__nav_link">
-                <span class="footer__nav_text--main">SERVICE</span>
-                <span class="footer__nav_text--sub">事業内容</span>
-              </a>
-            </li>
-          </ul>
-          <ul class="footer__nav_list">
-            <li class="footer__nav_item">
-              <a href="<?php bloginfo('url');?>#works" class="footer__nav_link">
-                <span class="footer__nav_text--main">WORKS</span>
-                <span class="footer__nav_text--sub">実績</span>
-              </a>
-            </li>
-            <li class="footer__nav_item">
-              <a href="<?php bloginfo('url');?>#company" class="footer__nav_link">
-                <span class="footer__nav_text--main">COMPANY</span>
-                <span class="footer__nav_text--sub">会社概要</span>
-              </a>
-            </li>
-            <li class="footer__nav_item">
-              <a href="<?php bloginfo('url');?>/contact" class="footer__nav_link">
-                <span class="footer__nav_text--main">CONTACT</span>
-                <span class="footer__nav_text--sub">お問い合わせ</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
       </div>
       <p class="footer__privacy"><a href="<?php bloginfo('url');?>/privacy" class="footer__privacy_link">PRIVACY POLICY</a></p>
       <small class="footer__copy">©2020 THOROUGH All Rights Reserved.</small>
@@ -646,6 +604,7 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 #### 3. & 4. ナビゲーションメニューを登録、ウィジェット化
 
 `header.php`と同じ要領で作成します。
+
 
 
 ### front-page.php作成
@@ -709,6 +668,9 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 
 ![アドバンスドカスタムフィールド非表示設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/advanced-custom-field-hide-settings.png?raw=true)
 
+
+※コード内のクラス名はテンプレに合わせて変更してください。
+
 ```php
 
 // front-page.php
@@ -751,6 +713,7 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 </details>
 
 
+
 ### index.php作成
 
 index.phpは必須ファイルなためニュース一覧が必要ない場合でも中身を作成します。
@@ -766,72 +729,62 @@ get_header(); ?>
 <?php get_footer(); ?>
 ```
 
+
+
 ### page.php作成
 
-`page.php`を`front-page.php`と同じ要領でヘッダー、フッターを用意します。
+個別ページ用のファイルを1つ用意し、ページごとにbodyのクラスを割り振ることでCSSの適用を切り替えます。
+クラスの変更だけでは賄えない場合は新規の`page-●●.php`ファイルを作成してください。
+PHP側に出力するクラスは`header.php`の中身を作成した段階で記述しています。
+
+
+作成手順
+
+1. page.phpの中身を作成
+2. 管理画面のカスタムフィールドを設定
+3. 個別ページを作成
+
+
+### 1. page.phpの中身を作成
+
+`page.php`を`front-page.php`と同じようにヘッダー、フッター、中身を用意します。
 
 <details>
 <summary>page.php 記述例</summary>
 
+```php
+
 <?php
 /*
-Template Name: お問い合わせ
+* Template Name: Template Name
 */
+get_header();
 ?>
  
-<?php get_header(); ?>
-  
- 
-<?php if(have_posts()): while(have_posts()):the_post(); ?>
-  
-  <h1><?php the_title(); ?></h1>
-  
-  <p><?php the_content(); ?></p>
-  
-<?php endwhile; endif; ?>
- 
- 
+<?php if(have_posts()): while(have_posts()):the_post(); ?> // Start the Loop.
+  the_content();
+  endwhile; // End the loop.
+endif;
+?>
 <?php get_footer(); ?>
+```
 </details>
 
 
-### 各page-●●.php作成
+
+### 2. 管理画面のカスタムフィールドを設定
+
+管理画面のカスタムフィールドから以下のようにフィールドを追加します。
+フィールド名は`page-class`にします。
+
+![カスタムフィールド設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/cf-add-page-class.png)
 
 
-`page-●●.php`の「●●」には固定ページで設定した「スラッグ名（パーマリンク）」か「ページID」が入りますが、
-今回は分かりやすく「スラッグ名」を入れることにします。
+### 3. 個別ページを作成
 
-作成手順
-
-1. page-●●.phpの中身を作成
-2. 固定ページ作成
-3. パーマリンクを指定
-4. エディタにコンテンツの中身をHTMLに入力
-
-#### 1. page-●●.phpの中身を作成
-
-`page.php`を作成した要領で、各page-●●.phpの中身も同じ様に作成します。
-
-#### 2. 固定ページ作成
-
-管理画面左メニュー > 固定ページ > 新規作成 ページタイトル入力
-
-![固定ページ作成例](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-new-page.png)
-
-
-#### 3. パーマリンクを設定
-
-すでに作成してある`page-●●.php`の`●●`と同じ名称をパーマリンクに入力します。
-
-![パーマリンクの設定例](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-page-slag.png)
-
-すると作成した`page-●●.php`が有効になり、
-その固定ページのURLにアクセスすると`page-●●.php`の中身が表示されるようになります。
-
-
-#### 4. エディタにコンテンツの中身をHTMLに入力
-
+次に固定ページを作成します。
 エディターのモードをテキストに変更し、作成したHTMLのメインコンテンツ部分を流し込みます。
+
 
 ![エディターのモード](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/change-editor-mode.png)
 
@@ -844,16 +797,26 @@ Template Name: お問い合わせ
 `contact_complete.html`
 `about.html`
 
+
+入力した個別クラスを記述し、固定ページを公開すると<body>に入力したクラス名が反映されます。
+
+![カスタムフィールド設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-page-class.png)
+
+
+![個別ページを公開すると入力したクラスが反映された](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-body-class.png)
+
 ## WordPress組み込み後チェック
 
 
 
 
-<details>
-<summary>(Order2以降の内容-未完)ニュース一覧ページ作成</summary>
+
+## (Order2以降の内容-未完)ニュース一覧ページ作成
+
+archive.phpに作成する方向です。
 
 <details>
-<summary>記述例</summary>
+<summary>記述例（未完）</summary>
 
 ```php
 
@@ -884,6 +847,4 @@ Template Name: お問い合わせ
 <?php wp_footer(); ?>
 
 ```
-</details>
-
 </details>
