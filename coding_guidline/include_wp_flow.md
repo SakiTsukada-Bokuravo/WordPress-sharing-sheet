@@ -4,8 +4,8 @@
 このテキストは、コーディングガイドラインに沿ってコーディングした静的HTMLサイトを、WPへ組み込むフローです。
 コーディングガイドラインを確認する場合は、[こちら](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/tree/tsukada/coding_guidline)から確認できます。
 また、ファイル作成の紹介コードは[株式会社サラ様](https://thorough-sol.co.jp/)のコードを流用させて頂いています。
-
-
+  
+  
 ## このフローのゴール
 
 HTMLサイトをWPで組み込み、最終的にWEBブラウザで表示するまでがゴールです。
