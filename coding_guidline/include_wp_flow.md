@@ -816,14 +816,14 @@ Template Name: お問い合わせ
 
 管理画面左メニュー > 固定ページ > 新規作成 ページタイトル入力
 
-![固定ページ作成例](https://gyazo.com/8ec0708e2f8baaaacf20542dfff4d282)
+![固定ページ作成例](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-new-page.png)
 
 
 #### 3. パーマリンクを設定
 
 すでに作成してある`page-●●.php`の`●●`と同じ名称をパーマリンクに入力します。
 
-![パーマリンクの設定例](https://gyazo.com/12b78db072a0278eaaebb7caba5659e2)
+![パーマリンクの設定例](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-page-slag.png)
 
 すると作成した`page-●●.php`が有効になり、
 その固定ページのURLにアクセスすると`page-●●.php`の中身が表示されるようになります。
@@ -833,7 +833,7 @@ Template Name: お問い合わせ
 
 エディターのモードをテキストに変更し、作成したHTMLのメインコンテンツ部分を流し込みます。
 
-![エディターのモード](https://gyazo.com/eac1266cb8e017c14117a79dd387bc82)
+[エディターのモード](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/change-editor-mode.png)
 
 
 コンテンツの中身はこれらのファイルの<main>タグの中身を管理画面から直接書きます。
