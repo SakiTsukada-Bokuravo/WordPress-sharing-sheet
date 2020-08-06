@@ -1,17 +1,20 @@
 # WP制作事業 テーマ作成用WP組み込みフロー
 
 **【Bokuravo 社内用】**
-  このテキストは、コーディングガイドラインに沿ってコーディングした静的HTMLサイトを、WPへ組み込むフローです。
-  コーディングガイドラインを確認する場合は、[こちら](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/tree/tsukada/coding_guidline)から確認できます。
-  また、ファイル作成の紹介コードは[株式会社サラ様](https://thorough-sol.co.jp/)のコードを流用させて頂いています。
-  
-  
-  
-## このフローのゴール
+
+このテキストは、コーディングガイドラインに沿ってコーディングした静的HTMLサイトを、WPへ組み込むフローです。
+
+コーディングガイドラインを確認する場合は、[こちら](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/tree/tsukada/coding_guidline)から確認できます。
+
+また、ファイル作成の紹介コードは[株式会社サラ様](https://thorough-sol.co.jp/)のコードを流用させて頂いています。
+
+
+
+## ■このフローのゴール
 
 HTMLサイトをWPで組み込み、最終的にWEBブラウザで表示するまでがゴールです。
 
-## 目次
+## ■目次
 
 [テーマフォルダ作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E3%83%86%E3%83%BC%E3%83%9E%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E4%BD%9C%E6%88%90)
 
@@ -44,7 +47,7 @@ HTMLサイトをWPで組み込み、最終的にWEBブラウザで表示する�
 WordPress組み込み後チェック
 
 
-## テーマフォルダ作成
+## ■テーマフォルダ作成
 
 テーマ名と同じ名前のフォルダを作成し以下のディレクトリ構成にします。
 
@@ -134,21 +137,25 @@ WordPress組み込み後チェック
 </details>
 
 
-## テンプレートファイル分割
+## ■テンプレートファイル分割
 
 テーマプランによって下層ページが異なるので、プランに合わせファイルを振り分けます。
 それぞれPHPファイルを作成します。
 
 
 トップ(index.html)：`front-page.php`
-プラポリ(privacy.html)：`page-.php`
-問い合わせTOP(contact.html)：`page-.php`
-問い合わせ確認(contact_confirm.html)：`page-.php`
+
+プラポリ(privacy.html)：`page.php`
+
+問い合わせTOP(contact.html)：`page.php`
+
+問い合わせ確認(contact_confirm.html)：`page.php`
+
 問い合わせ完了(contact_complete.html)：`page.php`
 
 
 <details>
-<summary>なぜトップを`front-page.php`にするか</summary>
+<summary>なぜトップをfront-page.phpにするか</summary>
 
 管理画面にはどのページをトップページにするかこのような表示設定があります。
 
@@ -193,7 +200,7 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 
 
 
-## 各ファイルを作成
+## ■各ファイルを作成
 
 以下のファイル・フォルダを空のまま作成します。
 
@@ -209,15 +216,7 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 
 `header.php`(ヘッダー)
 
-`page.php`(固定ページ表示)
-
-`page-privacy.php`(プラポリ表示)
-
-`page-contact.php`(問い合わせ入力表示)
-
-`page-contact-confirm.php`(問い合わせ確認表示)
-
-`page-contact-complete.php`(問い合わせ完了表示)
+`page.php`(固定ページ表示: プラポリ/問い合わせ入力/問い合わせ確認/問い合わせ完了)
 
 `single.php`(記事詳細 ※Order2以降作成する)
 
@@ -239,9 +238,6 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
   ├ header.php
   ├ index.php
   ├ page.php
-  ├ page-contact.php
-  ├ page-contact-confirm.php
-  ├ page-contact-complete.php
   ├ style.css
   │
   ├ [parts]
@@ -256,27 +252,26 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 </details>
 
 
-## 各ファイルの中身を作成
+## ■各ファイルの中身を作成
 
 - style.css
 - functions.php
 - scripts.php
-- header.php,ページごとの動的クラス作成
+- header.php: ページごとの動的クラス作成
 - footer.php
 - front-page.php
-- front-page.php ニュース一覧作成
+- front-page.php: ニュース一覧作成
 - index.php
-- page.php,カスタムフィールド作成,個別ページ作成
+- page.php
 
 
 ### style.cssにテーマ宣言
 
 
 テーマを有効にするため、追加した`style.css`にテーマ情報を記述します。
-
 最低限Theme Nameを入れておけば、管理画面のテーマ選択画面にてテーマを有効化出来るようになります。
-
 その他のテーマ情報は、任意となりますが、既存のテーマファイルが存在している場合はその内容に従って入力します。
+
 
 ```css
 /*
@@ -309,6 +304,7 @@ descriptionや管理画面内に「●●（自社名・自社サービス名）
 ### head情報作成
 
 `[parts] > head.php`を開き、head情報をhtmlからコピペ後パスを書き換えます。
+
 ※コード内のテキストはテンプレに合わせて変更してください。
 
 
@@ -397,7 +393,8 @@ add_action( 'wp_enqueue_scripts', 'my_scripts' );
 `header.php`にパスとheader部分のHTMLの記述と、ヘッダーナビの表示設定をします。
 `<main>`の開始タグを最後に入れることを忘れないでください。
 
-作成手順
+
+**ヘッダーナビ作成手順**
 
 1. functions.phpにナビゲーションメニューの有効化設定を書く
 2. header.phpにヘッダーナビのコード出力タグを記述、ページごとに動的クラスを付ける
@@ -405,7 +402,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts' );
 4. 管理画面左メニュー > 外観 > ウィジェット から2をウィジェット化
 
 
-#### 1. functions.phpにナビゲーションメニューの有効化設定を書く
+### 1. functions.phpにナビゲーションメニューの有効化設定を書く
 
 詳細な説明は[こちら](https://wp-fan.com/wordpress/register-custom-menu/)
 
@@ -428,7 +425,7 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 </details>
 
 
-#### 2. header.phpにヘッダーナビのコード出力タグを記述、ページごとに動的クラスを付ける
+### 2. header.phpにヘッダーナビのコード出力タグを記述、ページごとに動的クラスを付ける
 
 
 ※コード内のクラス名はテンプレに合わせて変更してください。
@@ -498,7 +495,7 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 ![管理画面から出力したグローバルメニューのliタグにクラスを付ける](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/li-add-class.png)
 
 
-#### 3. & 4. ナビゲーションメニューを登録、ウィジェット化
+### 3. & 4. ナビゲーションメニューを登録、ウィジェット化
 
 詳細は[こちら](https://design-plus1.com/tcd-w/faq/custom_menu.html)
 
@@ -510,19 +507,19 @@ HTMLタグもそのまま登録と出力することが可能です。
 
 ### footer.php作成
 
-`header.php`の作成と同じ要領で、footer部分のHTMLのコピー＆ペースト、
-
-グローバルナビの設定を行います。
+`header.php`と同じ要領でfooter部分のHTMLを移し、グローバルナビの設定を行います。
 
 `</main>`の閉じタグを忘れずに記述します。
 
+
+**フッターナビ作成手順**
 1. functions.phpにナビゲーションメニューの有効化設定を書く
 2. footer.phpにフッターナビのコード出力タグを記述
 3. 管理画面左メニュー > 外観 > メニュー からナビゲーションメニューを登録
 4. 管理画面左メニュー > 外観 > ウィジェット から2をウィジェット化
 
 
-#### 1. functions.phpにナビゲーションメニューの有効化設定を書く
+### 1. functions.phpにナビゲーションメニューの有効化設定を書く
 
 詳細な説明は[こちら](https://wp-fan.com/wordpress/register-custom-menu/)
 
@@ -545,7 +542,7 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 </details>
 
 
-#### 2. footer.phpにヘッダーナビのコード出力タグを記述
+### 2. footer.phpにヘッダーナビのコード出力タグを記述
 
 ※コード内のクラス名はテンプレに合わせて変更してください。
 
@@ -602,7 +599,7 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 </details>
 
 
-#### 3. & 4. ナビゲーションメニューを登録、ウィジェット化
+### 3. & 4. ナビゲーションメニューを登録、ウィジェット化
 
 `header.php`と同じ要領で作成します。
 
@@ -806,13 +803,13 @@ endif;
 
 ![個別ページを公開すると入力したクラスが反映された](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-body-class.png)
 
-## WordPress組み込み後チェック
+## ■WordPress組み込み後チェック
 
 
 
 
 
-## (Order2以降の内容-未完)ニュース一覧ページ作成
+## ■(Order2以降の内容-未完)ニュース一覧ページ作成
 
 archive.phpに作成する方向です。
 
