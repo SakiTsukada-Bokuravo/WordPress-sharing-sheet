@@ -38,9 +38,9 @@ HTMLサイトをWPで組み込み、最終的にWEBブラウザで表示する�
 
   [index.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#indexphp%E4%BD%9C%E6%88%90)
 
-  [page.php作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#page.php%E4%BD%9C%E6%88%90)
+  [page.php作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#pagephp%E4%BD%9C%E6%88%90)
 
-  [各page-●●.php作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E5%90%84page-%E2%97%8F%E2%97%8F.php%E4%BD%9C%E6%88%90)
+  [各page-●●.php作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E5%90%84page-php%E4%BD%9C%E6%88%90)
 
 WordPress組み込み後チェック
 
