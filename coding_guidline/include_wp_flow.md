@@ -775,7 +775,7 @@ endif;
 管理画面のカスタムフィールドから以下のようにフィールドを追加します。
 フィールド名は`page-class`にします。
 
-![カスタムフィールド設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/cf-add-page-class.png)
+![カスタムフィールド設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/cf-add-page-class.png?raw=true)
 
 
 ### 3. 個別ページを作成
@@ -784,7 +784,7 @@ endif;
 エディターのモードをテキストに変更し、作成したHTMLのメインコンテンツ部分を流し込みます。
 
 
-![エディターのモード](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/change-editor-mode.png)
+![エディターのモード](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/change-editor-mode.png?raw=true)
 
 
 コンテンツの中身はこれらのファイルの<main>タグの中身を管理画面から直接書きます。
@@ -798,10 +798,10 @@ endif;
 
 入力した個別クラスを記述し、固定ページを公開すると<body>に入力したクラス名が反映されます。
 
-![カスタムフィールド設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-page-class.png)
+![カスタムフィールド設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-page-class.png?raw=true)
 
 
-![個別ページを公開すると入力したクラスが反映された](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-body-class.png)
+![個別ページを公開すると入力したクラスが反映された](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-body-class.png?raw=true)
 
 ## ■WordPress組み込み後チェック
 
