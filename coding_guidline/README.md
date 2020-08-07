@@ -52,6 +52,7 @@ CSS,SCSSに関し、FLOCSS（フロックス）のディレクトリ構造を一
   │   │   │    ├ reset.scss
   │   │   │    ├ _base.scss // サイト構成の基盤となるHTML直指定のスタイル（pタグのline-height等）
   │   │   │    ├ _variable.scss // 変数
+  │   │   │    ├ _import.scss // 各設定ファイルをまとめて読み込み管理
   │   │   │    └ _mixin.scss
   │   │   │
   │   │   ├ [common] // サイトの共通部分管理
