@@ -64,6 +64,7 @@ WordPress組み込み後チェック
   │   │   │    ├ reset.scss
   │   │   │    ├ _base.scss
   │   │   │    ├ _variable.scss
+  │   │   │    ├ _import.scss
   │   │   │    └ _mixin.scss
   │   │   │
   │   │   ├ [common]
