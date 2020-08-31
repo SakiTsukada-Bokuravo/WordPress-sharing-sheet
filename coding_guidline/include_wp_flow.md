@@ -658,7 +658,7 @@ endif;
 ![個別ページを公開すると入力したクラスが反映された](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-body-class.png?raw=true)
 
 
-| 個別ページクラス名 |
+| 個別ページクラス名 |  |
 | ------------- | ------------- |
 | 会社情報  | about |
 | プライバシーポリシー  | privacy  |
@@ -747,7 +747,6 @@ endif;
 
 <details>
 <summary>メッセージ本文</summary>
----
 ━━━━━━□■□　お問い合わせ内容　□■□━━━━━━
 
 ・お問い合わせ内容の種類：[type]
