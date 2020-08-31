@@ -58,93 +58,40 @@ WordPress組み込み後チェック
 
 [Order1]
   │
-  ├ [src] // HTML,CSSコーディング時の作業フォルダ
-  │   ├ [scss]
-  │   │   ├ [foundation]
-  │   │   │    ├ reset.scss
-  │   │   │    ├ _base.scss
-  │   │   │    ├ _variable.scss
-  │   │   │    ├ _import.scss
-  │   │   │    └ _mixin.scss
-  │   │   │
-  │   │   ├ [common]
-  │   │   │    ├ _header.scss
-  │   │   │    ├ _footer.scss
-  │   │   │    └ ( _main.scss )
-  │   │   │
-  │   │   ├ [page]
-  │   │   │    ├ style.scss
-  │   │   │    ├ _privacy.scss
-  │   │   │    └ _contact.scss
-  │   │   │
-  │   │   ├ [theme_color]
-  │   │   │    ├ tc_blue.scss
-  │   │   │    └ tc_green.scss
-  │   │   │
-  │   │   └ [admin]
-  │   │        └ admin.scss
-  │   │
-  │   ├ [js]
-  │   │  ├ common.js
-  │   │  ├ top.js
-  │   │  ├ contact.js
-  │   │  └ 各JSライブラリ本体
-  │   │
-  │   ├ [image]
-  │   │
-  │   └ [pug]
-  │       ├ index.pug
-  │       ├ contact.pug
-  │       ├ contact_confirm.pug
-  │       ├ contact_complete.pug
-  │       ├ privacy.pug
-  │       │
-  │       ├ [_config] 
-  │       │    └ _config.pug
-  │       │
-  │       ├ [_element]
-  │       │    ├ _header.pug
-  │       │    └ _footer.pug
-  │       │
-  │       └ [_layout]
-  │            └ _default.pug
+  │ // ▼ --- 今回追加するファイル
+  ├ [parts]
+  │   ├ head.php    // head内の共通データ
+  │   └ scripts.php // js記述、読込
   │
+  ├ style.css
+  ├ screenshot.png // テーマ画像(1200x900)
+  ├ function.php   // サイト全体の設定等
+  ├ front-page.php // TOPページ。index.phpより表示優先度が低い
+  ├ footer.php     // フッター
+  ├ header.php     // ヘッダー
+  ├ page.php       // 固定ページ
+  ├ index.php      // 必須ファイル。1番表示優先度が低いTOPページ
   │
-  └ [dist] // コンパイル後フォルダ
-      ├ [html]
-      │   ├ index.html
-      │   ├ contact.html
-      │   ├ contact_confirm.html
-      │   ├ contact_complete.html
-      │   └ privacy.html
-      │   
-      ├ [css]
-      │   ├ reset.css
-      │   ├ style.css
-      │   │
-      │   ├ [theme_color]
-      │   │    ├ tc_blue.css
-      │   │    └ tc_green.css
-      │   │
-      │   └ [admin]
-      │        └ admin.css
-      ├ [js]
-      │  ├ common.bundle.js
-      │  ├ top.bundle.js
-      │  └ contact.bundle.js
-      │
-      └ [image]
+  │ // ▼ --- HTMLコーディングで作成したファイル群
+  ├ [src]
+  │   └ 省略
+  └ [dist]
+      └ 省略
 ```
 </details>
 
 
 ## ■テンプレートファイル分割
 
-テーマプランによって下層ページが異なるので、プランに合わせファイルを振り分けます。
-それぞれPHPファイルを作成します。
-
-
 トップ(index.html)：`front-page.php`
+
+ヘッダー:`header.php`
+
+フッター:`footer.php`
+
+head:`parts/head.php`
+
+Javascript関連:`parts/scripts.php`
 
 プラポリ(privacy.html)：`page.php`
 
@@ -157,6 +104,7 @@ WordPress組み込み後チェック
 
 <details>
 <summary>なぜトップをfront-page.phpにするか</summary>
+
 
 管理画面にはどのページをトップページにするかこのような表示設定があります。
 
@@ -203,13 +151,15 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 
 ## ■各ファイルを作成
 
-以下のファイル・フォルダを空のまま作成します。
+テーマプランに合わせファイルを振り分けた後、それぞれ空のPHPファイルを作成します。
+共通部分のコードはindex.html等からくり抜き作成します。
+プラポリ・お問い合わせ3ページ分は固定ページで作成するため、固定ページ出力用のファイル1つを用意します。
 
-`functions.php`(必須ファイル)
+`functions.php`(必須)
 
-`index.php`(必須ファイル ※Order2以降ニュース一覧になる)
+`index.php`(必須 ※Order2以降ニュース一覧になる)
 
-`style.css`(必須ファイル)
+`style.css`(必須)
 
 `front-page.php`(トップページ表示)
 
@@ -219,38 +169,11 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 
 `page.php`(固定ページ表示: プラポリ/問い合わせ入力/問い合わせ確認/問い合わせ完了)
 
-`single.php`(記事詳細 ※Order2以降作成する)
+`single.php`(ニュース詳細 ※Order2以降作成する)
 
 `[parts]フォルダ > head.php` (head情報)
 
 `[parts]フォルダ >  scripts.php` (JSファイル読み込み)
-
-
-<details>
-<summary>この時点のディレクトリ構成</summary>
-
-```text
-
-[Order1]
-  │
-  ├ front-page.php
-  ├ functions.php
-  ├ footer.php
-  ├ header.php
-  ├ index.php
-  ├ page.php
-  ├ style.css
-  │
-  ├ [parts]
-  │  ├ scripts.php
-  │  └ head.php 
-  │
-  ├ [src]
-  │  └ ...省略
-  └ [dist]
-     └ ...省略
-```
-</details>
 
 
 ## ■各ファイルの中身を作成
@@ -274,6 +197,7 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 その他のテーマ情報は、任意となりますが、既存のテーマファイルが存在している場合はその内容に従って入力します。
 
 
+▼ 全てのテーマ情報
 ```css
 /*
 Theme Name: 任意のテーマ名（必須）
@@ -287,9 +211,18 @@ License URI: テーマのライセンスのURI
 */
 ```
 
+▼ 例
+```css
+/*
+Theme Name: Order1-A
+Description: This is Order1-A theme.
+Version: 1.0
+*/
+```
+
 余談：
 descriptionや管理画面内に「●●（自社名・自社サービス名）専用のWordPressテーマです」と明記してあると喜んでくださるクライアント様が多いようです。
-このような細かくケアを行うと他社との差別化に繋がりますので、なるべく対応しましょう。
+このような細かくケアを行うと他社との差別化に繋がりますので、なるべく対応出来ると良いかもです。
 
 
 ### functions.php作成
@@ -304,16 +237,16 @@ descriptionや管理画面内に「●●（自社名・自社サービス名）
 
 ### head情報作成
 
-`[parts] > head.php`を開き、head情報をhtmlからコピペ後パスを書き換えます。
+`parts/head.php`を開き、head情報をhtmlからコピペ後パスを書き換えます。
 
 ※コード内のテキストはテンプレに合わせて変更してください。
 
 
-記述例
+▼ 記述例
 
 ```php
 
-// [parts] > head.php
+//parts/head.php例
 
 <?php
   $themePath = get_template_directory_uri().'/dist/';
@@ -321,7 +254,7 @@ descriptionや管理画面内に「●●（自社名・自社サービス名）
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="士業,集客,コンサルティング,株式会社サラ">
+  <meta name="keywords" content="キーワード1,キーワード2,キーワード3">
   <meta name="description" content="<?php bloginfo('description');?>">
   <meta name="format-detection" content="telephone=no">
   <meta property="og:title" content="<?php bloginfo('name');?>" />
@@ -360,12 +293,12 @@ descriptionや管理画面内に「●●（自社名・自社サービス名）
 
 ### scripts.php作成
 
-`[parts] > scripts.php`を開き、JSファイルを読み込むコードを記述します。
+`parts/scripts.php`を開き、JSファイルを読み込むコードを記述します。
 
 ※読み込むファイルはテンプレに合わせて変更してください。
 
 ```php
-// [parts] > scripts.php
+// parts/scripts.php
 
 <?php
   $themePath = get_template_directory_uri().'/dist/';
@@ -398,37 +331,69 @@ add_action( 'wp_enqueue_scripts', 'my_scripts' );
 **ヘッダーナビ作成手順**
 
 1. functions.phpにナビゲーションメニューの有効化設定を書く
-2. header.phpにヘッダーナビのコード出力タグを記述、ページごとに動的クラスを付ける
-3. 管理画面左メニュー > 外観 > メニュー からナビゲーションメニューを登録
-4. 管理画面左メニュー > 外観 > ウィジェット から2をウィジェット化
+2. 管理画面左メニュー > 外観 > メニュー からナビゲーションメニューを登録
+3. PHP側の出力設定
 
 
 ### 1. functions.phpにナビゲーションメニューの有効化設定を書く
 
 詳細な説明は[こちら](https://wp-fan.com/wordpress/register-custom-menu/)
 
+functions.php内に以下を例に記述します。
+このコードを書くことにより、初めて管理画面内でメニュー登録が行えるようになります。
+
+`array()`内の`header_nav`、`footer_nav`はそれぞれ任意の名前に変更して構いません。
+ただし、どのメニューか分かるように命名してください。
+
 <details>
 <summary>functions.phpの記述例</summary>
 
 ```php
 
+// ************************************************
+//  ナビゲーション
+// ************************************************
 //ナビゲーションを登録する
-function register_my_menus() {
-	register_nav_menus( array(
-		//この中にカスタムメニューを定義する　 '場所' => '説明'
-		'header' => 'ヘッダーナビゲーション',
-		'footer' => 'フッターナビゲーション'
-	));
+function register_custom_menus() {
+  register_nav_menus( array(
+    //この中にカスタムメニューを定義 '場所' => '説明'
+    'header_nav' => 'ヘッダーナビゲーション',
+    'footer_nav' => 'フッターナビゲーション'
+  ));
 }
-//アクションフックを追加
-add_action( 'after_setup_theme', 'register_my_menus' );
+add_action( 'after_setup_theme', 'register_custom_menus' );
+
+// ナビゲーションに説明が入力されていたら、サブタイトルとして表示
+function description_in_custom_nav_menu($item_output, $item){
+  return preg_replace('/(<a.*?>[^<]*?)</', '$1' . "<span class='h_nav__sub_text'>{$item->description}</span><", $item_output);
+}
+add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 ```
 </details>
 
 
-### 2. header.phpにヘッダーナビのコード出力タグを記述、ページごとに動的クラスを付ける
+### 2.ナビゲーションメニューを登録
+
+管理画面左メニュー > 外観 > メニュー
+
+「新しいメニューを作成しましょう」のリンクをクリックし、メニューを新規作成します。
+メニュー名には1で設定したメニュー名を入れましょう。
+その後CSS class(オプション)に、HTML側のliタグの指定しているクラス名を入れます。
+
+![管理画面から出力したグローバルメニューのliタグにクラスを付ける](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/li-add-class.png)
+
+もしメニューに日本語＋英語等のサブタイトルが入る場合は「説明」のテキストエリアにサブタイトルのテキストを入力します。
+完了後、メニューの出力位置にチェックをつけます。
+
+![メニュー作成例]](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/custommenu1.png?raw=true)
+
+※上記の作成例のリンクは、アンカーリンクを指定しています。
+※ヘッダー、フッター等でそれぞれ異なるスタイルのメニューが必要な場合は必要分メニューを作成します。
 
 
+### 3. PHP側の出力設定
+
+`theme_location`の値は1で設定したメニュー名を入れます。
 ※コード内のクラス名はテンプレに合わせて変更してください。
 
 <details>
@@ -436,114 +401,35 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 
 ```php
 
-<?php
-  $themePath = get_template_directory_uri().'/dist/'; // パス
-  $postId = get_the_ID(); //投稿のID（数値）取得
-  $pageClass = get_post_meta($postId, 'page-class', true); // bodyに付けるクラス
-?>
-<!DOCTYPE html>
-<html lang="ja">
-<?php get_template_part( 'parts/head' ); ?>// head情報読み込み
-<body class='<?php echo $pageClass; ?>'> // Advanced custom fieldで後ほど作成するクラスフィールドを設定しておく
-  <div class="allwrap">
-    <header class="header js-sticky">
-      <div class="header__frame">
-        <div class="header__frame_inner">
-          <h1 class="header__logo">
-            <a href="<?php bloginfo('url');?>">
-              <img src="<?php echo $themePath; ?>img/logo_white.svg" class="header__logo_img" alt="株式会社サラ">
-              <img src="<?php echo $themePath; ?>img/logo_navy.svg" class="header__logo_img--navy" alt="株式会社サラ" >
-            </a>
-          </h1>
-
-          <button type="button" class="header__nav_hamburger sp">
-            <span class="header__nav_hamburger_icon"></span>
-          </button>
-        </div>
-
-        <!-- Navigation -->
-        <nav class="header__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-          // logo
-          <p class="header__nav_logo">
-            <a href="<?php bloginfo('url');?>">
-              <img src="<?php echo $themePath; ?>img/logo_white.svg" class="header__logo_img" alt="株式会社サラ" >
-            </a>
-          </p>
-
-          <?php wp_nav_menu(
-            array (
-              //カスタムメニュー名
-              'theme_location' => 'header__nav',
-              //コンテナを表示しない
-              'container' => false,
-              //カスタムメニューを設定しない際に固定ページでメニューを作成しない
-              'fallback_cb' => false,
-              // 出力される要素の中のulにメニュークラスを付ける
-              'menu_class' => 'header__nav_list',
-            )
-          ); ?>
-         </nav>
-         <!-- /Navigation -->
-      </div>
-    </header>
-
-    <main class="m">
+// header.php
+<nav class="header__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+ <?php 
+   $headerNav =
+   array(
+     //カスタムメニュー名
+     'theme_location' => 'header_nav',
+     //ulを梱包する親divを非表示
+     'container' => false,
+     //カスタムメニューを設定しない際に固定ページでメニューを作成しない
+     'fallback_cb' => false,
+     // 出力される要素の中のulにメニュークラスを付ける
+     'menu_class' => 'h_nav__list',
+   );
+   wp_nav_menu( $headerNav );
+ ?>
+</nav>
 ```
 </details>
-
-その後出力される`<ul>`の子要素`<li>`に任意のクラスを付けるには、管理画面から個別にクラスを付けます。
-
-![管理画面から出力したグローバルメニューのliタグにクラスを付ける](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/li-add-class.png)
-
-
-### 3. & 4. ナビゲーションメニューを登録、ウィジェット化
-
-詳細は[こちら](https://design-plus1.com/tcd-w/faq/custom_menu.html)
-
-HTMLタグもそのまま登録と出力することが可能です。
-
-![メニュー登録にはHTMLタグも使用可能](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/menu-settings.png)
-
 
 
 ### footer.php作成
 
-`header.php`と同じ要領でfooter部分のHTMLを移し、グローバルナビの設定を行います。
+先程の`header.php`と同じ要領でfooter.phpを作成します。
 
 `</main>`の閉じタグを忘れずに記述します。
 
+管理画面側のナビゲーション設定はヘッダーナビと同じ手順なため割愛します。
 
-**フッターナビ作成手順**
-1. functions.phpにナビゲーションメニューの有効化設定を書く
-2. footer.phpにフッターナビのコード出力タグを記述
-3. 管理画面左メニュー > 外観 > メニュー からナビゲーションメニューを登録
-4. 管理画面左メニュー > 外観 > ウィジェット から2をウィジェット化
-
-
-### 1. functions.phpにナビゲーションメニューの有効化設定を書く
-
-詳細な説明は[こちら](https://wp-fan.com/wordpress/register-custom-menu/)
-
-<details>
-<summary>functions.phpの記述例</summary>
-
-```php
-
-//ナビゲーションを登録する
-function register_my_menus() {
-	register_nav_menus( array(
-		//この中にカスタムメニューを定義する　 '場所' => '説明'
-		'header' => 'ヘッダーナビゲーション',
-		'footer' => 'フッターナビゲーション'
-	));
-}
-//アクションフックを追加
-add_action( 'after_setup_theme', 'register_my_menus' );
-```
-</details>
-
-
-### 2. footer.phpにヘッダーナビのコード出力タグを記述
 
 ※コード内のクラス名はテンプレに合わせて変更してください。
 
@@ -552,57 +438,24 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 
 ```php
 
-<?php
-  $themePath = get_template_directory_uri().'/dist/';
-?>
-</main>
-<footer class="footer">
-  <div class="footer__wrap">
-    <div class="ctr cont_ctr">
-      <div class="footer__2col">
-        <p class="footer__logo">
-          <a href="<?php bloginfo('url');?>" class="footer__logo_link">
-            <img src="<?php echo $themePath; ?>img/logo_white.svg" alt="株式会社サラ">
-          </a>
-        </p>
-
-        <!-- Navigation -->
-        <nav class="footer__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-          <?php wp_nav_menu(
-            array (
-              //カスタムメニュー名
-              'theme_location' => 'footer__nav',
-              //コンテナを表示しない
-              'container' => false,
-              //カスタムメニューを設定しない際に固定ページでメニューを作成しない
-              'fallback_cb' => false,
-              // 出力される要素の中のulにメニュークラスを付ける
-              'menu_class' => 'footer__nav_list',
-            )
-          ); ?>
-        </nav>
-      </div>
-      <p class="footer__privacy"><a href="<?php bloginfo('url');?>/privacy" class="footer__privacy_link">PRIVACY POLICY</a></p>
-      <small class="footer__copy">©2020 THOROUGH All Rights Reserved.</small>
-    </div>
-  </div>
-</footer>
-</div>
-<?php
-  get_template_part( 'parts/scripts' );
-  wp_footer();
-?>
-
-</body>
-
-</html>
+// header.php
+<nav class="footer_nav">
+  <?php 
+    $footerNav =
+    array (
+      //カスタムメニュー名
+      'theme_location' => 'footer_nav',
+      //ulを梱包する親divを非表示い
+      'container' => false,
+      //カスタムメニューを設定しない際に固定ページでメニューを作成しない
+      'fallback_cb' => false,
+      'menu_class' => 'f_nav__list'
+    );
+    wp_nav_menu( $footerNav );
+  ?>
+</nav>
 ```
 </details>
-
-
-### 3. & 4. ナビゲーションメニューを登録、ウィジェット化
-
-`header.php`と同じ要領で作成します。
 
 
 
@@ -632,11 +485,11 @@ add_action( 'after_setup_theme', 'register_my_menus' );
 <?php get_footer(); ?>
 ```
 
-`<?php get_header(); ?>`の下に`[dist] > index.html`の`<main>`内のコードを全コピペします。
+`<?php get_header(); ?>`の下に`dispt/ index.html`の`<main>`内のコードを全コピペします。
 
 最後に`<img>` `<a>`タグのパスをそれぞれ変更します。
 
-最終的にパスはこうなります。
+最終的に全てのリンクパス、画像パスはこうなれば大丈夫です。
 
 ```php
 
@@ -733,7 +586,7 @@ get_header(); ?>
 ### page.php作成
 
 個別ページ用のファイルを1つ用意し、ページごとにbodyのクラスを割り振ることでCSSの適用を切り替えます。
-クラスの変更だけでは賄えない場合は新規の`page-●●.php`ファイルを作成してください。
+クラスの変更だけでは賄えない場合は新規の`page-●●.php`（●●はページ名）ファイルを作成してください。
 PHP側に出力するクラスは`header.php`の中身を作成した段階で記述しています。
 
 
@@ -754,7 +607,7 @@ PHP側に出力するクラスは`header.php`の中身を作成した段階で�
 
 <?php
 /*
-* Template Name: Template Name
+* Template Name: Order1-A
 */
 get_header();
 ?>
@@ -772,6 +625,7 @@ endif;
 
 ### 2. 管理画面のカスタムフィールドを設定
 
+固定ページごとにbodyタグにクラス名を入れて、ページ判別でCSSを切り替えるため、
 管理画面のカスタムフィールドから以下のようにフィールドを追加します。
 フィールド名は`page-class`にします。
 
@@ -802,6 +656,204 @@ endif;
 
 
 ![個別ページを公開すると入力したクラスが反映された](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/add-body-class.png?raw=true)
+
+
+| 個別ページクラス名 |
+| ------------- | ------------- |
+| 会社情報  | about |
+| プライバシーポリシー  | privacy  |
+| お問い合わせ3ページ分  | contact |
+---
+
+
+## ■Contact Form 7でメールフォーム設定
+
+まずこのプラグインがインストール済みか確認します。なければ新規追加してください。
+
+- Contact Form 7
+- Contact Form 7 add confirm
+
+### お問い合わせメニューからフォームを新規作成
+
+主にお問い合わせのパーツ部分となるHTMLだけ抜き出します。
+以下の入力例を参考に、入力エリアのタグを専用タグに書き換えます。入力タグの次に`<p class="js-confirm"></p>`を1つ入れます。
+このタグは確認ページ用のスタイルに必要になります。
+
+![コンタクトフォーム作成例](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/contactform1.png?raw=true)
+
+<details>
+<summary>コンタクトフォーム 記述例全コード</summary>
+
+```html
+<dl class="form__item">
+<dt class="form__label">貴社名</dt>
+<dd class="form__desc">
+[text company-name placeholder "株式会社DEMO Inc."]<p class="js-confirm"></p>
+</dd>
+</dl>
+
+<dl class="form__item">
+<dt class="form__label requied">お名前</dt>
+<dd class="form__desc">
+[text* user-name placeholder "山田太郎"]<p class="js-confirm"></p>
+</dd>
+</dl>
+
+<dl class="form__item">
+<dt class="form__label requied">電話番号（半角英数記号）</dt>
+<dd class="form__desc">
+[tel* tel placeholder "090-1234-5678"]<p class="js-confirm"></p>
+</dd>
+</dl>
+
+<dl class="form__item">
+<dt class="form__label requied">メールアドレス（半角英数記号）</dt>
+<dd class="form__desc">
+[email* email placeholder "temple@gmail.com"]<p class="js-confirm"></p>
+</dd>
+</dl>
+
+<dl class="form__item">
+<dt class="form__label requied">お問い合わせ内容</dt>
+<dd class="form__desc">
+[textarea* content]<p class="js-confirm"></p>
+</dd>
+</dl>
+
+<div class="form__footer">
+<p>
+<a href="/privacy" target="_blank">プライバシーポリシー</a>をご確認の上、下記ボタンより先にお進みください。
+</p>
+</div>
+<div class="form__btn">
+<span class="form__btn-wrapper">[confirm class:btn "確認画面へ"][submit class:btn "送信する"]</span>
+<span class="form__back-btn">[back class:form__back-input "入力内容を変更する"]</span>
+</div>
+```
+
+</details>
+
+
+### メールタブ設定
+
+各入力欄にメールの送信設定を行います。
+以下を参考に案件ごとに書き換えて使用してください。
+
+| メール |  |
+| ------------- | ------------- |
+| 送信先  | 送信用アドレス |
+| 送信元  | 送信名 <送信用アドレス>  |
+| 題名  | ●●からのお問い合わせ |
+
+<details>
+<summary>メッセージ本文</summary>
+---
+━━━━━━□■□　お問い合わせ内容　□■□━━━━━━
+
+・お問い合わせ内容の種類：[type]
+・貴社名：[company_name]
+・お名前：[user-name]
+・電話番号︰[tel]
+・メールアドレス：[mail]
+・お問い合わせ内容：
+[content]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+</details>
+
+---
+
+| メール（2）自動返信メール |  |
+| ------------- | ------------- |
+| 送信先  | [email] |
+| 送信元  | 送信名 <送信用アドレス>  |
+| 題名  | お問い合わせ受け付け完了のお知らせ |
+
+<details>
+<summary>メッセージ本文</summary>
+
+※このメールはシステムからの自動返信です
+
+[user-name] 様
+
+株式会社DEMOでございます。
+
+以下の内容でお問い合わせを受け付けいたしました。
+詳しい回答は、できる限り早急に担当よりご連絡差し上げます。
+今しばらくお待ちくださいませ。
+
+-----□■□ お問い合わせ内容 □■□-----
+
+・お問い合わせ内容の種類：[type]
+・貴社名：[company_name]
+・お名前：[user-name]
+・電話番号︰[tel]
+・メールアドレス：[mail]
+・お問い合わせ内容：[content]
+
+----------------------------------------
+
+
+——————————————————————————
+【会社情報】
+株式会社DEMO
+住所：〒123-4567
+東京都渋谷区渋谷1-1-1オーダービル1F
+電話番号 01-1234-5678
+——————————————————————————
+</details>
+
+
+### コンタクフォームを固定ページに出力する
+
+コンタクトフォームが作成されるとショートコードが表示されます。
+このコードを作成したお問い合わせの固定ページへ入れましょう。
+お問い合わせは1つの固定ページで、入力・確認・完了ページ3ページ分を作ります。
+最後にエディタ下の「固定ページクラス」に`contact`の入力を行います。
+
+※コード内のクラス名はテンプレに合わせて変更してください。
+
+<details>
+<summary>お問い合わせ3P 記述例</summary>
+```html
+
+<section class="section js-contact-main">
+<header class="section__header">
+<h1 class="section__ttl">Contact<span class="section__ttl-ja">お問い合わせ</span></h1>
+<p class="section__txt">このページからお問合せを受け付けております。<br>下記必須項目は必ず入力の上、お問合せ下さい。</p>
+</header>
+<div class="section__body">
+<div class="form">
+<div class="form__list">
+<!-- ここに作成したコンタクトフォームのショートコードを入れる -->
+[contact-form-7 id="40" title="コンタクトフォーム 1"]
+</div>
+</div>
+</div>
+</section>
+
+<section class="section js-contact-complete">
+<header class="section__header">
+<h1 class="section__ttl section__ttl--complete">Contact<span class="section__ttl-ja">お問い合わせ</span></h1>
+<div class="section__header-msg">
+<h2>お問い合わせ送信完了</h2>
+</div>
+<div class="section__header-text section__header-text--complete">
+<p>お問い合わせいただきありがとうございます。<br>後日、担当者からご連絡させていただきます。</p>
+</div>
+</header>
+
+<div class="section__body">
+<div class="form">
+<div class="form__btn form__btn--complete">
+<div class="form__btn-wrapper"><a class="btn btn--link" href="/">TOPに戻る</a></div>
+</div>
+</div>
+</div>
+
+</section>
+```
+</details>
 
 ## ■WordPress組み込み後チェック
 
