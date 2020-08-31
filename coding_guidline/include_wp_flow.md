@@ -385,7 +385,7 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 もしメニューに日本語＋英語等のサブタイトルが入る場合は「説明」のテキストエリアにサブタイトルのテキストを入力します。
 完了後、メニューの出力位置にチェックをつけます。
 
-![メニュー作成例]](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/custommenu1.png?raw=true)
+![メニュー作成例](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/custommenu1.png?raw=true)
 
 ※上記の作成例のリンクは、アンカーリンクを指定しています。
 ※ヘッダー、フッター等でそれぞれ異なるスタイルのメニューが必要な場合は必要分メニューを作成します。
