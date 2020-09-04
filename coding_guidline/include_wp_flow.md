@@ -328,6 +328,60 @@ add_action( 'wp_enqueue_scripts', 'my_scripts' );
 `<main>`の開始タグを最後に入れることを忘れないでください。
 
 
+### header.php作成
+
+以下のコードはヘッダーナビ以外は省略していますが、header.phpに入れる全コードです。
+共通化するためbodyタグの始まりと、mainタグの始まりもまとめて記述します。
+
+<details>
+<summary>header.phpの記述例</summary>
+
+```php
+
+// header.php
+<?php
+  $themePath = get_template_directory_uri().'/dist/';
+  $postId = get_the_ID();// 投稿記事（ニュース）のIDを取得する
+  $pageClass = get_post_meta($postId, 'page-class', true);// bodyに設定するカスタムクラスを変数に入れる
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<?php get_template_part( 'parts/head' ); ?>// head情報を呼び出す
+
+<?php if(is_front_page()):?>// front-page.phpを表示の時
+<body class='top'>// bodyタグに「top」クラスを付与
+<?php else : ?>// それ以外のページの時は
+<body class='<?php echo $pageClass; ?>'>// 後に設定するカスタムクラスの値に応じてクラスを表示する
+<?php endif; ?>
+
+<div class="allwrapper">
+  // 省略
+
+  <nav class="header__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+    <?php 
+      $headerNav =
+      array(
+        //カスタムメニュー名
+        'theme_location' => 'header_nav',
+        //ulを梱包する親divを非表示
+        'container' => false,
+        //カスタムメニューを設定しない際に固定ページでメニューを作成しない
+        'fallback_cb' => false,
+        // 出力される要素の中のulにメニュークラスを付ける
+        'menu_class' => 'h_nav__list',
+      );
+      wp_nav_menu( $headerNav );
+    ?>
+   </nav>
+
+</header>
+
+<main class="m">
+```
+</details>
+
 **ヘッダーナビ作成手順**
 
 1. functions.phpにナビゲーションメニューの有効化設定を書く
@@ -402,22 +456,22 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 ```php
 
 // header.php
-<nav class="header__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
- <?php 
-   $headerNav =
-   array(
-     //カスタムメニュー名
-     'theme_location' => 'header_nav',
-     //ulを梱包する親divを非表示
-     'container' => false,
-     //カスタムメニューを設定しない際に固定ページでメニューを作成しない
-     'fallback_cb' => false,
-     // 出力される要素の中のulにメニュークラスを付ける
-     'menu_class' => 'h_nav__list',
-   );
-   wp_nav_menu( $headerNav );
- ?>
-</nav>
+  <nav class="header__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+    <?php 
+      $headerNav =
+      array(
+        //カスタムメニュー名
+        'theme_location' => 'header_nav',
+        //ulを梱包する親divを非表示
+        'container' => false,
+        //カスタムメニューを設定しない際に固定ページでメニューを作成しない
+        'fallback_cb' => false,
+        // 出力される要素の中のulにメニュークラスを付ける
+        'menu_class' => 'h_nav__list',
+      );
+      wp_nav_menu( $headerNav );
+    ?>
+   </nav>
 ```
 </details>
 
@@ -425,11 +479,8 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 ### footer.php作成
 
 先程の`header.php`と同じ要領でfooter.phpを作成します。
-
-`</main>`の閉じタグを忘れずに記述します。
-
+以下は完成例のコード例です。
 管理画面側のナビゲーション設定はヘッダーナビと同じ手順なため割愛します。
-
 
 ※コード内のクラス名はテンプレに合わせて変更してください。
 
@@ -438,22 +489,64 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 
 ```php
 
-// header.php
-<nav class="footer_nav">
-  <?php 
-    $footerNav =
-    array (
-      //カスタムメニュー名
-      'theme_location' => 'footer_nav',
-      //ulを梱包する親divを非表示い
-      'container' => false,
-      //カスタムメニューを設定しない際に固定ページでメニューを作成しない
-      'fallback_cb' => false,
-      'menu_class' => 'f_nav__list'
-    );
-    wp_nav_menu( $footerNav );
-  ?>
-</nav>
+// footer.php
+<?php
+  $themePath = get_template_directory_uri().'/dist/';
+?>
+</div>
+</main>
+
+<!-- footer -->
+<footer class="f">
+  <div class="container wrapper f_container">
+    <div class="f_head">
+      <div class="f_head__info">
+        <p class="f_head__logo">
+          // テキストロゴ、画像ロゴの判別とそれに応じて出力する
+          <?php 
+            $custom_logo_id = get_theme_mod( 'custom_logo' );
+            $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+            if ( has_custom_logo() ) {
+                    echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '" class="f_head__logo_img">';
+            } else {
+                    echo get_bloginfo( 'name' );
+            }
+          ?>
+        </p>
+        <div class="f_address">
+          <p class="f_address__text"><span class="f_address__text--postal_code">〒123-4567</span>東京都渋谷区渋谷1-1-1オーダービル1F</p><a class="f_address__link" href="#">Google map</a>
+        </div>
+      </div>
+      <nav class="f_nav">
+        <?php 
+          $footerNav =
+          array (
+            //カスタムメニュー名
+            'theme_location' => 'footer_nav',
+            //ulを梱包する親divを非表示い
+            'container' => false,
+            //カスタムメニューを設定しない際に固定ページでメニューを作成しない
+            'fallback_cb' => false,
+            'menu_class' => 'f_nav__list'
+          );
+          wp_nav_menu( $footerNav );
+        ?>
+      </nav>
+    </div>
+    <div class="f_bottom"><small class="f_copy">© <?php echo date('Y');?> <?php bloginfo('name');?> All Rights Reserved.</small>
+      <p class="f_privacy"><a class="f_privacy__link" href="<?php bloginfo('url');?>/privacy">プライバシーポリシー</a></p>
+    </div>
+  </div>
+</footer>
+<!-- / footer -->
+<?php
+  get_template_part( 'parts/scripts' );
+  wp_footer();
+?>
+
+</body>
+
+</html>
 ```
 </details>
 
@@ -461,7 +554,8 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 
 ### front-page.php作成
 
-`front-page.php`にファイル読み込みパスを記述します。
+`front-page.php`にHTMLコーディングを行ったディレクトリ内のファイルを読み込むためのパスを記述します。
+この`get_template_directory_uri()`タグは、WP独自の関数で、動的にテーマディレクトリのパスを出力してくれます。
 
 ```php
 
@@ -470,9 +564,10 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 ?>
 ```
 
-次に上の記述の下に`<?php get_header(); ?>`を
-
+次に上の記述の下に`<?php get_header(); ?>`を、
 一番最後に`<?php get_footer(); ?>`を記述します。
+それぞれのタグは外部ファイルに分けたヘッダー、フッターを呼び出すWP独自の関数です。
+
 
 ```php
 
@@ -485,11 +580,10 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 <?php get_footer(); ?>
 ```
 
-`<?php get_header(); ?>`の下に`dispt/ index.html`の`<main>`内のコードを全コピペします。
+`<?php get_header(); ?>`の下に、`dispt/ index.html`のメインコンテンツのコードを全コピペします。
 
-最後に`<img>` `<a>`タグのパスをそれぞれ変更します。
-
-最終的に全てのリンクパス、画像パスはこうなれば大丈夫です。
+その後`<img>` `<a>`タグのパスをそれぞれ変更します。
+最終的に全てのリンクパス、画像パスは以下のようになれば大丈夫です。
 
 ```php
 
@@ -498,19 +592,19 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 <?php
   $themePath = get_template_directory_uri().'/dist/';
 ?>
-<?php get_header(); ?> // header読み込み
+<?php get_header(); ?>
 
-// ---- ここに<main>タグ内のコンテンツ
+<section>
 
-// imgタグのパス変更
-<img src="<?php echo $themePath; ?>img/image.jpg">
+  // imgタグのパス変更
+  <img src="<?php echo $themePath; ?>img/image.jpg">
 
-// aタグのパス変更
-<a href="<?php echo $linkUrl; ?>">
+  // aタグのパス変更
+  <a href="<?php echo $linkUrl; ?>">
 
-// ---- ここまで<main>タグ内のコンテンツ
+</section>
 
-<?php get_footer(); ?> // footer読み込み
+<?php get_footer(); ?>
 ```
 
 
@@ -526,10 +620,8 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 ```php
 
 // front-page.php
-
 <div class="m__news_list">
-
-   <?php
+  <?php
     $args = array(
       'posts_per_page' => 5 // 表示件数の指定
     );
@@ -538,8 +630,8 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
     $postId = get_the_ID(); // 投稿ページIDを出力
     $linkUrl = get_post_meta($postId, 'link_url', true); // 指定したIDの投稿のメタデータを取得する
     setup_postdata( $post ); // グローバル投稿データの設定
-   ?>
-    <?php if(empty($linkUrl)) : ?> // 外部リンクが設定されている時の表示
+  ?>
+  <?php if(empty($linkUrl)) : ?> // 外部リンクが設定されている時の表示
       <div class="m__news_item">
         <time class="m__news_date"><?php the_date( 'Y.m.d' ); ?></time>// 投稿日
         <span class="m__news_item_title">
@@ -557,8 +649,7 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
    <?php
     endforeach; // ループ修了
     wp_reset_postdata();
-   ?>
-
+  ?>
 </div>
 
 ```
@@ -574,7 +665,7 @@ index.phpは必須ファイルなためニュース一覧が必要ない場合�
 
 <?php
 /*
-トップページ用テンプレート
+* Order1-A:トップページ用テンプレート
 */
 get_header(); ?>
 
