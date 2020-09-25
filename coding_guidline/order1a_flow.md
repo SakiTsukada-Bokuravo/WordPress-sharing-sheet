@@ -107,21 +107,21 @@
 名前：投稿ページからサイトへ出力するために渡す変数名。英数字のみ。
 タイプ：出力するデータの種類を設定します。
 
-![ニュースリンクのフィールド設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/acf1.jpg.?raw=true)
+![ニュースリンクのフィールド設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/acf1.jpg?raw=true)
 
 #### 固定ページクラス
 
 ニュースリンクと同様に設定を行いますが、フォームタイプと位置設定の右端を「固定ページ」へ変更します。
 
-![固定ページクラスのフィールド設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/acf2.jpg.?raw=true)
+![固定ページクラスのフィールド設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/acf2.jpg?raw=true)
 
-![固定ページクラスのフィールド設定(位置)](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/acf-position.jpg.?raw=true)
+![固定ページクラスのフィールド設定(位置)](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/acf-position.jp.?raw=true)
 
 ### グローバルメニュー設定
 
 メインメニュー 外観 > メニューより、メニュー設定の確認と変更を行います。
 
-![メニュー設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/menu1.jpg.?raw=true)
+![メニュー設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/menu1.jpg?raw=true)
 
 以上の状態になっていると思いますが、もしヘッダーナヒゲーション、フッターナビゲーションがそれぞれ存在していない場合は、デモサイトの設定画面を参考に手動で新規作成をお願いします。
 
@@ -131,7 +131,7 @@
 オーダー1Aでは、メニュー項目の「事業内容」と「ニュース」をTOPページのアンカーリンクにしているため、カスタムリンクとして手動で設定しています。
 そのためドメインが変わるごとに合わせて手動で変更します。
 
-![メニューのカスタムリンク](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/menu2.jpg.?raw=true)
+![メニューのカスタムリンク](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/menu2.jpg?raw=true)
 
 **各項目説明**
 URL：ドメインの箇所のみをそのサイトのドメインに合わせて変更
@@ -140,7 +140,7 @@ URL：ドメインの箇所のみをそのサイトのドメインに合わせ�
 > 日本語・英語両方表記する場合は、サブタイトルにあたるテキストを「説明」のテキストエリアに入力してください。(オプション項目のため、管理画面右上の「表示オプション」から表示を有効化します。)
 
 **「説明」項目の有効化手順**
-![「説明」項目の有効化](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/menu3.jpg.?raw=true)
+![「説明」項目の有効化](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/menu3.jpg?raw=true)
 
 
 ### お問い合わせ > コンタクトフォーム
@@ -153,6 +153,6 @@ URL：ドメインの箇所のみをそのサイトのドメインに合わせ�
 メール2：問い合わせした主へ自動返信するメール
 
 各赤枠の内容を、案件毎に合わせて変更後、一番下にある保存ボタンを押してください。
-![メール設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/form-mail1.jpg.?raw=true)
+![メール設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/form-mail1.jpg?raw=true)
 
-![メール2設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/form-mail2.png.?raw=true)
+![メール2設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/form-mail2.png?raw=true)
