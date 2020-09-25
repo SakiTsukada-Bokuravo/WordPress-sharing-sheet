@@ -115,7 +115,7 @@
 
 ![固定ページクラスのフィールド設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/acf2.jpg?raw=true)
 
-![固定ページクラスのフィールド設定(位置)](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/acf-position.jp.?raw=true)
+![固定ページクラスのフィールド設定(位置)](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/acf-position.jp?raw=true)
 
 ### グローバルメニュー設定
 
