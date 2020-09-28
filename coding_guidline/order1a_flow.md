@@ -21,24 +21,24 @@
 
 ## 簡易チェックリスト
 
-[ ] プラグインは有効化したか
+- [] プラグインは有効化したか
 <details>
 <summary>有効化か確認するプラグインリスト</summary>
-[ ] Admin Bar Position ※1
-[ ] Advanced Custom Fields
-[ ] Akismet Anti-Spam (アンチスパム)
-[ ] Classic Editor
-[ ] Contact Form 7
-[ ] Contact Form 7 add confirm
-[ ] Really Simple SSL
+- [] Admin Bar Position ※1
+- [] Advanced Custom Fields
+- [] Akismet Anti-Spam (アンチスパム)
+- [] Classic Editor
+- [] Contact Form 7
+- [] Contact Form 7 add confirm
+- [] Really Simple SSL
 </details>
 
 <details>
-<summary>[] テキストの流し込みは行ったか</summary>
-[ ] TOP
-[ ] 会社情報
-[ ] お問い合わせ
-[ ] プラポリ
+<summary>- [] テキストの流し込みは行ったか</summary>
+- [] TOP
+- [] 会社情報
+- [] お問い合わせ
+- [] プラポリ
 </details>
 
 ---
@@ -54,13 +54,13 @@
 今後運用していく上で、プラグインの種類が増減する可能性がありますので、デモサイトを最終的には参考に確認をお願いします。
 
 ### 確認するプラグインリスト（増減有るかも）
-[ ] Admin Bar Position ※1
-[ ] Advanced Custom Fields
-[ ] Akismet Anti-Spam (アンチスパム)
-[ ] Classic Editor
-[ ] Contact Form 7
-[ ] Contact Form 7 add confirm
-[ ] Really Simple SSL
+- [] Admin Bar Position ※1
+- [] Advanced Custom Fields
+- [] Akismet Anti-Spam (アンチスパム)
+- [] Classic Editor
+- [] Contact Form 7
+- [] Contact Form 7 add confirm
+- [] Really Simple SSL
 
 > ※1：WP管理画面ログイン中にサイトを表示すると出現する、ページ上部の黒いバーを邪魔にならないよう移動させるプラグインです。
 > Shift + ↑ or ↓でバーが上下どちらかに移動します。
