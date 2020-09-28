@@ -21,27 +21,24 @@
 
 ## 簡易チェックリスト
 
-- [] プラグインは有効化したか
-<details>
-<summary>有効化か確認するプラグインリスト</summary>
-- [] Admin Bar Position ※1
-- [] Advanced Custom Fields
-- [] Akismet Anti-Spam (アンチスパム)
-- [] Classic Editor
-- [] Contact Form 7
-- [] Contact Form 7 add confirm
-- [] Really Simple SSL
-</details>
+- [ ] プラグインは有効化したか
 
-<details>
-<summary>- [] テキストの流し込みは行ったか</summary>
-- [] TOP
-- [] 会社情報
-- [] お問い合わせ
-- [] プラポリ
-</details>
+	**確認するプラグイン一覧**
+    - [ ] Admin Bar Position ※1
+    - [ ] Advanced Custom Fields
+    - [ ] Akismet Anti-Spam (アンチスパム)
+    - [ ] Classic Editor
+    - [ ] Contact Form 7
+    - [ ] Contact Form 7 add confirm
+    - [ ] Really Simple SSL
 
----
+
+- [ ] テキストの流し込みは行ったか
+  - [ ] TOP
+  - [ ] 会社情報
+  - [ ] お問い合わせ
+  - [ ] プラポリ
+
 
 ## 1.プラグイン、テーマの確認
 
@@ -54,13 +51,13 @@
 今後運用していく上で、プラグインの種類が増減する可能性がありますので、デモサイトを最終的には参考に確認をお願いします。
 
 ### 確認するプラグインリスト（増減有るかも）
-- [] Admin Bar Position ※1
-- [] Advanced Custom Fields
-- [] Akismet Anti-Spam (アンチスパム)
-- [] Classic Editor
-- [] Contact Form 7
-- [] Contact Form 7 add confirm
-- [] Really Simple SSL
+- [ ] Admin Bar Position ※1
+- [ ] Advanced Custom Fields
+- [ ] Akismet Anti-Spam (アンチスパム)
+- [ ] Classic Editor
+- [ ] Contact Form 7
+- [ ] Contact Form 7 add confirm
+- [ ] Really Simple SSL
 
 > ※1：WP管理画面ログイン中にサイトを表示すると出現する、ページ上部の黒いバーを邪魔にならないよう移動させるプラグインです。
 > Shift + ↑ or ↓でバーが上下どちらかに移動します。
@@ -145,7 +142,66 @@ URL：ドメインの箇所のみをそのサイトのドメインに合わせ�
 
 ### お問い合わせ > コンタクトフォーム
 
-メインメニューからコンタクトフォームの設定画面へ移動し、メールタブを開きます。
+
+#### メールフォーム用HTMLの設定
+
+まず問い合わせ入力画面と問い合わせ確認画面のHTMLを追加します。
+メインメニューからコンタクトフォームの設定画面へ移動し、「フォーム」タブから追加可能です。
+入力画面と確認画面をこのHTML1つで管理するため、新たに確認用のページを作成しなくて大丈夫です。
+また、placeholderにデモサイトの文章が入っているため、必要に応じて修正をお願いします。
+
+<details>
+<summary>オーダー1Aに入っている文章</summary>
+
+<dl class="form__item">
+<dt class="form__label">貴社名</dt>
+<dd class="form__desc">
+[text company-name placeholder "株式会社DEMO Inc."]<p class="js-confirm"></p>
+</dd>
+</dl>
+
+<dl class="form__item">
+<dt class="form__label requied">お名前</dt>
+<dd class="form__desc">
+[text* user-name placeholder "山田太郎"]<p class="js-confirm"></p>
+</dd>
+</dl>
+
+<dl class="form__item">
+<dt class="form__label requied">電話番号（半角英数記号）</dt>
+<dd class="form__desc">
+[tel* tel placeholder "090-1234-5678"]<p class="js-confirm"></p>
+</dd>
+</dl>
+
+<dl class="form__item">
+<dt class="form__label requied">メールアドレス（半角英数記号）</dt>
+<dd class="form__desc">
+[email* email placeholder "temple@gmail.com"]<p class="js-confirm"></p>
+</dd>
+</dl>
+
+<dl class="form__item">
+<dt class="form__label requied">お問い合わせ内容</dt>
+<dd class="form__desc">
+[textarea* content]<p class="js-confirm"></p>
+</dd>
+</dl>
+
+<div class="form__footer">
+<p>
+<a href="/privacy" target="_blank">プライバシーポリシー</a>をご確認の上、下記ボタンより先にお進みください。
+</p>
+</div>
+<div class="form__btn">
+<p class="form__btn-wrapper">[confirm class:btn "確認画面へ"][submit class:btn "送信する"]</p>
+<p class="form__back-btn">[back class:form__back-input "入力内容を変更する"]</p>
+</div>
+</details>
+
+
+#### 送信アドレスなどの編集
+次にメールタブを開きます。
 
 それぞれメール設定がありますが、各項目の説明です。
 
