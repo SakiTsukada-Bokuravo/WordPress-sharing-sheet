@@ -68,7 +68,7 @@ wp_users
 親サイト複製の場合は、`wp_`がついたデータのみエクスポートを行えば良いので、この工程は発生しません。	
 
 | 対象範囲 | 置換対象 | 置換後 |
-----|---- 
+| ------------- | ------------- | ------------- |
 | 全体 | wp_2 | wp_ |
 | 全体 | CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci | CHARSET=utf8 COLLATE=utf8_general_ci |
 | wp_2_options | AUTO_INCREMENT=189 | AUTO_INCREMENT=190 |
