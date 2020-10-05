@@ -8,6 +8,8 @@
 
 親サイト（[https://order1a.wpt-demo.com/](https://order1a.wpt-demo.com/)）を複製する場合も同様の手順で作業が可能です。
 
+通常の複製手順（シングルサイトからシングルサイトへ複製する手順）については、DBを書き換える手順のみ飛ばして同じ手順で行ってください。
+
 ## 目次
 
 1. 複製元のDBをエクスポートする
@@ -81,13 +83,6 @@ wp_users
 インポート前に複製先のサーバーにてDBを新規作成しておきます。
 
 
-#### エラーリファレンス
-
-エラー：`Duplicate entry ‘1’ for key ‘PRIMARY’`
-
-[参考サイト](https://php1st.com/1470)を元に対象テーブルのAUTO INCREMENTの値をNULLに置き換える。
-
-
 ## DupulicatorでWPデータを落とす
 
 [Duplicator](https://ja.wordpress.org/plugins/duplicator/)プラグインを導入し、
@@ -155,3 +150,12 @@ wp_users
 全ページ最終確認し問題がなければ複製作業は完了です。
 
 ここから案件に応じて、テーマの中身やフォームの内容変更を行います。
+
+
+## エラーリファレンス
+
+### DBインポート時
+
+エラー：`Duplicate entry ‘1’ for key ‘PRIMARY’`
+
+[参考サイト](https://php1st.com/1470)を元に対象テーブルのAUTO INCREMENTの値をNULLに置き換える。
