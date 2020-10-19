@@ -61,7 +61,7 @@ wp_usermeta
 wp_users
 ```
 
-`wp_2`がついているデータは、子サイトです。（今回で言う　[https://order1a.wpt-demo.com/copytest](https://order1a.wpt-demo.com/copytest)）
+`wp_2`等番号がついているデータは、子サイトです。（今s回で言う [https://order1a.wpt-demo.com/copytest](https://order1a.wpt-demo.com/copytest)）
 
 この子サイトは2番目にサイトを作成したため「2」が振られています。
 
@@ -113,7 +113,7 @@ wp_testbkrv
 
 また、DB名には文字数制限がありそれが比較的短めです。
 
-XサーバーのようなユーザーIDが頭に来る場合は、そのIDも含めた文字数になるため、上記の（dpt_testbkrv）ように省略することも多いです。
+XサーバーのようにユーザーIDが頭に来る場合は、そのIDも含めた文字数になるため、上記の（dpt_testbkrv）ように省略することも多いです。
 
 
 ## DupulicatorでWPデータを落とす
