@@ -61,7 +61,7 @@ wp_usermeta
 wp_users
 ```
 
-`wp_2`等番号がついているデータは、子サイトです。（今s回で言う [https://order1a.wpt-demo.com/copytest](https://order1a.wpt-demo.com/copytest)）
+`wp_2`等番号がついているデータは、子サイトです。（今回で言う [https://order1a.wpt-demo.com/copytest](https://order1a.wpt-demo.com/copytest)）
 
 この子サイトは2番目にサイトを作成したため「2」が振られています。
 
