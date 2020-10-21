@@ -188,6 +188,8 @@ phpmyadminへログイン後、`wp_users`のテーブルを表示します。
 
 移動後、赤枠の`user_login` `user_pass` `display_name` を変更します。
 
+![変更箇所](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/change_userid2.jpg)
+
 `display_name`は必ずしも変更しなくても問題はありませんが、ユーザー名と表示名で異なる名前だと混合するため統一します。
 
 WP管理画面へ再ログインできれば完了です。
