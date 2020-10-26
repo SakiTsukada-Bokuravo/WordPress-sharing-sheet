@@ -1,13 +1,14 @@
-# WP制作事業 テーマ作成用WP組み込みフロー
+# WP制作事業 テーマ作成用WP組込フロー
 
 **【Bokuravo 社内用】**
 
 このテキストは、コーディングガイドラインに沿ってコーディングした静的HTMLサイトを、WPへ組み込むフローです。
 
-コーディングガイドラインを確認する場合は、[こちら](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/tree/tsukada/coding_guidline)から確認できます。
+[コーディングガイドライン](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/tree/tsukada/coding_guidline)はこちら
 
-また、ファイル作成の紹介コードは[株式会社サラ様](https://thorough-sol.co.jp/)のコードを流用させて頂いています。
+~~また、ファイル作成の紹介コードは[株式会社サラ様](https://thorough-sol.co.jp/)のコードを流用させて頂いています。~~
 
+Order1-Aテーマが完成したので、参照コードは[Order1-A](https://github.com/SakiTsukada-Bokuravo/Order1-A)に差し替わります。
 
 
 ## ■このフローのゴール
@@ -16,33 +17,33 @@ HTMLサイトをWPで組み込み、最終的にWEBブラウザで表示する�
 
 ## ■目次
 
-[テーマフォルダ作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E3%83%86%E3%83%BC%E3%83%9E%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E4%BD%9C%E6%88%90)
+[テーマフォルダ作成](include_wp_flow.md#%E3%83%86%E3%83%BC%E3%83%9E%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E4%BD%9C%E6%88%90)
 
-[テンプレートファイル分割](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%88%86%E5%89%B2)
+[テンプレートファイル分割](include_wp_flow.md#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%88%86%E5%89%B2)
 
-[各ファイルを作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E5%90%84%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90)
+[各ファイルを作成](include_wp_flow.md#%E5%90%84%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90)
 
-  [style.css テーマ宣言](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#stylecss%E3%81%AB%E3%83%86%E3%83%BC%E3%83%9E%E5%AE%A3%E8%A8%80)
+  [style.css テーマ宣言](include_wp_flow.md#stylecss%E3%81%AB%E3%83%86%E3%83%BC%E3%83%9E%E5%AE%A3%E8%A8%80)
 
-[各ファイルの中身を作成](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E5%90%84%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%B8%AD%E8%BA%AB%E3%82%92%E4%BD%9C%E6%88%90)
+[各ファイルの中身を作成](include_wp_flow.md#%E5%90%84%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%B8%AD%E8%BA%AB%E3%82%92%E4%BD%9C%E6%88%90)
 
-  [functions.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#functionsphp%E4%BD%9C%E6%88%90)
+  [functions.php](include_wp_flow.md#functionsphp%E4%BD%9C%E6%88%90)
 
-  [head.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#head%E6%83%85%E5%A0%B1%E4%BD%9C%E6%88%90)
+  [head.php](include_wp_flow.md#head%E6%83%85%E5%A0%B1%E4%BD%9C%E6%88%90)
 
-  [scripts.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#scriptsphp%E4%BD%9C%E6%88%90)
+  [scripts.php](include_wp_flow.md#scriptsphp%E4%BD%9C%E6%88%90)
 
-  [header.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#headerphp%E4%BD%9C%E6%88%90%E3%83%98%E3%83%83%E3%83%80%E3%83%BC%E3%83%8A%E3%83%93%E8%A8%AD%E5%AE%9A)
+  [header.php](include_wp_flow.md#headerphp%E4%BD%9C%E6%88%90%E3%83%98%E3%83%83%E3%83%80%E3%83%BC%E3%83%8A%E3%83%93%E8%A8%AD%E5%AE%9A)
 
-  [footer.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#footerphp%E4%BD%9C%E6%88%90)
+  [footer.php](include_wp_flow.md#footerphp%E4%BD%9C%E6%88%90)
 
-  [front-page.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#front-pagephp%E4%BD%9C%E6%88%90)
+  [front-page.php](include_wp_flow.md#front-pagephp%E4%BD%9C%E6%88%90)
 
-  [front-page.php - お知らせ](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#%E3%83%88%E3%83%83%E3%83%97%E3%83%9A%E3%83%BC%E3%82%B8%E5%86%85%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E4%B8%80%E8%A6%A7%E4%BD%9C%E6%88%90)
+  [front-page.php - お知らせ](include_wp_flow.md#%E3%83%88%E3%83%83%E3%83%97%E3%83%9A%E3%83%BC%E3%82%B8%E5%86%85%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E4%B8%80%E8%A6%A7%E4%BD%9C%E6%88%90)
 
-  [index.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#indexphp%E4%BD%9C%E6%88%90)
+  [index.php](include_wp_flow.md#indexphp%E4%BD%9C%E6%88%90)
 
-  [page.php](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/tsukada/coding_guidline/include_wp_flow.md#pagephp%E4%BD%9C%E6%88%90)
+  [page.php](include_wp_flow.md#pagephp%E4%BD%9C%E6%88%90)
 
 WordPress組み込み後チェック
 
@@ -56,7 +57,7 @@ WordPress組み込み後チェック
 
 ```text
 
-[Order1]
+[Order1-A]
   │
   │ // ▼ --- 今回追加するファイル
   ├ [parts]
@@ -85,13 +86,13 @@ WordPress組み込み後チェック
 
 トップ(index.html)：`front-page.php`
 
-ヘッダー:`header.php`
+ヘッダー：`header.php`
 
-フッター:`footer.php`
+フッター：`footer.php`
 
-head:`parts/head.php`
+head：`parts/head.php`
 
-Javascript関連:`parts/scripts.php`
+Javascript関連：`parts/scripts.php`
 
 プラポリ(privacy.html)：`page.php`
 
@@ -101,7 +102,7 @@ Javascript関連:`parts/scripts.php`
 
 問い合わせ完了(contact_complete.html)：`page.php`
 
-
+---
 <details>
 <summary>なぜトップをfront-page.phpにするか</summary>
 
@@ -147,13 +148,20 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 　かつ同じソースの固定ページ（投稿一覧ページ）が表出来上がる
 </details>
 
+---
 
 
 ## ■各ファイルを作成
 
-テーマプランに合わせファイルを振り分けた後、それぞれ空のPHPファイルを作成します。
-共通部分のコードはindex.html等からくり抜き作成します。
-プラポリ・お問い合わせ3ページ分は固定ページで作成するため、固定ページ出力用のファイル1つを用意します。
+テーマプランに合わせ各HTMLファイルをどのPHPへ振り分けるか決まりました。
+
+その後それぞれ空のPHPファイルを作成します。
+
+ヘッダー、フッター等の共通コードはトップページのindex.htmlから作成します。
+
+会社情報・プラポリ・お問い合わせ3ページ分は固定ページで作成するため、
+
+固定ページ出力用のPHPファイル1つを用意します。
 
 `functions.php`(必須)
 
@@ -181,10 +189,10 @@ PHPファイルにもトップページを表示可能なファイルが`index.p
 - style.css
 - functions.php
 - scripts.php
-- header.php: ページごとの動的クラス作成
+- header.php：ページごとの動的クラス作成
 - footer.php
 - front-page.php
-- front-page.php: ニュース一覧作成
+- front-page.php：ニュース一覧作成
 - index.php
 - page.php
 
@@ -214,24 +222,145 @@ License URI: テーマのライセンスのURI
 ▼ 例
 ```css
 /*
-Theme Name: Order1-A
-Description: This is Order1-A theme.
+Theme Name: 株式会社DEMO様用テーマ
+THeme URL: https://order1a.wpt-demo.com/
+Description: これは株式会社DEMO様用テーマです。
+Author: Bokuravo Inc.
+AuthorURI: https://bokuravo.co.jp/
 Version: 1.0
+License: WordPress Theme, Copyright 2020 Bokuravo Inc. Order1-A is distributed under the themes of the GNU GPL and Split license.
+License URI: GNU GPL Lv2:https://www.gnu.org/licenses/old-licenses/gpl-2.0.html / Split liesnce:スプリットライセンス表記のURL
 */
 ```
-
-余談：
-descriptionや管理画面内に「●●（自社名・自社サービス名）専用のWordPressテーマです」と明記してあると喜んでくださるクライアント様が多いようです。
-このような細かくケアを行うと他社との差別化に繋がりますので、なるべく対応出来ると良いかもです。
 
 
 ### functions.php作成
 
-`functions.php`に以下をそのまま記述します。
+`functions.php`のコードです。
+主にロゴ有効化設定、グローバルナビの設定等、管理画面メインメニューの表示切り替え設定があります。
+
+「投稿画面で本文編集エリアを非表示」はニュース投稿ページ用のコードです。
 
 ```php
 
-<?
+<?php
+// ************************************************
+//  カスタムロゴ
+// ************************************************
+
+// カスタムロゴ有効化設定
+add_theme_support('custom-logo');
+
+
+// ************************************************
+//  ナビゲーション
+// ************************************************
+add_action( 'after_setup_theme', 'register_custom_menus' );
+
+//ナビゲーションを登録する
+function register_custom_menus() {
+  register_nav_menus( array(
+    //この中にカスタムメニューを定義 '場所' => '説明'
+    'header_nav' => 'ヘッダーナビゲーション',
+    'footer_nav' => 'フッターナビゲーション'
+  ));
+}
+
+// ナビゲーションに説明が入力されていたら、サブタイトルとして表示
+add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
+function description_in_custom_nav_menu($item_output, $item){
+  return preg_replace('/(<a.*?>[^<]*?)</', '$1' . "<span class='h_nav__sub_text'>{$item->description}</span><", $item_output);
+}
+
+// ************************************************
+//  固定/投稿ページ内の画像URL等の絶対パスを相対パスに変更
+// ************************************************
+add_filter('the_content','img_short_path');
+function img_short_path($cont){
+  $cont = str_replace('"image/', '"' . get_bloginfo('template_directory') . '/dist/image/', $cont);
+  return $cont;
+}
+
+// ************************************************
+//  投稿画面で本文編集エリアを非表示
+// ************************************************
+add_action( 'init' , 'my_remove_post_editor_support' );
+function my_remove_post_editor_support() {
+  remove_post_type_support( 'post', 'editor' );
+}
+
+// ************************************************
+//  head内不要なタグを削除
+// ************************************************
+add_action( 'init' , 'head_Cleaneup' );
+
+function head_Cleaneup() {
+  // category feeds
+  remove_action( 'wp_head', 'rsd_link' );
+  // windows live writer(WP外部サービス利用時に情報取得に使うリンク)
+  remove_action( 'wp_head', 'wlwmanifest_link' );
+  // previous link(Microsoftが提供するブログエディター「Windows Live Writer」を使用する際のマニフェストファイルへのリンク生成を削除)
+  remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+  remove_action('wp_head','rest_output_link_wp_head');
+  remove_action('wp_head','wp_oembed_add_host_js');
+  // Embed(ver4.4からのoembedに対応するWP記事URLの引用機能)
+  remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
+  // start link
+  remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
+  // links for adjacent posts
+  remove_action('wp_head', 'wp_print_styles', 8);
+  // default cssの削除
+  remove_action('wp_head', 'index_rel_link');
+  // ページネーション rel="index" 削除
+  remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+  // WP version
+  remove_action( 'wp_head', 'wp_generator' );
+  // remove WP version from css
+  remove_action('wp_head', 'feed_links', 2);
+  // EditURI link
+  remove_action('wp_head', 'feed_links_extra', 3);
+  // post and comment feeds
+  remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+  // 前へ、次へボタンのリンク
+  remove_action('wp_head', 'print_emoji_detection_script', 7);
+  // remove emoji
+  remove_action('wp_print_styles', 'print_emoji_styles');
+  // remove emoji style css
+  wp_deregister_script('comment-reply');
+}
+
+// ************************************************
+//  ADMIN - LEFT SIDE MENU
+// ************************************************
+add_action( 'admin_menu', 'remove_menus', 999 );
+
+function remove_menus(){
+  global $current_user;
+
+  if(!($current_user->user_login=="tech_admin")) {
+    remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=category' ); // カテゴリー
+    remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=post_tag' ); // タグ
+    remove_menu_page( 'edit-comments.php' ); //コメント
+    remove_menu_page('edit.php?post_type=page' ); // 固定ページ
+    remove_menu_page('edit.php?post_type=acf-field-group' ); // Advanced custom field
+    remove_submenu_page('users.php', 'users.php'); // ユーザー一覧
+    remove_menu_page( 'plugins.php' ); //プラグインメニュー
+    remove_menu_page( 'tools.php' ); //ツールメニュー
+    remove_submenu_page( 'themes.php', 'themes.php' ); // テーマ
+    remove_submenu_page( 'themes.php', 'theme-editor.php' ); // テーマ直編集エディタ
+    remove_submenu_page( 'themes.php', 'nav-menus.php' ); // メニュー
+    remove_menu_page('wpcf7'); // お問い合わせ
+    remove_menu_page('wp-structuring-markup/wp-structuring-markup.php'); // Schema.org
+    remove_submenu_page('options-general.php', 'options-reading.php'); // 表示設定
+    remove_submenu_page('options-general.php', 'options-writing.php'); // 投稿設定
+    remove_submenu_page('options-general.php', 'options-media.php' ); // メディア設定
+    remove_submenu_page('options-general.php', 'options-discussion.php'); // ディスカッション設定
+    remove_submenu_page('options-general.php', 'options-permalink.php'); // パーマリンク設定
+    remove_submenu_page('options-general.php', 'akismet-key-config'); // Akismet（アンチスパム）
+    remove_submenu_page('options-general.php', 'rlrsssl_really_simple_ssl'); // SSL設定
+    remove_submenu_page('options-general.php', 'options-privacy.php'); // プライバシーポリシー設定
+  }
+}
 ```
 
 
@@ -257,19 +386,11 @@ descriptionや管理画面内に「●●（自社名・自社サービス名）
   <meta name="keywords" content="キーワード1,キーワード2,キーワード3">
   <meta name="description" content="<?php bloginfo('description');?>">
   <meta name="format-detection" content="telephone=no">
-  <meta property="og:title" content="<?php bloginfo('name');?>" />
-  <meta property="og:description" content="<?php bloginfo('description');?>" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="ja_JP" />
-  <meta property="og:url" content="<?php bloginfo('url');?>" />
-  <meta property="og:image" content="<?php echo $themePath; ?>img/ogp.png" />
-  <meta property="og:image:width" content="1200px" />
-  <meta property="og:image:height" content="630px" />
-  <meta name="twitter:card" content="summary_large_image">
   <title><?php bloginfo('name');?></title>
   <link rel="canonical" href="<?php bloginfo('url');?>">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="<?php echo $themePath; ?>css/reset.css">
   <link rel="stylesheet" href="<?php echo $themePath; ?>css/style.css">
-  <link rel="stylesheet" href="<?php echo $themePath; ?>css/swiper.min.css">
   <link rel="shortcut icon" href="<?php echo $themePath; ?>favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $themePath; ?>apple-touch-icon.png">
   <?php if(is_page('contact')): ?>
@@ -303,104 +424,148 @@ descriptionや管理画面内に「●●（自社名・自社サービス名）
 <?php
   $themePath = get_template_directory_uri().'/dist/';
 ?>
-
-// 各ファイルを読み込む
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="<?php echo $themePath; ?>js/common.bundle.js"></script>
+
+<?php if(is_front_page()) : ?> // TOPページであれば、以下のJSを読み込む
 <script src="<?php echo $themePath; ?>js/top.bundle.js"></script>
+<?php endif; ?>
 
-function my_scripts() {
-  wp_enqueue_style( 'style-name', get_template_directory_uri() . '/css/ファイル名.css', array(), '1.0.0', 'all' );
-  wp_enqueue_script( 'script-name', get_template_directory_uri() . '/js/jsファイル名.js', array( 'jquery' ), '1.0.0', true );
-  wp_enqueue_script( 'script-name', 'https://code.jquery.com/jquery-3.5.1.js', array(), '1.0.0', true ); // 外部URLを直接読み込む場合
-}
-add_action( 'wp_enqueue_scripts', 'my_scripts' );
+<?php if(is_page('contact')) : ?> // 音合わせページページ遷移関連コード
+<script>
+  $(function(){
+    var $formBackInput = $('.form__back-input');
+    var $formBackBtn = $('.form__back-btn');
+    var $formList = $('.form__list');
+    var $selectWrap = $('.select-wrap');
+
+    function confirmFn(){
+      $('.form__item .form__desc').each(function(){
+        var $this = $(this);
+        var $inputHidden = $this.find('input[type="hidden"]');
+        var val = $this.find('input[type="hidden"]').val();
+        if(!$inputHidden.length){
+          val = $this.find('textarea').val();
+        }
+        $this.find('.js-confirm').text(val).show();
+      });
+    }
+
+    function checkBackBtn(){
+      if($formBackInput.hasClass('wpcf7c-force-hide')){
+        $formBackBtn.hide();
+        $formList.removeClass('form__list--confirm');
+        $selectWrap.removeClass('confirmed');
+      }else{
+        $formBackBtn.show();
+        $formList.addClass('form__list--confirm');
+        $selectWrap.addClass('confirmed');
+        confirmFn();
+      }
+    }
+
+    checkBackBtn();
+    document.addEventListener( 'wpcf7submit', function() {
+      setTimeout(function(){
+        checkBackBtn();
+      }, 500);
+    });
+
+    document.addEventListener( 'wpcf7mailsent', function() {
+      window.scrollTo(0, 0);
+      $('.js-contact-main').hide();
+      $('.js-contact-complete').fadeIn();
+    }, false );
+
+    $('.wpcf7c-btn-back').on("click", function(){
+      $formBackBtn.hide();
+      $('.js-confirm').hide();
+    });
+  });
+</script>
+<?php endif; ?>
 ```
-
-`function my_scripts()`内、jQueryを読み込む必要がないライブラリの場合は`array()`の()内を空白にします。
-
-`array()`の右隣`'1.0.0'`は任意のバージョン番号です。（キャッシュクリア対策等の意味が含まれます）
 
 
 ### header.php作成、ヘッダーナビ設定
 
-`header.php`にパスとheader部分のHTMLの記述と、ヘッダーナビの表示設定をします。
-`<main>`の開始タグを最後に入れることを忘れないでください。
+まず完成例です。この後順に手順を説明します。
 
-
-### header.php作成
-
-以下のコードはヘッダーナビ以外は省略していますが、header.phpに入れる全コードです。
-共通化するためbodyタグの始まりと、mainタグの始まりもまとめて記述します。
-
-<details>
-<summary>header.phpの記述例</summary>
+`header.php`にPHP用の記述、header部分のHTMLの記述、ヘッダーナビの表示設定をします。
 
 ```php
+// header.php完成例
 
-// header.php
 <?php
   $themePath = get_template_directory_uri().'/dist/';
-  $postId = get_the_ID();// 投稿記事（ニュース）のIDを取得する
-  $pageClass = get_post_meta($postId, 'page-class', true);// bodyに設定するカスタムクラスを変数に入れる
+  $postId = get_the_ID();
+  $pageClass = get_post_meta($postId, 'page-class', true);
 ?>
-
 <!DOCTYPE html>
 <html lang="ja">
-
-<?php get_template_part( 'parts/head' ); ?>// head情報を呼び出す
-
-<?php if(is_front_page()):?>// front-page.phpを表示の時
+<?php get_template_part( 'parts/head' ); ?> // parts/head.phpを読み込む
+<?php if(is_front_page()):?> // if文開始。TOPページの場合
 <body class='top'>// bodyタグに「top」クラスを付与
 <?php else : ?>// それ以外のページの時は
 <body class='<?php echo $pageClass; ?>'>// 後に設定するカスタムクラスの値に応じてクラスを表示する
-<?php endif; ?>
+  <div class="allwrapper">
+    <header class="h js-sticky">
+      <div class="h_container">
+        <p class="h_logo">
+          <a class="h_logo__link" href="<?php bloginfo('url');?>"> // 管理画面で入力されてあるサイトURLを出力
+          <?php // カスタムロゴの出力コード
+            $custom_logo_id = get_theme_mod( 'custom_logo' );
+            $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+            if ( has_custom_logo() ) { // もしカスタムロゴ画像が入っていたら
+              echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '" class="h_logo__img">';
+            } else { // カスタムロゴがなくテキストロゴが入っていたら
+              echo get_bloginfo( 'name' );
+            }
+          ?>
+          </a>
+        </p>
+        <button class="h_nav__hamburger sp_show"><span class="h_nav__hamburger_icon"></span></button>
+        <nav class="h_nav">
+          <?php // カスタムメニュー設定
+            $headerNav =
+            array(
+              //カスタムメニュー名
+              'theme_location' => 'header_nav',
+              //ulを梱包する親divを非表示
+              'container' => false,
+              //カスタムメニューを設定しない際に固定ページでメニューを作成しない
+              'fallback_cb' => false,
+              // 出力される要素の中のulにメニュークラスを付ける
+              'menu_class' => 'h_nav__list',
+            );
+            wp_nav_menu( $headerNav );0 // ヘッダーナビゲーションを出力
+          ?>
+        </nav>
+      </div>
+    </header>
 
-<div class="allwrapper">
-  // 省略
-
-  <nav class="header__nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-    <?php 
-      $headerNav =
-      array(
-        //カスタムメニュー名
-        'theme_location' => 'header_nav',
-        //ulを梱包する親divを非表示
-        'container' => false,
-        //カスタムメニューを設定しない際に固定ページでメニューを作成しない
-        'fallback_cb' => false,
-        // 出力される要素の中のulにメニュークラスを付ける
-        'menu_class' => 'h_nav__list',
-      );
-      wp_nav_menu( $headerNav );
-    ?>
-   </nav>
-
-</header>
-
-<main class="m">
+    <main class="m">
 ```
-</details>
 
 **ヘッダーナビ作成手順**
 
 1. functions.phpにナビゲーションメニューの有効化設定を書く
-2. 管理画面左メニュー > 外観 > メニュー からナビゲーションメニューを登録
-3. PHP側の出力設定
+2. PHP側の出力設定を追加する（上記のコード）
+3. 管理画面左メニュー > 外観 > メニュー からヘッダーナビゲーションを登録
 
 
 ### 1. functions.phpにナビゲーションメニューの有効化設定を書く
 
 詳細な説明は[こちら](https://wp-fan.com/wordpress/register-custom-menu/)
 
-functions.php内に以下を例に記述します。
+functions.php内の以下のコードです。
 このコードを書くことにより、初めて管理画面内でメニュー登録が行えるようになります。
 
-`array()`内の`header_nav`、`footer_nav`はそれぞれ任意の名前に変更して構いません。
-ただし、どのメニューか分かるように命名してください。
+`array()`内の`header_nav`、`footer_nav`はそれぞれ任意の名前に変更して構いませんが、
+どのメニューか分かるように命名してください。
 
 <details>
-<summary>functions.phpの記述例</summary>
+<summary>functions.php ナビゲーション設定の記述例</summary>
 
 ```php
 
@@ -426,26 +591,7 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 </details>
 
 
-### 2.ナビゲーションメニューを登録
-
-管理画面左メニュー > 外観 > メニュー
-
-「新しいメニューを作成しましょう」のリンクをクリックし、メニューを新規作成します。
-メニュー名には1で設定したメニュー名を入れましょう。
-その後CSS class(オプション)に、HTML側のliタグの指定しているクラス名を入れます。
-
-![管理画面から出力したグローバルメニューのliタグにクラスを付ける](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/li-add-class.png)
-
-もしメニューに日本語＋英語等のサブタイトルが入る場合は「説明」のテキストエリアにサブタイトルのテキストを入力します。
-完了後、メニューの出力位置にチェックをつけます。
-
-![メニュー作成例](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/custommenu1.png?raw=true)
-
-※上記の作成例のリンクは、アンカーリンクを指定しています。
-※ヘッダー、フッター等でそれぞれ異なるスタイルのメニューが必要な場合は必要分メニューを作成します。
-
-
-### 3. PHP側の出力設定
+### 2. PHP側の出力設定
 
 `theme_location`の値は1で設定したメニュー名を入れます。
 ※コード内のクラス名はテンプレに合わせて変更してください。
@@ -476,16 +622,37 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 </details>
 
 
+### 3.ナビゲーションメニューを登録
+
+管理画面左メニュー > 外観 > メニュー
+
+「新しいメニューを作成しましょう」のリンクをクリックし、メニューを新規作成します。
+メニュー名には1で設定したメニュー名（ここではheader_nav）を入れましょう。
+その後CSS class(オプション)に、HTML側のliタグの指定しているクラス名を入れます。
+
+![管理画面から出力したグローバルメニューのliタグにクラスを付ける](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/li-add-class.png)
+
+もしメニューに日本語＋英語等のサブタイトルが入る場合は「説明」のテキストエリアにサブタイトルのテキストを入力します。
+完了後、メニューの出力位置にチェックをつけます。
+
+![メニュー作成例](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/custommenu1.png?raw=true)
+
+※上記の作成例のリンクは、アンカーリンクを指定しています。
+※ヘッダー、フッター等でそれぞれ異なるスタイルのメニューが必要な場合は必要分メニューを作成します。
+
+
 ### footer.php作成
 
+まずは完成例です。
+
 先程の`header.php`と同じ要領でfooter.phpを作成します。
-以下は完成例のコード例です。
+
 管理画面側のナビゲーション設定はヘッダーナビと同じ手順なため割愛します。
 
 ※コード内のクラス名はテンプレに合わせて変更してください。
 
 <details>
-<summary>footer.phpの記述例</summary>
+<summary>footer.phpの完成例</summary>
 
 ```php
 
@@ -554,8 +721,128 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 
 ### front-page.php作成
 
+以下完成例です。
+
+コード量が多いため順に説明します。
+
+<details>
+<summary>footer.phpの完成例</summary>
+```php
+
+// front-page.php
+<?php
+	$themePath = get_template_directory_uri().'/dist/';
+?>
+
+<?php get_header(); ?>
+<section class="first_view js-firstview">
+	<div class="first_view__list">
+		<div class="first_view__item">
+			<figure class="first_view__image_box"><img class="first_view__image pc_show" src="<?php echo $themePath; ?>image/fv_image@2x.jpg" alt="ファーストビューイメージ"><img class="first_view__image sp_show" src="<?php echo $themePath; ?>image/fv_image_sp@2x.jpg" alt="ファーストビューイメージ"></figure>
+			<div class="container wrapper first_view__container">
+				<h1 class="first_view__catch">Site production<br>tailored to customers</h1>
+				<p class="first_view__subcatch">Design / web template</p>
+			</div>
+		</div>
+	</div>
+	<p class="first_view__scroller"><span class="first_view__scroller_text">Scroll</span></p>
+</section>
+<section class="philosophy bg_white">
+	<div class="container wrapper">
+		<h2 class="philosophy__title">
+			<p class="philosophy__title_text--sub">Philosophy</p>
+			<p class="philosophy__title_text">選び続けられる価値のある<br>テーマを提供する</p>
+		</h2>
+		<div class="philosophy__detail">
+			<p class="philosophy__detail_text">ここには1行推奨30〜35文字のテキストが入ります。ここには1行推奨30〜35文字のテキストが入ります。<br><br>ここには1行推奨30〜35文字のテキストが入ります。ここには1行推奨30〜35文字のテキストが入ります。<br><br>ここには1行推奨30〜35文字のテキストが入ります。ここには1行推奨30〜35文字のテキストが入ります。</p>
+			<a class="main_button" href="<?php bloginfo('url');?>/about">View More</a>
+		</div>
+	</div>
+</section>
+<section class="service bg_gray" id="service">
+	<div class="container wrapper">
+		<h2 class="main_title">Service<span class="main_title--sub">事業内容</span></h2>
+		<ul class="service__card">
+			<li class="service_card__item">
+				<figure class="service_card__image_wrapper"><img class="service_card__image" src="<?php echo $themePath; ?>image/card_image.jpg" alt="ここに画像が入ります。"></figure>
+				<div class="service_card__body">
+					<h3 class="service_card__title">見出しテキスト</h3>
+					<p class="service_card__text">ここには1行推奨30〜35文字のテキストが入ります。ここには1行推奨30〜35文字のテキストが入ります。</p>
+				</div>
+			</li>
+			<li class="service_card__item">
+				<figure class="service_card__image_wrapper"><img class="service_card__image" src="<?php echo $themePath; ?>image/card_image.jpg" alt="ここに画像が入ります。"></figure>
+				<div class="service_card__body">
+					<h3 class="service_card__title">見出しテキスト</h3>
+					<p class="service_card__text">ここには1行推奨30〜35文字のテキストが入ります。ここには1行推奨30〜35文字のテキストが入ります。</p>
+				</div>
+			</li>
+			<li class="service_card__item">
+				<figure class="service_card__image_wrapper"><img class="service_card__image" src="<?php echo $themePath; ?>image/card_image.jpg" alt="ここに画像が入ります。"></figure>
+				<div class="service_card__body">
+					<h3 class="service_card__title">見出しテキスト</h3>
+					<p class="service_card__text">ここには1行推奨30〜35文字のテキストが入ります。ここには1行推奨30〜35文字のテキストが入ります。</p>
+				</div>
+			</li>
+			<li class="service_card__item">
+				<figure class="service_card__image_wrapper"><img class="service_card__image" src="<?php echo $themePath; ?>image/card_image.jpg" alt="ここに画像が入ります。"></figure>
+				<div class="service_card__body">
+					<h3 class="service_card__title">見出しテキスト</h3>
+					<p class="service_card__text">ここには1行推奨30〜35文字のテキストが入ります。ここには1行推奨30〜35文字のテキストが入ります。</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+</section>
+<section class="news bg_white" id="news">
+	<div class="container wrapper">
+		<h2 class="main_title">News<span class="main_title--sub">ニュース</span></h2>
+		<ul class="news__list">
+
+			<?php
+				$args = array(
+					'posts_per_page' => 3
+				);
+				$posts = get_posts( $args );
+				foreach ( $posts as $post ):
+				$postId = get_the_ID();
+				$linkUrl = get_post_meta($postId, 'link_url', true);
+				setup_postdata( $post );
+			?>
+			<?php if(empty($linkUrl)) : ?>
+			<li class="news_list__item">
+				<span class="news_list__inner">
+					<time class="news_list__date"><?php the_time( 'Y.m.d' ); ?></time>
+					<p class="news_list__text"><?php the_title();?></p>
+				</span>
+			</li>
+			<?php else : ?>
+			<li class="news_list__item">
+				<a class="news_list__link" href="<?php echo $linkUrl; ?>">
+					<time class="news_list__date"><?php the_time( 'Y.m.d' ); ?></time>
+					<p class="news_list__text"><?php the_title();?></p>
+				</a>
+			</li>
+			<?php endif; ?>
+
+			<?php
+				endforeach;
+				wp_reset_postdata();
+			?>
+		</ul>
+	</div>
+</section>
+<section class="contact theme_color">
+	<div class="container wrapper">
+		<h2 class="main_title main_title--white contact__title">Contact<span class="main_title--sub">お問い合わせ</span></h2>
+		<p class="contact__text">お気軽にご相談ください</p><a class="contact__button" href="<?php bloginfo('url');?>/contact">お問い合わせはコチラ</a>
+	</div>
+</section>
+<?php get_footer(); ?>
+```
+</details>
+
 `front-page.php`にHTMLコーディングを行ったディレクトリ内のファイルを読み込むためのパスを記述します。
-この`get_template_directory_uri()`タグは、WP独自の関数で、動的にテーマディレクトリのパスを出力してくれます。
 
 ```php
 
@@ -564,8 +851,12 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 ?>
 ```
 
+この`get_template_directory_uri()`タグは、WP独自の関数で、動的にテーマディレクトリのパスを出力してくれます。
+
 次に上の記述の下に`<?php get_header(); ?>`を、
+
 一番最後に`<?php get_footer(); ?>`を記述します。
+
 それぞれのタグは外部ファイルに分けたヘッダー、フッターを呼び出すWP独自の関数です。
 
 
@@ -583,6 +874,9 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 `<?php get_header(); ?>`の下に、`dispt/ index.html`のメインコンテンツのコードを全コピペします。
 
 その後`<img>` `<a>`タグのパスをそれぞれ変更します。
+
+こうすることにより、ドメインが変わった場合でも自動で取得・出力してくれるため修正の手間が減ります。
+
 最終的に全てのリンクパス、画像パスは以下のようになれば大丈夫です。
 
 ```php
@@ -596,10 +890,10 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 
 <section>
 
-  // imgタグのパス変更
+  // imgタグのパス
   <img src="<?php echo $themePath; ?>img/image.jpg">
 
-  // aタグのパス変更
+  // aタグのパス
   <a href="<?php echo $linkUrl; ?>">
 
 </section>
@@ -659,17 +953,11 @@ add_filter('walker_nav_menu_start_el', 'description_in_custom_nav_menu', 10, 4);
 
 ### index.php作成
 
-index.phpは必須ファイルなためニュース一覧が必要ない場合でも中身を作成します。
+index.phpは必須ファイルなため空でも中身を作成します。
 
 ```php
 
-<?php
-/*
-* Order1-A:トップページ用テンプレート
-*/
-get_header(); ?>
-
-<?php get_footer(); ?>
+<?php ?>
 ```
 
 
@@ -689,16 +977,13 @@ PHP側に出力するクラスは`header.php`の中身を作成した段階で�
 
 ### 1. page.phpの中身を作成
 
-`page.php`を`front-page.php`と同じようにヘッダー、フッター、中身を用意します。
-
-<details>
-<summary>page.php 記述例</summary>
+page.php 記述例
 
 ```php
 
 <?php
 /*
-* Template Name: Order1-A
+* Template Name: Order1-A theme
 */
 get_header();
 ?>
@@ -710,7 +995,6 @@ endif;
 ?>
 <?php get_footer(); ?>
 ```
-</details>
 
 
 
@@ -767,13 +1051,15 @@ endif;
 ### お問い合わせメニューからフォームを新規作成
 
 主にお問い合わせのパーツ部分となるHTMLだけ抜き出します。
-以下の入力例を参考に、入力エリアのタグを専用タグに書き換えます。入力タグの次に`<p class="js-confirm"></p>`を1つ入れます。
-このタグは確認ページ用のスタイルに必要になります。
+
+以下の入力例を参考に、入力エリアのタグを専用タグに書き換えます。
+
+入力タグの次に`<p class="js-confirm"></p>`を1つ入れます。（確認ページのスタイル用に必要）
 
 ![コンタクトフォーム作成例](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/contactform1.png?raw=true)
 
 <details>
-<summary>コンタクトフォーム 記述例全コード</summary>
+<summary>コンタクトフォーム 記述例</summary>
 
 ```html
 <dl class="form__item">
@@ -828,6 +1114,7 @@ endif;
 ### メールタブ設定
 
 各入力欄にメールの送信設定を行います。
+
 以下を参考に案件ごとに書き換えて使用してください。
 
 | メール |  |
@@ -838,17 +1125,18 @@ endif;
 
 <details>
 <summary>メッセージ本文</summary>
+Order1-Aデモサイトからお問い合わせがありました。
+
 ━━━━━━□■□　お問い合わせ内容　□■□━━━━━━
 
-・お問い合わせ内容の種類：[type]
-・貴社名：[company_name]
+・貴社名：[company-name]
 ・お名前：[user-name]
 ・電話番号︰[tel]
-・メールアドレス：[mail]
+・メールアドレス：[email]
 ・お問い合わせ内容：
 [content]
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 </details>
 
 ---
@@ -856,29 +1144,28 @@ endif;
 | メール（2）自動返信メール |  |
 | ------------- | ------------- |
 | 送信先  | [email] |
-| 送信元  | 送信名 <送信用アドレス>  |
+| 送信元  | Order1-Aデモサイト <info@order1a.wpt-demo.com>  |
 | 題名  | お問い合わせ受け付け完了のお知らせ |
 
 <details>
 <summary>メッセージ本文</summary>
 
-※このメールはシステムからの自動返信です
+※このメールはシステムからの自動返信です。
+ご返信いただいてもお答えできませんのでご了承ください。
 
 [user-name] 様
 
-株式会社DEMOでございます。
-
+Order1-Aテーマデモサイトでございます。
 以下の内容でお問い合わせを受け付けいたしました。
 詳しい回答は、できる限り早急に担当よりご連絡差し上げます。
 今しばらくお待ちくださいませ。
 
------□■□ お問い合わせ内容 □■□-----
+-----□■□ お問い合わせ内容 □■□------------
 
-・お問い合わせ内容の種類：[type]
-・貴社名：[company_name]
+・貴社名：[company-name]
 ・お名前：[user-name]
 ・電話番号︰[tel]
-・メールアドレス：[mail]
+・メールアドレス：[email]
 ・お問い合わせ内容：[content]
 
 ----------------------------------------
@@ -886,7 +1173,7 @@ endif;
 
 ——————————————————————————
 【会社情報】
-株式会社DEMO
+Order1-A
 住所：〒123-4567
 東京都渋谷区渋谷1-1-1オーダービル1F
 電話番号 01-1234-5678
