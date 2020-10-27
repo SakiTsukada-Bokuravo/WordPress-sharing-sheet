@@ -35,11 +35,11 @@ WPテーマはそれ単体だけでは動かず、WPの環境がないと動か�
 
 | 対象テーマ名 | ライセンスの種類 | ライセンスが明記されたURL |
 | ------------- | ------------- | ------------- |
-| SANGO | スプリットライセンス | [https://saruwakakun.com/sango/term](https://saruwakakun.com/sango/term) |
-| DigiPress全テーマ | スプリットライセンス | [https://digipress.info/regulation/about-license/](https://digipress.info/regulation/about-license/) |
+| SANGO | スプリットライセンス(PHPファイルのみGPL) | [https://saruwakakun.com/sango/term](https://saruwakakun.com/sango/term) |
+| DigiPress全テーマ | スプリットライセンス(PHPファイルのみGPL) | [https://digipress.info/regulation/about-license/](https://digipress.info/regulation/about-license/) |
 | LIQUID DESIGN | GPLライセンス（GPL互換ライセンスを含む） | [https://lqd.jp/wp/license.html](https://lqd.jp/wp/license.html) |
-| lightning | 100% GPL(無料版) / スプリットライセンス（Pro版：PHPファイルのみGPL） | [https://vws.vektor-inc.co.jp/contact/faq](https://vws.vektor-inc.co.jp/contact/faq) |
-| TCD | スプリットライセンス（PHPファイルのみGPL） | [https://tcd-theme.com/license_standard](https://tcd-theme.com/license_standard) |
+| lightning | 無料版：100% GPL / Pro版：スプリットライセンス(PHPファイルのみGPL) | [https://vws.vektor-inc.co.jp/contact/faq](https://vws.vektor-inc.co.jp/contact/faq) |
+| TCD | スプリットライセンス(PHPファイルのみGPL) | [https://tcd-theme.com/license_standard](https://tcd-theme.com/license_standard) |
 
 比較すると1サイト1ライセンスの販売サイトが多いです。
 その他ユニークな点としては、テーマ自体は無料だが手厚いサポートを受けられるサービスに対して課金する手法を取っている販売サイトも見かけました。
@@ -54,74 +54,105 @@ WPテーマはそれ単体だけでは動かず、WPの環境がないと動か�
 
 ざっくりとしたライセンスページもあれば、TCDやDigiPressのように細かくライセンスを定めているサイト等幅が広いです。
 
-スプリットライセンスを適用しているサイトで主に共通しているのはこれらでした。
-
-- 1サイト1ライセンスであること
-- 発行されたプロダクションキーを反映することで購入したサービスを受けられる手法
-- ライセンスあり、なしのテーマの見た目が2パターン存在する
-
 <details>
 <summary>SANGO</summary>
 1. 動作ブラウザ
 2. ライセンスについて
-   - 請負の場合1クライアントごとに1ライセンスが必要
+  - 請負の場合1クライアントごとに1ライセンスが必要
+
 3. 購入について
+
 4. キャンセル・返金について
+
 5. サポートについて
+
 6. 免責事項
+
 7. お問い合わせ
 </details>
 
 <details>
 <summary>DigiPress全テーマ</summary>
 1. ライセンスについて
+
   - 請負の場合1クライアントごとに1ライセンスが必要
+
   - 購入後プロダクトキーが発行されて、管理画面から認証を行うと各種購入オプションが利用可能になる
+
 2. ライセンス未認証の制限について
+
   - サイトのフッターにクレジット表記のリンクが出る
+
   - テーマの「ビジュアル設定画面」および「詳細設定画面」が表示されずカスタマイズができない
+
   - WordPress管理画面からテーマのアップデート情報を取得できない
+
   - WordPress管理画面からテーマの自動アップデートが行えない
+
 3. プラグインの制限事項
+
   - 一部のショートコード機能を利用した表示とともに “DigiPress Ex – Shortcodes” というクレジット表記のリンクが挿入される
+
   - 一部のショートコードが利用できない
+
   - WordPress管理画面からプラグインのアップデート情報を取得できない
+
   - WordPress管理画面からプラグインの自動アップデートが行えない
+
 4. クライアントライセンスについて
+
   - 第三者向けのサイトとして制作を請け負うなどの商用利用をする場合は、DigiPressテーマのクライアントライセンスを別途申請(ご購入)する必要がある
+
 5. クライアントライセンスの適用範囲
+
   - クライアントライセンス使用上の禁止事項
+
 6. クライアントライセンス料金
 </details>
 
 <details>
 <summary>LIQUID DESIGN</summary>
 1. GPLライセンス（GPL互換ライセンスを含む）
+
 2. 1ライセンス/無制限、改変、再販自由
+
 3. 開発状況の公開
 </details>
 
 <details>
 <summary>lightning</summary>
 1. 100% GPLライセンス（GPL互換ライセンスを含む）
+
 2. 1ライセンス/無制限、改変、再販、請負制作自由
+
 3. 有償商品の複数サイト使用OK
-3. ライセンスキーの複数サイト使用Ok、配布はNG
+
+4. ライセンスキーの複数サイト使用Ok、配布はNG
 </details>
 
 <details>
 <summary>TCD</summary>
 1. テーマ利用者の選別
+
 2. テーマの使用許諾及び利用条件
+
 3. アップデート、サポート
-3. 禁止事項
-4. 権利の帰属
-5. 無保証
-6. 免責
-7. 規約違反
-8. 制作代行に関する特則と違反
-9. 本規約の変更
-10. 違約金
+
+4. 禁止事項
+
+5. 権利の帰属
+
+6. 無保証
+
+7. 免責
+
+8. 規約違反
+
+9. 制作代行に関する特則と違反
+
+10. 本規約の変更
+
+11. 違約金
 </details>
 
 
