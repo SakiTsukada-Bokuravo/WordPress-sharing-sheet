@@ -279,6 +279,79 @@ URL：ドメインの箇所のみをそのサイトのドメインに合わせ�
 ![admin barを非表示にする](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/user-admin-bar.jpg?raw=true)
 
 
+## 4-7. 構造化マークアップの設定
+
+[Markup(JSON-LD)](https://ja.wordpress.org/plugins/wp-structuring-markup/)を設定します。
+
+プラグイン追加後、管理画面のメインメニューに「Schema.org設定」というメニューが追加されます。
+
+これをクリックすると、サブメニューに「Schema.org List」と「Schema.org Config」が現れますので、「Schema.org List」をクリックしページを移動します。
+
+![Schema.orgメニュー](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/schema1.jpg?raw=true)
+
+
+### Schema.org List
+
+Schema設定一覧が表示されます。ここから各構造化マークアップの設定に移ります。
+
+設定上で分からない点があれば、各設定ページ内の最下部に[schema.org公式サイト](https://schema.org/BreadcrumbList)と[Google構造化マークアップ](https://developers.google.com/search/docs/data-types/breadcrumb?hl=ja)のドキュメントがあるので、そちらを参考にお願いします。
+
+![Schema.org List](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/schema2.jpg?raw=true)
+
+設定するのは、赤枠で囲った箇所です。囲っていない箇所は、メディア系のサイト用に使われそうな設定や、ニュースの詳細ページがあるサイトで設定します。
+
+このように自分のサイトに必要な項目だけ設定することができます。
+
+**Schema.org Type List**
+
+| TYPE | 内容 |
+| --- | --- |
+Article | 記事一般で、ニュースやブログ投稿も含まれる |
+Blog posting | ブログ投稿 |
+Breadcrumb | 各ページのパンくず |
+Event | イベント情報 |
+Local Business | 店舗やオフィスの営業情報 |
+News Article | ニュース記事 |
+Organization | 企業・組織情報 |
+Person | サイト管理者情報 |
+Site Navigation | グローバルメニューのようなサイトナビゲーション |
+Video | 動画コンテンツ |
+Web Site | ウェブサイト情報 |
+
+### 4-7-1. Breadcrumb - パンくず
+
+![Schema.org Breadcrumb設定簡易説明](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/schema3.jpg?raw=true)
+
+一部詳細に説明します。
+
+**①HOMEをパンくずに含めるか**
+
+基本的に決まりはないですが、下層ページに移動した際に、一般的にTOPも含めてパンくずを表示しているサイトが多いので、チェックを入れます。
+
+**②HOMEの表示名**
+
+TOPや、HOMEなど名称で何のページか判断できるようであれば特に決まりはないですが、ここではTOPで統一します。
+
+**③どちらのURLをリンクにするか**
+
+`home_url()`と`site_url()`の違い
+
+`home_url()`：サイトTOPのアドレスです。例：order1a.wpt-demo.com
+
+`site_url()`：WPがインストールされているアドレスです。例：order1a.wpt-demo.com/wp/
+
+BokuravoのWP案件では、セキュリティの観点からWPをインストールするのにドメイン直下に入れず、サブディレクトリを作りその中にインストールします。
+
+そのためサイトアドレス（site_url()）が例のようにサブディレクトリのURLまで出てしまいますので`home_url()`にチェックを入れます。
+
+**④パンくずに現在表示中のページを含めるか**
+
+一般的に現在表示中のページも含めてパンくずが出力されているサイトが多いので、合わせてチェックを入れます。
+
+**⑤WPテーマ上にショートコードで出力する場合現在表示中のページにリンクを付けるか＆⑥WPテーマ上に出力する場合のショートコード**
+
+テーマ上には貼り付けないので、チェックは入れずそのままです。
+
 # 5. デバッグ
 
 作業項目を簡単にリストアップしましたので、作業の最終確認時に確認してください。
