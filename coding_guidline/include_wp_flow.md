@@ -23,27 +23,29 @@ HTMLサイトをWPで組み込み、最終的にWEBブラウザで表示する�
 
 [各ファイルを作成](include_wp_flow.md#%E5%90%84%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90)
 
-  [style.css テーマ宣言](include_wp_flow.md#stylecss%E3%81%AB%E3%83%86%E3%83%BC%E3%83%9E%E5%AE%A3%E8%A8%80)
+[style.css テーマ宣言](include_wp_flow.md#stylecss%E3%81%AB%E3%83%86%E3%83%BC%E3%83%9E%E5%AE%A3%E8%A8%80)
 
 [各ファイルの中身を作成](include_wp_flow.md#%E5%90%84%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E4%B8%AD%E8%BA%AB%E3%82%92%E4%BD%9C%E6%88%90)
 
-  [functions.php](include_wp_flow.md#functionsphp%E4%BD%9C%E6%88%90)
+[functions.php](include_wp_flow.md#functionsphp%E4%BD%9C%E6%88%90)
 
-  [head.php](include_wp_flow.md#head%E6%83%85%E5%A0%B1%E4%BD%9C%E6%88%90)
+[head.php](include_wp_flow.md#head%E6%83%85%E5%A0%B1%E4%BD%9C%E6%88%90)
 
-  [scripts.php](include_wp_flow.md#scriptsphp%E4%BD%9C%E6%88%90)
+[scripts.php](include_wp_flow.md#scriptsphp%E4%BD%9C%E6%88%90)
 
-  [header.php](include_wp_flow.md#headerphp%E4%BD%9C%E6%88%90%E3%83%98%E3%83%83%E3%83%80%E3%83%BC%E3%83%8A%E3%83%93%E8%A8%AD%E5%AE%9A)
+[header.php](include_wp_flow.md#headerphp%E4%BD%9C%E6%88%90%E3%83%98%E3%83%83%E3%83%80%E3%83%BC%E3%83%8A%E3%83%93%E8%A8%AD%E5%AE%9A)
 
-  [footer.php](include_wp_flow.md#footerphp%E4%BD%9C%E6%88%90)
+[footer.php](include_wp_flow.md#footerphp%E4%BD%9C%E6%88%90)
 
-  [front-page.php](include_wp_flow.md#front-pagephp%E4%BD%9C%E6%88%90)
+[front-page.php](include_wp_flow.md#front-pagephp%E4%BD%9C%E6%88%90)
 
-  [front-page.php - お知らせ](include_wp_flow.md#%E3%83%88%E3%83%83%E3%83%97%E3%83%9A%E3%83%BC%E3%82%B8%E5%86%85%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E4%B8%80%E8%A6%A7%E4%BD%9C%E6%88%90)
+[front-page.php - お知らせ](include_wp_flow.md#%E3%83%88%E3%83%83%E3%83%97%E3%83%9A%E3%83%BC%E3%82%B8%E5%86%85%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E4%B8%80%E8%A6%A7%E4%BD%9C%E6%88%90)
 
-  [index.php](include_wp_flow.md#indexphp%E4%BD%9C%E6%88%90)
+[index.php](include_wp_flow.md#indexphp%E4%BD%9C%E6%88%90)
 
-  [page.php](include_wp_flow.md#pagephp%E4%BD%9C%E6%88%90)
+[page.php](include_wp_flow.md#pagephp%E4%BD%9C%E6%88%90)
+
+[構造化マークアップの設定]()
 
 WordPress組み込み後チェック
 
@@ -1232,6 +1234,79 @@ Order1-A
 </section>
 ```
 </details>
+
+## ■構造化マークアップの設定
+
+[Markup(JSON-LD)](https://ja.wordpress.org/plugins/wp-structuring-markup/)を設定します。
+
+プラグイン追加後、管理画面のメインメニューに「Schema.org設定」というメニューが追加されます。
+
+これをクリックすると、サブメニューに「Schema.org List」と「Schema.org Config」が現れますので、「Schema.org List」をクリックしページを移動します。
+
+![Schema.orgメニュー](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/schema1.jpg?raw=true)
+
+
+### Schema.org List
+
+Schema設定一覧が表示されます。ここから各構造化マークアップの設定に移ります。
+
+設定上で分からない点があれば、各設定ページ内の最下部に[schema.org公式サイト](https://schema.org/BreadcrumbList)と[Google構造化マークアップ](https://developers.google.com/search/docs/data-types/breadcrumb?hl=ja)のドキュメントがあるので、そちらを参考にお願いします。
+
+![Schema.org List](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/schema2.jpg?raw=true)
+
+設定するのは、赤枠で囲った箇所です。囲っていない箇所は、メディア系のサイト用に使われそうな設定や、ニュースの詳細ページがあるサイトで設定します。
+
+このように自分のサイトに必要な項目だけ設定することができます。
+
+**Schema.org Type List**
+
+| TYPE | 内容 |
+| --- | --- |
+Article | 記事一般で、ニュースやブログ投稿も含まれる |
+Blog posting | ブログ投稿 |
+Breadcrumb | 各ページのパンくず |
+Event | イベント情報 |
+Local Business | 店舗やオフィスの営業情報 |
+News Article | ニュース記事 |
+Organization | 企業・組織情報 |
+Person | サイト管理者情報 |
+Site Navigation | グローバルメニューのようなサイトナビゲーション |
+Video | 動画コンテンツ |
+Web Site | ウェブサイト情報 |
+
+### ◇Breadcrumb - パンくず
+
+![Schema.org Breadcrumb設定簡易説明](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/schema3.jpg?raw=true)
+
+一部詳細に説明します。
+
+**①HOMEをパンくずに含めるか**
+
+基本的に決まりはないですが、下層ページに移動した際に、一般的にTOPも含めてパンくずを表示しているサイトが多いので、チェックを入れます。
+
+**②HOMEの表示名**
+
+TOPや、HOMEなど名称で何のページか判断できるようであれば特に決まりはないですが、ここではTOPで統一します。
+
+**③どちらのURLをリンクにするか**
+
+`home_url()`と`site_url()`の違い
+
+`home_url()`：サイトTOPのアドレスです。例：order1a.wpt-demo.com
+`site_url()`：WPがインストールされているアドレスです。例：order1a.wpt-demo.com/wp/
+
+BokuravoのWP案件では、セキュリティの観点からWPをインストールするのにドメイン直下に入れず、サブディレクトリを作りその中にインストールします。
+
+そのためサイトアドレス（site_url()）が例のようにサブディレクトリのURLまで出てしまいますので`home_url()`にチェックを入れます。
+
+**④パンくずに現在表示中のページを含めるか**
+
+一般的に現在表示中のページも含めてパンくずが出力されているサイトが多いので、合わせてチェックを入れます。
+
+**⑤＆⑥**
+
+テーマ上には貼り付けないので、チェックは入れずそのままです。
+
 
 ## ■WordPress組み込み後チェック
 
