@@ -1241,40 +1241,212 @@ Order1-A
 
 
 
-## ■(Order2以降の内容-未完)ニュース一覧ページ作成
+## ■(Order2以降の内容-未完)ニュース階層ページ作成
 
-archive.phpに作成する方向です。
+### ニュース一覧ページの作成
+
+archive.phpに作成します。
 
 <details>
-<summary>記述例（未完）</summary>
+<summary>記述例（WPラビット探偵用コードより）</summary>
 
 ```php
 
-<?php get_header(); ?> // header読み込み
+<!-- archive.php -->
+<?php
+// テンプレートがあるかをチェック
+$url = $_SERVER['REQUEST_URI'];
+$url = explode('?', $url);
+$url = $url[0];
 
-<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
+$path = get_template_directory() . substr($url, 0, strlen($url) - 1) . '.php';
+if (file_exists($path)) {
+    include($path);
+    exit();
+}
 
-// 1記事カード分のコードを入れる。日付・カテゴリー等のオプションは必要に応じて。
-<div class="article">
- <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
- <div class="date"><?php echo get_the_date('Y.m.d'); ?></div>
- <div class="category"><?php the_category(); ?></div>
- <div class="tag"><?php the_tags(); ?></div>
- <div class="sentence"><?php the_content(); ?></div>
-</div>
-
-// ページャー
-<div class="pager">
- <div><?php previous_posts_link('前のページ'); ?></div>
- <div><?php next_posts_link('次のページ'); ?></div>
-</div>
-
-// 投稿記事がない場合の表示
-<?php endwhile; else: ?>
-  <div>お知らせがありませんでした。</div>
+// index.phpを付加して検索
+$path = get_template_directory() . $url . '/index.php';
+if (file_exists($path)) {
+    include($path);
+    exit();
+}
+?>
+<?php get_header(); ?>
+<section class="archive archive_topic">
+  <h2 class="h2">News<span>ニュース一覧</span></h2>
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+  <?php
+  $loop
+  ?>
+   <?php the_posts_pagination(); ?>
+<?php endwhile; ?>
+<?php else : ?>
+<p>まだ投稿された記事がないようです。</p>
+</section>
 <?php endif; ?>
+<?php get_footer(); ?>
+```
+</details>
 
-<?php wp_footer(); ?>
 
+### ニュース詳細ページの作成
+
+正式なデザインが決まっていないため、必要な内容を出力するコードを記載します。
+
+### 出力する内容
+- ページタイトル（post_typeによって表示分岐）
+- ニュースタイトル
+- 投稿日
+- サムネイル画像有無によって表示分岐
+- 本文表示
+
+<details>
+<summary>記述例（WPラビット探偵用コードより）</summary>
+
+```php
+
+<?php get_header(); ?>
+
+// CSSは最低限のスタイリング用
+<style>
+.single_header {
+  padding-top: 180px;
+}
+.single {
+  margin-bottom: 40px;
+}
+.single_title {
+  box-shadow: 0 1px 0 rgba(99,99,99,0.5);
+  font-size: 24px;
+}
+.single_thumbnail {
+  margin:40px auto;
+  width: 100%;
+}
+.single img {
+  height: auto;
+  margin:0 auto;
+}
+</style>
+<section class="single_header bg_white">
+  <header class="container wrapper">
+    <?php if (get_post_type() === 'topic'): ?>
+      <h1 class="branch_main_title">News<span class="branch_main_title--sub">ニュース詳細</span></h1>
+    <?php endif; ?>
+  </header>
+</section>
+<article class="single single_<?php echo esc_attr(get_post_type()); ?> bg_white">
+<?php if(have_posts()) : ?>
+  <?php while(have_posts()) : the_post(); ?>
+  <div class="container wrapper">
+  <div class="single_head_info">
+    <h1 class="single_title"><?php the_title(); ?></h1><!-- タイトルを表示 -->
+    <p class="archive_date"><?php echo get_the_time('Y.m.d'); ?></p>
+  </div>
+  <?php if(get_the_post_thumbnail()) : ?>
+  <figure class="single_thumbnail">
+    <?php the_post_thumbnail( array(710, 533) ); ?>
+  </figure>
+  <?php endif; ?>
+      <?php the_content(); ?><!-- 本文を表示 -->
+    <?php endwhile; ?>
+  <?php endif; ?>
+  </div>
+</article>
+<?php get_footer(); ?>
+
+```
+</details>
+
+
+## ■カスタム投稿タイプの作成
+
+オーダーによっては、ニュース投稿ページの他に、違うカテゴリーで投稿ページを分けたいこともあるかもしれません。
+
+そんなときは、カスタム投稿タイプ機能を使用します。
+
+### 作成の大まかな流れ
+
+1. カスタム投稿タイプをアクションフックに登録
+2. カスタムタクソノミーをアクションフックに登録
+3. article-{カスタム投稿タイプ登録名}.php 作成
+4. single-{カスタム投稿タイプ登録名}.php 作成
+
+### 1.カスタム投稿タイプをアクションフックに登録
+
+次のようなコードをfunctions.phpに記述します。
+
+手書きでは大変なため、便利なプラグイン（[Custom Post Type UI](https://ja.wordpress.org/plugins/custom-post-type-ui/)）を活用しましょう。
+
+
+プラグインインストール後、以下の事項に沿って登録していきます。
+
+たぶん以下の記述が最低限必要な事項と思われます。（抜け等あればご指摘ください）
+
+<details>
+<summary>functions.php内 カスタム投稿タイプの登録</summary>
+
+```php
+
+/*************************************************
+カスタム投稿タイプ
+まとめ(slug:matome)
+*************************************************/
+add_action( 'init', 'custom_post_type_matome');
+
+function custom_post_type_matome() { 
+	register_post_type( 'matome',
+		array( 'labels' => array(
+			'name' => __( 'まとめ' ),
+			'singular_name' => __( 'まとめ' ),
+			'all_items' => __( 'まとめ' ),
+			'add_new' => __( '新規追加' ),
+			'add_new_item' => __( 'まとめを新規投稿' ),
+			'edit' => __( 'Edit' ),
+			'edit_item' => __( 'まとめを編集' ),
+			'new_item' => __( 'まとめを新規投稿' ),
+			'view_item' => __( 'まとめを表示' ),
+			'search_items' => __( 'まとめを検索' ),
+			'not_found' =>  __( 'まとめが投稿されていません。' ),
+			'not_found_in_trash' => __( 'ゴミ箱にまとめはありませんでした。' ),
+			'parent_item_colon' => ''
+			), /* end of arrays */
+			'description' => __( 'まとめ 投稿機能です。' ),
+			'public' => true,
+			'publicly_queryable' => true,
+			'exclude_from_search' => false,
+			'show_ui' => true,
+			'query_var' => true,
+			'menu_position' => 5,
+			'rewrite'	=> array( 'slug' => 'matome', 'with_front' => true ),
+			'has_archive' => 'matome',
+			'capability_type' => 'post',
+			'hierarchical' => true,
+      'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt','revisions','sticky'),
+      'map_meta_cap'=> true,
+			'taxonomies' => array('matome_cat')//使用するタクソノミー
+		) /* end of options */
+  ); /* end of register post type */
+
+  register_taxonomy(
+    'matome_cat', // 「カスタムタクソノミー」を使用するオブジェクトタイプを指定します。
+    'matome', // register_post_typeで登録したカスタム投稿タイプ名
+    array(
+      'label' => 'まとめカテゴリー',
+      'labels' => array(
+        'edit_item' =>'まとめカテゴリーを編集',
+        'add_new_item' => '新規カテゴリーを追加',
+        'search_items' => 'まとめカテゴリーを検索'
+      ),
+      'rewrite' => array('matome_cat' => 'matome'),
+      'hierarchical' => true,
+      'public' => true,
+      'query_var' => true,
+      'singular_label' => 'まとめカテゴリー',
+      'show_in_rest' => true
+    )
+  );
+}
 ```
 </details>
