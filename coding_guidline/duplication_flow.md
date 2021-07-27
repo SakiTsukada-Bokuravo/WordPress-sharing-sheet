@@ -12,12 +12,207 @@
 
 現在[order1a.wpt-demo.com](order1a.wpt-demo.com)はマルチサイト化されています。（アクセス先のテーマはグレースケール版です。）
 
-上記グレースケール版テーマの、キーカラー違いのテーマやインタラクションが有るテーマに関しては、子サイト（参加サイトとも言う。例：[https://order1a.wpt-demo.com/copytest](https://order1a.wpt-demo.com/copytest)）としてサブディレクトリ型で運用予定のため、そのため新規案件については「マルチサイトをシングルサイトとして複製する」工程が必要になってくるからです。
+上記グレースケール版テーマの、キーカラー違いのテーマやインタラクションが有るテーマに関しては、子サイト（参加サイトとも言う。例：[https://order1a.wpt-demo.com/copytest](https://order1a.wpt-demo.com/copytest)）としてサブディレクトリ型で運用予定のため、そのため新規案件については「マルチサイトをシングルサイトとして複製する」工程が必要になってくるからです。  
 
-## 目次
+## 複製が簡単なDuplicatorを使うパターン
 
+Duplicatorプラグインを使い、WPテーマやDB丸ごとエクスポートし、  
+複製先へ楽にインポートする方法を紹介します。  
+Duplicatorを使わずに、DBを直接コピーして複製する方法も後述します。
+
+## Duplicatorを使った複製方法：目次
+
+1. DupulicatorでWPデータを落とす
+2. 複製先のFTPサーバーに上記WPデータのzipと、installer.phpをアップ
+3. インストーラーを実行
+4. WP管理画面ログイン後プラグインを全て有効化
+5. FTPへ直接アップ済みの画像とメディアライブラリの紐づけ
+6. サイト設定を変更
+7. メール送信確認
+8. FTP上でパーミッションを変更
+9. 最終確認後、複製完了
+
+## 1. DupulicatorでWPデータを落とす
+
+複製元のサイトに[Duplicator](https://ja.wordpress.org/plugins/duplicator/)プラグインがなければ、まずインストールしてください。  
+  
+下記画像のように、Arctive のDatabeseタブから✅を入れたデータをエクスポート対象から外した状態で、  
+「create new」ボタンをクリック、エクスポート用ファイルを作成します。  
+正常に作成されたら、`installer.php`と`zip`をDL出来ますので、DLしておきます。  
+  
+▼Duplicatorのエクスポートファイル作成前の画面
+![Duplicator](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/db1.png)
+
+
+## 2. WPデータのzipファイルと、installer.phpをアップ
+
+手順1でエクスポートした上記2ファイルを複製先のFTPへアップします。
+
+![FTPへDuplicatorで作成したファイルをアップ](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/082afd7769327894b29e17419b00b42a.png)
+
+installer.phpをアップしたURLへアクセスします。  
+
+```text
+
+例：https://sample.com/installer.php
+
+```
+
+## 3. インストーラーを実行
+
+落とした`installer.php`と`zip`を複製先のFTPサーバーにアップ後、`installer.php`をブラウザで開きインストーラーを実行します。
+
+インストール時に以下の情報の入力が必要です。  
+予め準備した状態でインストールします。
+
+```text
+・複製先データベース名
+・複製先データベース　ユーザーID
+複製先データベース　パスワード
+```
+
+### インストール：STEP1
+
+▼ステータスが緑(successfully)であることを確認
+
+![インストーラーSTEP1](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/duplicator1.png)
+
+▼同意チェックを入れる
+
+![インストーラーSTEP1 オプションチェック](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/duplicator1-option.png)
+
+### インストール：STEP2
+
+▼上からMySQLホスト名、DB名、DBアクセスユーザーID、DBアクセスユーザーPWを入力し、「Test Database」ボタンをクリック。
+
+![インストーラーSTEP2](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/duplicator2.png)
+
+```text
+
+MySQLホスト名はウェブサーバーパネルに情報が載ってます。
+例：mysql106.xbiz.ne.jp
+
+```
+
+### インストール：STEP3
+
+▼デフォルト設定のままでNextボタンをクリック
+
+![インストーラーSTEP3](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/duplicator3.png)
+
+### インストール：STEP4
+
+インストール時エラーで進まない場合は最初に設定したDB設定から間違いがないか見直します。  
+  
+最後に「インストールファイルを削除するチェックボックス」項目にチェックが入っているか確認し完了です。  
+  
+正常にStep4まで進むとWP管理画面のアカウント作成も同時にできますので、未作成の場合は作成します。  
+作成しない場合のWPログイン情報はデモサイトと同じID、PWでログインが行えますが、  
+セキュリティ上良くないので、PWは新しくしてください。  
+また、クライアントサイトの場合は、クライアント用のアカウントを別途用意してください。（後述）
+  
+管理画面へもログインが行えたら、セキュリティの観点からDuplicatorプラグインと、FTP上にある関連のファイルを削除します。  
+  
+FTP上にもインストール関連ファイルが残っているため手動で削除します。
+
+```text
+
+▼削除するファイル
+
+dup-installerディレクトリ(ディレクトリごと削除)
+installer.php
+●●●_installer-backup.php
+●●●_archive.zip
+dup-installer-bootlog__●●●.txt
+
+```
+
+
+## 4. FTPへ直接アップ済みの画像とメディアライブラリの紐づけ
+
+対象フォルダは`wp-content/uploads/`内の画像についてです。  
+  
+メディアライブラリの紐づけを行わないと、管理画面上で画像が表示されないため紐付けを行います。  
+  
+紐付けプラグインは[Add From Server](https://wordpress.org/plugins/add-from-server/)を例にします。  
+
+プラグイン有効化後、同ページから「import files」をクリック。  
+
+`uploads/2020/`のフォルダがあると思いますので、必要画像を全て選択しImportボタンから実行するとメディアライブラリへ紐付け出来ます。  
+  
+作業が完了したら、プラグインを削除してください。  
+
+## 5. サイト設定を変更
+
+データを丸ごと複製したのでほぼ丸ごと元サイトのデータのままになっています。  
+  
+そのため複製先へデータを変更していきます。  
+
+```text
+◆設定を見直し項目
+
+・ユーザーメールアドレス、ユーザーID
+・サイトタイトル
+・管理者メールアドレス
+・プライバシー設定
+・Contact Form7（お問い合わせ）メール設定、設置タグのID
+```
+
+### 6. ユーザーアカウントの変更方法
+
+お客様用アカウント（●●_admin）が、複製元のIDのままなため、複製先に合わせて変更します。
+
+ユーザー名だけはDBでないと変更できないためDBから直接変更をします。
+
+phpmyadminへログイン後、`wp_users`のテーブルを表示します。
+
+表左端の「編集」ボタンをクリックし、詳細画面に移動します。
+
+![ユーザー名をDBから変更する手順](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/change_userid1.jpg)
+
+移動後、赤枠の`user_login` `user_pass` `display_name` を変更します。
+
+![変更箇所](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/change_userid2.jpg)
+
+`display_name`は必ずしも変更しなくても問題はありませんが、ユーザー名と表示名で異なる名前だと混合するため統一します。
+
+WP管理画面へ再ログインできれば完了です。
+
+## 7. メール送信確認
+
+送信元のメールアドレスと、メール本文の内容を変更します。  
+メールフォームからテストメールを送信し、  
+受信・送信に問題がないか確認します。  
+
+
+## 8. FTP上でパーミッションを変更（出来れば）
+
+ファイルの改ざんを防ぐため、File Zilla等のFTPソフトでパーミッションを変更します。  
+セキュリティ上、設定出来ればベターです。  
+分からない方は分かる方（エンジニア）あたりに聞いてください。  
+
+| ファイル名 | 推奨パーミッション |
+| ------------- | ------------- |
+| .htaccess | 604 or 644 |
+| wp-config.php | 600 |
+
+[公式パーミッション設定例](https://ja.wordpress.org/support/article/changing-file-permissions/#%e3%83%91%e3%83%bc%e3%83%9f%e3%83%83%e3%82%b7%e3%83%a7%e3%83%b3%e8%a8%ad%e5%ae%9a%e4%be%8b)
+
+
+## 9. 最終確認後、複製完了
+
+全ページ最終確認し問題がなければ複製作業は完了です。  
+ここから案件に応じて、テーマの中身やフォームの内容変更を行います。
+  
+
+
+
+# Duplicatorを使わずに複製する手順
+
+▼追加工数  
 1. 複製元のDBをエクスポートする
-2. DBのテーブルを書き換える（子サイト複製のみ）
+2. DBのテーブルを書き換える（子サイト複製時のみ作業）
+
 3. DupulicatorでWPデータを落とす
 4. 複製先のFTPサーバーに上記WPデータのzipと、installer.phpをアップ
 5. インストーラーを実行
@@ -28,8 +223,10 @@
 10. FTP上でパーミッションを変更
 11. 最終確認後、複製完了
 
+Duplicatorを使わないやり方では、手順1～2の工程が増えました。
+手順2以降はDuplicatorと同一手順のため、1～2の手順についてのみ記載します。
 
-## 複製元のDBをエクスポートする
+## 1. 複製元のDBをエクスポートする
 
 複製元サイトのDBから必要なデータのみエクスポートします。
 
@@ -74,13 +271,16 @@ wp_users
 出来る限り親サイトのデータをエクスポートします。
 
 
-## DBのテーブルを書き換える（子サイト複製のみ）
+## 2. DBのテーブルを書き換える（子サイト複製時のみ作業）
 
-エクスポートしたsqlデータを置換します。
 
 ```text
-通常の複製の場合はこの工程は発生しません。	
+通常（親サイト）の複製の場合はこの工程は飛ばして下さい。
 ```
+
+子サイトとは、[order1a.wpt-demo.com/pink](https://order1a.wpt-demo.com/pink/)のように、サブディレクトリ先にあるサイトのことです。  
+サーバーの管理パネル（WPではなく、サーバー自体の管理パネル）へアクセスし、SQLデータをエクスポートします。  
+その後エクスポートしたSQLータを置換します。
 
 | 対象範囲 | 置換対象 | 置換後 |
 | ------------- | ------------- | ------------- |
@@ -91,12 +291,12 @@ wp_users
 | wp_2_posts | AUTO_INCREMENT=35 | AUTO_INCREMENT=32 |
 
 
-## 複製先のサーバーのDBへエクスポートしたSQLをインポートする
+## 2-1. 複製先のサーバーのDBへエクスポートしたSQLをインポートする
 
 インポート前に複製先のサーバーにて空のDBを新規作成しておきます。
 
 
-### DBの命名規則について
+### Tips：DBの命名規則について
 もし既存のDBがあり、かつ規則性のあるDB名であれば、それに合わせて作成しても良いです。
 
 例：
@@ -109,115 +309,11 @@ wp_testbkrv
 にしてもOK
 ```
 
-これという正解はないですが、管理のしやすさ、名前だけで何のDBか判断できるかが基準になると思います。
-
-また、DB名には文字数制限がありそれが比較的短めです。
-
-XサーバーのようにユーザーIDが頭に来る場合は、そのIDも含めた文字数になるため、上記の（dpt_testbkrv）ように省略することも多いです。
-
-
-## DupulicatorでWPデータを落とす
-
-[Duplicator](https://ja.wordpress.org/plugins/duplicator/)プラグインを導入し、
-
-メニューからArctive のDatabeseタブから✅を入れたデータをエクスポート対象から削除し、`installer.php`と`zip`をDLします。
-
-![Duplicator](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/db1.png)
-
-
-## インストーラーを実行
-
-落とした`installer.php`と`zip`を複製先のFTPサーバーにアップ後、`installer.php`をブラウザで開きインストーラーを実行します。
-
-詳細なインストール手順は[このページ](https://www.notion.so/WP-72aafbcde8fc40849d8ee2a3327e02f4)の「Duplicatorで複製する」から下を参考にしてください。
-
-インストール時に以下の情報の入力が必要です。
-
-```text
-・複製先データベース名
-・複製先データベース　ユーザーID
-複製先データベース　パスワード
-```
-
-インストールが完了し、管理画面へもログインが行えたら、セキュリティの観点からDuplicatorプラグインと、FTP上にある関連のファイルを削除します。
-
-ログイン情報はデモサイトと同じID、PWでログインが行えます。
-
-
-## FTPへ直接アップ済みの画像とメディアライブラリの紐づけ
-
-対象フォルダは`wp-content/uploads/`内の画像についてです。
-
-メディアライブラリの紐づけを行わないと、管理画面上で画像が表示されないため紐付けを行います。
-
-紐付けプラグインは[Add From Server](https://wordpress.org/plugins/add-from-server/)を例にします。
-
-プラグイン有効化後、同ページから「import files」をクリック。
-
-`uploads/2020/`のフォルダがあると思いますので、必要画像を全て選択しImportボタンから実行するとメディアライブラリへ紐付け出来ます。
-
-作業が完了したら、プラグインを削除してください。
-
-## サイト設定を変更
-
-データを丸ごと複製したのでほぼ丸ごと元サイトのデータのままになっています。
-
-そのため複製先へデータを変更していきます。
-
-```text
-◆設定を見直し項目
-
-・ユーザーメールアドレス、ユーザーID
-・サイトタイトル
-・管理者メールアドレス
-・プライバシー設定
-・Contact Form7（お問い合わせ）メール設定、設置タグのID
-```
-
-### ユーザーアカウントの変更方法
-
-お客様用アカウント（●●_admin）が、複製元のIDのままなため、複製先に合わせて変更します。
-
-ユーザー名だけはDBでないと変更できないためDBから直接変更をします。
-
-phpmyadminへログイン後、`wp_users`のテーブルを表示します。
-
-表左端の「編集」ボタンをクリックし、詳細画面に移動します。
-
-![ユーザー名をDBから変更する手順](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/change_userid1.jpg)
-
-移動後、赤枠の`user_login` `user_pass` `display_name` を変更します。
-
-![変更箇所](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/change_userid2.jpg)
-
-`display_name`は必ずしも変更しなくても問題はありませんが、ユーザー名と表示名で異なる名前だと混合するため統一します。
-
-WP管理画面へ再ログインできれば完了です。
-
-## メール送信確認
-
-メールフォームからテストメールを送信し、受信・送信に問題がないか確認します。
-
-## FTP上でパーミッションを変更
-
-ファイルの改ざんを防ぐため、File Zilla等のFTPソフトでパーミッションを変更します。
-
-分からない方は分かる方に聞いてください。
-
-| ファイル名 | 推奨パーミッション |
-| ------------- | ------------- |
-| .htaccess | 604 or 644 |
-| wp-config.php | 600 |
-
-[公式パーミッション設定例](https://ja.wordpress.org/support/article/changing-file-permissions/#%e3%83%91%e3%83%bc%e3%83%9f%e3%83%83%e3%82%b7%e3%83%a7%e3%83%b3%e8%a8%ad%e5%ae%9a%e4%be%8b)
-
-
-## 最終確認後、複製完了
-
-全ページ最終確認し問題がなければ複製作業は完了です。
-
-ここから案件に応じて、テーマの中身やフォームの内容変更を行います。
-
+これという正解はないですが、管理のしやすさ、名前だけで何のDBか判断できるかが基準になると思います。  
+  
+また、DB名には文字数制限がありそれが比較的短めです。  
+  
+XサーバーのようにユーザーIDが頭に来る場合は、そのIDも含めた文字数になるため、上記の（dpt_testbkrv）ように省略することも多いです。  
 
 ## エラーリファレンス
 
