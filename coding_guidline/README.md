@@ -31,6 +31,13 @@
 
 [マルチサイト化とは](https://www.sejuku.net/blog/83193)（外部サイトへ飛びます）
 
+## WPテーマガイドライン
+
+[coding_guideline.md](coding_guideline.md)
+
+テーマのコーディングを行う上で、ガイドラインを定めました。  
+テーマのHTML/CSSのルールや、テーマの構造についてはこちらのページにまとまっています。
+
 ## WP組込フロー
 
 [include_wp_flow.md](include_wp_flow.md)
