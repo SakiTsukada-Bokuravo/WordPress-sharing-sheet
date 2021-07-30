@@ -25,7 +25,7 @@
 
 [duplication_flow.md](duplication_flow.md)
 
-オーダー1Aテーマと、WP管理画面のDBをエクスポートし、複製先へ複製する手順です。  
+オーダー1Aテーマと、WP管理画面のDBをエクスポートし、複製する手順です。  
 
 #### :bulb: Tips
 
