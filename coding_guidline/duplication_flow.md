@@ -158,7 +158,7 @@ Duplicator バージョン 1.4.2で確認。
 
 ![インストーラーSTEP4-2](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/duplicator4-2.png)
 
-~~管理画面へもログインが行えたら、セキュリティの観点からDuplicatorプラグインと、FTP上にある関連のファイルを削除します。  ~~
+~~管理画面へもログインが行えたら、セキュリティの観点からDuplicatorプラグインと、FTP上にある関連のファイルを削除します。~~  
   
 ~~FTP上にもインストール関連ファイルが残っているため手動で削除します。~~  
   
