@@ -285,7 +285,7 @@ WP管理画面メニュー　ユーザー > ユーザー一覧 > 編集
 PASS：ユーザー編集ページの最下部にある「パスワード生成」ボタンから変更。  
 登録メールアドレス：ユーザー編集ページ 連絡先情報 > メール (必須) より変更
 
-![ユーザー編集](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/settings2.jpg)
+![ユーザー編集](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/settings2.png)
   
 ## 8. メール送信確認
 
