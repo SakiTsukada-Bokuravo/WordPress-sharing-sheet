@@ -32,6 +32,12 @@
 [マルチサイト化とは](https://www.sejuku.net/blog/83193)（外部サイトへ飛びます）  
   
   
+## テーマ編集マニュアル
+
+[theme_editing_manual.md](theme_editing_manual.md)  
+  
+テーマの各ページ、項目の編集をする手順をまとめました。
+
 ## WPテーマガイドライン
 
 [coding_guideline.md](coding_guideline.md)
