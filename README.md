@@ -8,21 +8,20 @@
 もしかすると対処方法が載っているかもしれません。  
 こちらのファイルに対処方法が記載されていない場合や、新たなバグや修正が困難な箇所が見つかった場合は、なるべく詳細に追記して頂きますようお願いします。
 
-## 装飾パーツ
+## 各ディレクトリについて
 
-### 新規追加時の実装手順
+[agency/README.md](agency/README.md)  
+  
+代理業用WPのマニュアルです。  
+エディターのカスタマイズ関連、アンケート記事関連。  
 
-自身の確認サーバー等で HTML デザイン化後、WP 用に CSS 及び HTML を調整します。  
-WP の管理画面・サイト側記事詳細ページ両方に CSS のを反映させる必要があります。
+[coding_guidline/](coding_guidline/README.md)  
+  
+WPテーマ「オーダー1A」の作成ガイドライン、複製マニュアルのディレクトリです。  
+最初に[README.md](coding_guidline/README.md)をお読み下さい。
 
-**管理画面・サイト側記事詳細ページ両方に効く CSS**  
-`\wp-content\plugins\visual-editor-extensions\css\xeory_contents_decorator.css`
+[theme_license](theme_license/README.md)  
+WPテーマ「オーダー1A」の販売、受注制作にあたってのライセンスです。（未完成）  
 
-**管理画面のみに効く CSS**  
-`\wp-content\plugins\visual-editor-extensions\css\admin-style.css`
-
-#### 注意点
-
-パーツ自体に min-height（パーツのデザインによってお好みで）/max-width（～ 640px）を指定し、ある程度のサイズ感に留めておきます。
-
-### [新規装飾パーツの実装時のバグ及び対処法](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/tree/master/wp_bug)
+[wp_bug](wp_bug/README.md)  
+WPテーマのカスタマイズ等で起こったバグ等の対処方法をまとめています。  
