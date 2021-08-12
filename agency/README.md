@@ -1,14 +1,17 @@
 # 代理業用WPについて
 
 現在代理業用WPは2種類存在します。  
-
-- 代理業用1：wp-kiji-maker.com  
+以下は主に代理業用1：wp-kiji-maker.comのカスタマイズ箇所の手順・マニュアルになります。  
+  
+- 代理業用1：wp-kiji-maker.com（テーマは無料テーマの[bones](https://github.com/squibbleFish/theme-bones)を使用。後述するアンケート記事機能付き）  
 https://wp-kiji-maker.com/wp-login.php  
 
 - 代理業用2：lab-beautybooks.com（オーダー1Aテーマ使用）  
-https://lab-beautybooks.com/wp_beautybooks/wp-login.php
-
-# wp-kiji-maker.comエディター
+https://lab-beautybooks.com/wp_beautybooks/wp-login.php  
+  
+※上記2サイトはTOPにアクセスしても何も表示させていません。  
+  
+# wp-kiji-maker.com エディターについて
 
 wp-kiji-maker.comの投稿エディターはカスタムされ、  
 エディタ内に様々な装飾ボタンがあります。  
@@ -124,41 +127,43 @@ classes：ボタンのクラス
 
 デフォルトにはない、カスタマイズを追加したタブを複数追加しています。  
 
-- アンケート記事LP用ファイル読み込み設定
+### アンケート記事LP用ファイル読み込み設定
   
-後述するアンケート記事用のCSSを設定する  
+後述する[アンケート記事用のCSS](#cssについて)を設定する  
   
 ![アンケート記事LP用ファイル読み込み設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/tab1.png)  
 
-- ページ別クラス  
-
+### ページ別クラス  
+  
 ページごとの<body>タグにクラスをつけるタブ  
-
+  
 ![ページ別クラスページごとの<body>タグにクラスをつけるタブ](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/tab2.png)  
 
-- ヘッダー画像設定
-
+### ヘッダー画像設定
+  
 記事ヘッダーを追加するタブ  
-
+  
 ![ヘッダー画像設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/tab3.png)  
 
-- 広告コード設定  
+### 広告コード設定  
 
 <head>内にHTMLコードを追加できるタブ  
-
+  
 ![広告コード設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/tab4.png)  
 
-- メタタグを設定  
-
+### メタタグを設定  
+  
 <meta>タグを設定するタブ  
-
+  
 ![メタタグを設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/tab5.png)  
 
-- CSSを設定  
-
+### CSSを設定  
+  
+ページごとにCSSを追加できます。  
+  
 ![CSSを設定](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/tab6.png)  
 
-ページごとにCSSを追加できます。  
+
 
 ### オプションタブの編集
 
@@ -174,16 +179,16 @@ WP管理画面のメニューには、投稿の他に「アンケート記事」
   
 記事作成の担当者が次のテンプレートをコピーして、実際に記事作成を行っています。  
 
-▼ mensclear  
+### mensclear  
 http://wp-kiji-maker.com/questionnaire/qq_template_mensclear/  
   
-▼ leasebacksenmon_lp1_ver1  
+### leasebacksenmon_lp1_ver1  
 http://wp-kiji-maker.com/questionnaire/qq_template_leasebacksenmon_lp1_ver1/  
   
-▼ leasebackconcierge_lp20_ver2_type1  
+### leasebackconcierge_lp20_ver2_type1  
 http://wp-kiji-maker.com/questionnaire/qq_template_leasebackconcierge_lp20_ver2_type1/  
 
-▼ ieuru_lp02_ver1
+### ieuru_lp02_ver1  
 http://wp-kiji-maker.com/questionnaire/qq_template_ieuru_lp02_ver1/  
   
 	
@@ -207,7 +212,7 @@ http://wp-kiji-maker.com/questionnaire/qq_template_ieuru_lp02_ver1/
 ▼テキストタブ  
 ![アンケート記事テキストタブ](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/question1.png)  
 
-▼ビジュアルタブ
+▼ビジュアルタブ  
 ![アンケート記事ビジュアルタブ](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/question2.png)  
 
 ### テーマ
