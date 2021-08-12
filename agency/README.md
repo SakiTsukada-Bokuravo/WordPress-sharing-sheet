@@ -6,7 +6,7 @@
 - 代理業用1：wp-kiji-maker.com（テーマは無料テーマの[bones](https://github.com/squibbleFish/theme-bones)を使用。後述するアンケート記事機能付き）  
 https://wp-kiji-maker.com/wp-login.php  
 
-- 代理業用2：lab-beautybooks.com（オーダー1Aテーマ使用）  
+- 代理業用2：lab-beautybooks.com（wp-kiji-maker.comと同一テーマ）  
 https://lab-beautybooks.com/wp_beautybooks/wp-login.php  
   
 ※上記2サイトはTOPにアクセスしても何も表示させていません。  
