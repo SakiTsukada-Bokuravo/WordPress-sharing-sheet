@@ -208,6 +208,7 @@ Duplicator自体は無効化し削除します。
 ![メディア紐付け3](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/media3.png)
 
 ▼`uploads/` > `2020/` > `09/`フォルダを選択。  
+
 ![メディア紐付け4](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/media4.png)  
 必要画像を全て選択し「Import」ボタンから実行するとメディアライブラリへ紐付け（画像の認識）が出来ます。  
 
