@@ -16,8 +16,8 @@
 オーダー1A制作案件の全体的な制作の流れを記しています。  
 このページではテーマ制作の説明を省いています。  
   
-テーマ制作：[WPテーマガイドライン](coding_guidline.md)  
-テーマ改修：[WPテーマ改修](repair_flow.md)
+テーマ制作：[WPテーマガイドライン](coding_guideline.md)  
+テーマ改修：[テーマ編集マニュアル](theme_editing_manual.md)
 
 を参考にしてください。
 
