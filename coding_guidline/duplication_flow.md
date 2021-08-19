@@ -8,11 +8,16 @@
 複製元、複製先のサーバーはそれぞれ違うサーバーとします。  
   
 <details>
-<summary>:bulb: Tips なぜマルチサイトから複製を行うか</summary>
-
-現在[order1a.wpt-demo.com](order1a.wpt-demo.com)はマルチサイト化されています。（アクセス先のテーマはグレースケール版です。）
-
-上記グレースケール版テーマの、キーカラー違いのテーマやインタラクションが有るテーマに関しては、子サイト（参加サイトとも言う。例：[https://order1a.wpt-demo.com/copytest](https://order1a.wpt-demo.com/copytest)）としてサブディレクトリ型で運用予定のため、そのため新規案件については「マルチサイトをシングルサイトとして複製する」工程が必要になってくるからです。
+<summary>:bulb: <strong>Tips なぜマルチサイトから複製を行うか</strong></summary>
+<br>
+現在、https://order1a.wpt-demo.com/ はマルチサイト化されています。
+<br>
+（アクセス先のテーマはグレースケール版です。）
+<br>
+上記グレースケール版テーマの、キーカラー違いのテーマやインタラクションが有るテーマに関しては、
+<br>子サイト（参加サイトとも言う。例： https://order1a.wpt-demo.com/copytest ）としてサブディレクトリ型で運用予定のため、
+<br>新規案件については「マルチサイトをシングルサイトとして複製する」工程が必要になってくるからです。
+<br>
 </details>  
 
 ## 複製が簡単なDuplicatorを使う
@@ -24,17 +29,18 @@ Duplicatorで不明点があれば、まずはググってみてください。
 
 ## 目次
 
-1. [DupulicatorでWPデータを落とす](#1-dupulicatorでwpデータを落とす)
-2. [複製先のFTPサーバーに上記WPデータのzipと、installer.phpをアップ](#2-wpデータのzipファイルとinstallerphpをアップ)
-3. [インストーラーを実行](#3-インストーラーを実行)
-4. [WP管理画面ログイン後プラグインを全て有効化](#4-wp管理画面ログイン後プラグインを全て有効化)
-5. [FTPへ直接アップ済みの画像とメディアライブラリの紐づけ](#5-ftpへ直接アップ済みの画像とメディアライブラリの紐づけ)
-6. [サイト設定を変更](#6-サイト設定を変更)
-7. [メール送信確認](#7-ユーザーアカウントの変更方法)
-8. [メール送信確認](#8-メール送信確認)
-9. [FTP上でパーミッションを変更](#9-ftp上でパーミッションを変更出来れば)
-10. [複製完了](#10-複製完了)
-11. [Duplicatorを使わずに複製する手順](#duplicatorを使わずに複製する手順)
+- [1. DupulicatorでWPデータを落とす](#1-dupulicatorでwpデータを落とす)
+- [2. WPデータのzipファイルと、installer.phpをアップ](#2-wpデータのzipファイルとinstallerphpをアップ)
+- [3. インストーラーを実行](#3-インストーラーを実行)
+- [4. WP管理画面ログイン後プラグインを全て有効化](#4-wp管理画面ログイン後プラグインを全て有効化)
+- [5. FTPへ直接アップ済みの画像とメディアライブラリの紐づけ](#5-ftpへ直接アップ済みの画像とメディアライブラリの紐づけ)
+- [6. サイト設定を変更](#6-サイト設定を変更)
+- [7. ユーザーアカウントの変更方法](#7-ユーザーアカウントの変更方法)
+- [8. メール送信確認](#8-メール送信確認)
+- [9. FTP上でパーミッションを変更（出来れば）](#9-ftp上でパーミッションを変更出来れば)
+- [10. 複製完了](#10-複製完了)
+- [Duplicatorを使わずに複製する手順](#duplicatorを使わずに複製する手順)
+- [エラーリファレンス](#エラーリファレンス)
 
 ## 1. DupulicatorでWPデータを落とす
 
@@ -44,7 +50,8 @@ Duplicatorで不明点があれば、まずはググってみてください。
 「create new」ボタンをクリック、エクスポート用ファイルを作成します。  
 正常に作成されたら、`installer.php`と`zip`をDL出来ますので、DLしておきます。  
   
-▼Duplicatorのエクスポートファイル作成前の画面
+▼Duplicatorのエクスポートファイル作成前の画面  
+
 ![Duplicator](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/db1.png)
 
 
@@ -78,14 +85,14 @@ installer.phpをアップしたURLへアクセスします。
   
   
 <details>
-<summary>:bulb: Tips ステータスに"Warn"があるとき</summary>
-
-下記のように  
+<summary>:bulb: <strong>Tips ステータスに"Warn"があるとき</strong></summary>
+<br>
+下記項目のステータスが「Warn」になることもありますが、そのまま次へ進んで大丈夫です。
+<br>
+<br>
 
 - Archive Extracted
 - WordPress Multi Site
-
-ステータスが「Warn」になることもありますが、そのまま次へ進んで大丈夫です。  
 
 ![インストーラーSTEP1 Warn](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/duplicator1-2.png)
 </details>
@@ -125,9 +132,12 @@ installer.phpをアップしたURLへアクセスします。
   
 ![インストーラーSTEP2](https://github.com/SakiTsukada-Bokuravo/WordPress-sharing-sheet/blob/images/duplicator2-3.png)
 
-#### :bulb: Tips
-  
-接続ができない場合は、いずれかの入力情報が間違っていると思われますので、再度テストし直します。  
+<details>
+<summary>:bulb: <strong>Tips 接続ができない場合</strong></summary>
+<br>
+いずれかの入力情報が間違っていると思われますので、見直しをお願いします。
+
+</details>
 
 ### インストール：STEP3
 
@@ -163,7 +173,8 @@ Duplicator バージョン 1.4.2で確認。
 ~~FTP上にもインストール関連ファイルが残っているため手動で削除します。~~  
   
 <details>
-<summary>:bulb: Tips 手動で削除するファイル</summary>
+<summary>:bulb: <strong>Tips 手動で削除するファイル</strong></summary>
+<br>
 
 ```text
 
@@ -174,12 +185,13 @@ installer.php
 dup-installer-bootlog__●●●.txt
 
 ```
+
 </details>
   
 
 ## 4. WP管理画面ログイン後プラグインを全て有効化
 
-WP管理画面のメニュー　プラグイン > インストール済みプラグイン  
+WP管理画面のメニュー　`プラグイン` > `インストール済みプラグイン`  
   
 Duplicator以外のプラグインを有効化にします。  
 Duplicator自体は無効化し削除します。  
@@ -214,23 +226,25 @@ Duplicator自体は無効化し削除します。
 
 完了したら、  
   
-WP管理画面のメニュー　メディア > ライブラリ  
+WP管理画面のメニュー　`メディア` > `ライブラリ`  
 
 へ移動し、画像が反映されているか確認。  
   
 作業が完了したら、WP管理画面の動作軽量のためプラグインを削除してください。  
 
 <details>
-<summary>:bulb: Tips 複数サイズがあるファイルについて</summary>
-
-WPの設定により、画像をアップロードすると自動的にサイズ別に作られる画像です。  
-基本的に大元の画像だけ紐付ければ大丈夫です。  
+<summary>:bulb: <strong>Tips 複数サイズがあるファイルについて</strong></summary>
+<br>WPの設定により、画像をアップロードすると自動的にサイズ別に作られる画像です。
+<br>基本的に大元の画像だけ紐付ければ大丈夫です。
+<br>
+<br>
 
 ```text
 
-例：logo.jpg , logo-150x76.jpgとある場合、logo.jpgのみ紐付ける
+例：logo.jpg , logo-150x76.jpg の画像がある場合、logo.jpg のみ紐付ける
 
 ```
+
 </details>
 
 ## 6. サイト設定を変更
